@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soundspace/screens/tellmemore-screen.dart';
 import 'screens/screens.dart';
 
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'SoundSpace',
-      home: const GetStartedScreen(),
+      home: const TellMeMoreScreen(),
       getPages: [
         GetPage(name: '/', page: () => const GetStartedScreen()),
         GetPage(name: '/login', page: () => const LoginScreen()),

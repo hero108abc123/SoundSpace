@@ -20,7 +20,7 @@ class EmailBox extends StatelessWidget {
             fontSize: 12
           ),
           border: UnderlineInputBorder(
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide.none
           )
         ),

@@ -33,7 +33,7 @@ class _PasswordBoxState extends State<PasswordBox> {
             fontSize: 12
           ),
           border: UnderlineInputBorder(
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide.none
           ),
           suffixIcon: IconButton(
