@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/email', page: () => const EmailScreen()),
         GetPage(name: '/signin', page: () => const SignInScreen()),
         GetPage(name: '/signup', page: () => const SignUpScreen()),
+        GetPage(name: '/tellmemore', page: () => const TellMeMoreScreen()),
         
       ],
     );
