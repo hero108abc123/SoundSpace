@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "D:/Du an ca nhan/Flutter/Doan/SoundSpace/windows"
+    "cmake.sourceDirectory": "D:/Du an ca nhan/Doan/SoundSpace/SoundSpace/windows",
+    "dotnet.defaultSolution": "disable"
 }
