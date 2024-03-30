@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("soundspace")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f1b759264a7482b816f4d5fd84bebde3eed3531")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84d699de46ae27ef103ae55e6061ae65239b4f0a")]
 [assembly: System.Reflection.AssemblyProductAttribute("soundspace")]
 [assembly: System.Reflection.AssemblyTitleAttribute("soundspace")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
