@@ -2,8 +2,25 @@ import 'package:flutter/material.dart';
 import '../widgets/widgets.dart';
 
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({required this. email});
+  final String email;
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  final _passwordController = TextEditingController();
+  
+  bool passwordVisible=false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    passwordVisible=true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +42,68 @@ class SignUpScreen extends StatelessWidget {
           children: <Widget>[
             const ReturnButton(),
             const SizedBox(height: 106,),
-            Text('Create an account', style: TextStyle(color: Colors.white, fontFamily: 'Orbitron', fontSize: 30, fontWeight: FontWeight.w700),),
+            const Text('Create an account', style: TextStyle(color: Colors.white, fontFamily: 'Orbitron', fontSize: 30, fontWeight: FontWeight.w700),),
             const SizedBox(height: 40,),
-            const EmailBox(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: InputDecorator(
+                decoration: InputDecoration(
+                  isDense: true,
+                  filled: true,
+                  fillColor: Colors.grey.shade800,
+                  labelText: 'Your email address',
+                  labelStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12
+                  ),
+                  border: UnderlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none
+                  ),
+                ),
+                child: Text(widget.email, style: const TextStyle(color: Colors.white),),
+              ),
+            ),
             const SizedBox(height: 30,),
-            const PasswordBox(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: TextFormField(
+                controller: _passwordController,
+                obscureText: passwordVisible,
+                decoration: InputDecoration(
+                  isDense: true,
+                  filled: true,
+                  fillColor: Colors.grey.shade800,
+                  labelText: 'Your password (min. 8 charecters)',
+                  labelStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12
+                  ),
+                  border: UnderlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(passwordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    color: Colors.white,
+                    onPressed: () {
+                      setState(() {
+                        passwordVisible = !passwordVisible;
+                      });
+                    },
+                  ),
+                  alignLabelWithHint: false,
+                ),
+                style: const TextStyle(color: Colors.white),
+                keyboardType: TextInputType.visiblePassword,
+                textInputAction: TextInputAction.done,
+                onEditingComplete: () async{
+
+                },
+              ),
+            ),
             const SizedBox(height: 360,),
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
@@ -52,3 +126,16 @@ class SignUpScreen extends StatelessWidget {
 }
 
 
+String? validatePassword(String value) {
+    RegExp regex =
+        RegExp(r'^.{8,}$');
+    if (value.isEmpty) {
+      return 'Please enter password';
+    } else {
+      if (!regex.hasMatch(value)) {
+        return 'Enter valid password';
+      } else {
+        return null;
+      }
+    }
+  }

@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:soundspace/core/api_client.dart';
+import 'package:soundspace/interface/interfaces.dart';
+import 'package:soundspace/screens/screens.dart';
 import '../widgets/widgets.dart';
 
-class EmailScreen extends StatelessWidget {
+class EmailScreen extends StatefulWidget {
   const EmailScreen({super.key});
+
+  @override
+  State<EmailScreen> createState() => _EmailScreenState();
+}
+
+class _EmailScreenState extends State<EmailScreen> {
+  final IEmailCheck _emailCheck = EmailCheckService();
+  final _emailController = TextEditingController();
+  late String email;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +39,50 @@ class EmailScreen extends StatelessWidget {
 or 
 create an account''', style: TextStyle(color: Colors.white, fontFamily: 'Orbitron', fontSize: 30, fontWeight: FontWeight.w700),),
             const SizedBox(height: 40,),
-            const EmailBox(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Form(
+                autovalidateMode: AutovalidateMode.always,
+                child: TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    filled: true,
+                    fillColor: Colors.grey.shade800,
+                    labelText: 'Your email address',
+                    labelStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12
+                    ),
+                    border: UnderlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none
+                    )
+                  ),
+                  style: const TextStyle(color: Colors.white),
+                  textInputAction: TextInputAction.done,
+                  onEditingComplete: () async{
+                    email = await _emailCheck.EmailCheck(_emailController.text);
+                    if (email != null){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignInScreen(email: email)));
+                    } else{
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUpScreen(email: email)));
+                    }
+                  },
+                  validator: validateEmail,
+                ),
+              )
+            ),
             const SizedBox(height: 360,),
             ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
-            onPressed: () {
-              print('button pressed!');
+            onPressed: () async{
+              email = await _emailCheck.EmailCheck(_emailController.text);
+                  if (email != null){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignInScreen(email: email)));
+                  } else{
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUpScreen(email: email)));
+                  }
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(vertical: 14,horizontal: 100),
@@ -50,3 +100,17 @@ create an account''', style: TextStyle(color: Colors.white, fontFamily: 'Orbitro
 }
 
 
+String? validateEmail(String? value) {
+  const pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
+      r'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-'
+      r'\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*'
+      r'[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4]'
+      r'[0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9]'
+      r'[0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\'
+      r'x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])';
+  final regex = RegExp(pattern);
+
+  return value!.isNotEmpty && !regex.hasMatch(value)
+      ? 'Enter a valid email address'
+      : null;
+}

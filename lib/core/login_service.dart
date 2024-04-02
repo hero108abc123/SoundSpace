@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:soundspace/interface/login_interface.dart';
-import 'package:soundspace/models/user_model.dart';
+import 'package:soundspace/interface/interfaces.dart';
+import 'package:soundspace/models/models.dart';
 
 class LoginService extends ILogin{
   @override

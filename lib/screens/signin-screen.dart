@@ -7,7 +7,8 @@ import '../widgets/widgets.dart';
 
 
 class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+  const SignInScreen({required this. email});
+  final String email;
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -15,7 +16,6 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   final ILogin _loginService = LoginService();
-  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   
   bool passwordVisible=false;
@@ -54,8 +54,7 @@ class _SignInScreenState extends State<SignInScreen> {
             const SizedBox(height: 40,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
-              child: TextFormField(
-                controller: _emailController,
+              child: InputDecorator(
                 decoration: InputDecoration(
                   isDense: true,
                   filled: true,
@@ -68,10 +67,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   border: UnderlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none
-                  )
+                  ),
                 ),
-                style: const TextStyle(color: Colors.white),
-                textInputAction: TextInputAction.next,
+                child: Text(widget.email, style: const TextStyle(color: Colors.white),),
               ),
             ),
             const SizedBox(height: 30,),
@@ -110,7 +108,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 keyboardType: TextInputType.visiblePassword,
                 textInputAction: TextInputAction.done,
                 onEditingComplete: () async{
-                  UserModel? user = await _loginService.login(_emailController.text, _passwordController.text);
+                  UserModel? user = await _loginService.login(widget.email, _passwordController.text);
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (_) => HomeScreen(user: user) 
@@ -129,7 +127,7 @@ class _SignInScreenState extends State<SignInScreen> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
               onPressed: () async{
-                UserModel? user = await _loginService.login(_emailController.text, _passwordController.text);
+                UserModel? user = await _loginService.login(widget.email, _passwordController.text);
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (_) => HomeScreen(user: user) 

@@ -4,3 +4,4 @@ export 'login-screen.dart';
 export 'signin-screen.dart';
 export 'signup-screen.dart';
 export 'homescreen.dart';
+export 'tellmemore-screen.dart';
