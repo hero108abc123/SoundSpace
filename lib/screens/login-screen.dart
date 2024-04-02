@@ -34,10 +34,9 @@ class LoginScreen extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: const Color(0xff20f2ff)),
             onPressed: () {
-              Navigator.push(
-                context,
+              Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const EmailScreen(),
+                  builder: (_) => const EmailScreen(),
                 )
               );
             },
@@ -50,10 +49,9 @@ class LoginScreen extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
             onPressed: () {
-              Navigator.push(
-                context,
+              Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const EmailScreen(),
+                  builder: (_) => const EmailScreen(),
                 )
               );
             },

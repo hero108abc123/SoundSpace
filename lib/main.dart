@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'SoundSpace',
-      home: const GetStartedScreen(),
+      home: const SignInScreen(),
       getPages: [
         GetPage(name: '/', page: () => const GetStartedScreen()),
         GetPage(name: '/login', page: () => const LoginScreen()),

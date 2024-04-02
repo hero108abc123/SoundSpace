@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:soundspace/core/api_client.dart';
+import 'package:soundspace/models/models.dart';
+import 'package:soundspace/screens/screens.dart';
+import '../interface/interfaces.dart';
 import '../widgets/widgets.dart';
 
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
+
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  final ILogin _loginService = LoginService();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  
+  bool passwordVisible=false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    passwordVisible=true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +52,74 @@ class SignInScreen extends StatelessWidget {
               child: Text('Welcome back!', style: TextStyle(color: Colors.white, fontFamily: 'Orbitron', fontSize: 30, fontWeight: FontWeight.w700),),
             ),
             const SizedBox(height: 40,),
-            const EmailBox(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: TextFormField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  isDense: true,
+                  filled: true,
+                  fillColor: Colors.grey.shade800,
+                  labelText: 'Your email address',
+                  labelStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12
+                  ),
+                  border: UnderlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none
+                  )
+                ),
+                style: const TextStyle(color: Colors.white),
+                textInputAction: TextInputAction.next,
+              ),
+            ),
             const SizedBox(height: 30,),
-            const PasswordBox(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: TextFormField(
+                controller: _passwordController,
+                obscureText: passwordVisible,
+                decoration: InputDecoration(
+                  isDense: true,
+                  filled: true,
+                  fillColor: Colors.grey.shade800,
+                  labelText: 'Your password (min. 6 charecters)',
+                  labelStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12
+                  ),
+                  border: UnderlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(passwordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    color: Colors.white,
+                    onPressed: () {
+                      setState(() {
+                        passwordVisible = !passwordVisible;
+                      });
+                    },
+                  ),
+                  alignLabelWithHint: false,
+                ),
+                style: const TextStyle(color: Colors.white),
+                keyboardType: TextInputType.visiblePassword,
+                textInputAction: TextInputAction.done,
+                onEditingComplete: () async{
+                  UserModel? user = await _loginService.login(_emailController.text, _passwordController.text);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => HomeScreen(user: user) 
+                      )
+                  );
+
+                },
+              ),
+            ),
             const SizedBox(height: 13,),
             const Padding(
               padding: EdgeInsets.only(left: 170),
@@ -41,8 +128,13 @@ class SignInScreen extends StatelessWidget {
             const SizedBox(height: 330,),
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
-              onPressed: () {
-                print('button pressed!');
+              onPressed: () async{
+                UserModel? user = await _loginService.login(_emailController.text, _passwordController.text);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => HomeScreen(user: user) 
+                      )
+                  );
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 14,horizontal: 100),
@@ -58,5 +150,3 @@ class SignInScreen extends StatelessWidget {
     );
   }
 }
-
-

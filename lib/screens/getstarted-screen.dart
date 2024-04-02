@@ -38,10 +38,9 @@ class GetStartedScreen extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: const Color(0xff20f2ff)),
             onPressed: () {
-              Navigator.push(
-                context,
+              Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const LoginScreen(),
+                  builder: (_) => const LoginScreen(),
                 )
               );
             },
