@@ -67,41 +67,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
             const SizedBox(height: 30,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
-              child: TextFormField(
-                controller: _passwordController,
-                obscureText: passwordVisible,
-                decoration: InputDecoration(
-                  isDense: true,
-                  filled: true,
-                  fillColor: Colors.grey.shade800,
-                  labelText: 'Your password (min. 8 charecters)',
-                  labelStyle: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 12
+              child: Form(
+                autovalidateMode: AutovalidateMode.always,
+                child: TextFormField(
+                  controller: _passwordController,
+                  obscureText: passwordVisible,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    filled: true,
+                    fillColor: Colors.grey.shade800,
+                    labelText: 'Your password (min. 8 charecters)',
+                    labelStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12
+                    ),
+                    border: UnderlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(passwordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                      color: Colors.white,
+                      onPressed: () {
+                        setState(() {
+                          passwordVisible = !passwordVisible;
+                        });
+                      },
+                    ),
+                    alignLabelWithHint: false,
                   ),
-                  border: UnderlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide.none
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(passwordVisible
-                        ? Icons.visibility
-                        : Icons.visibility_off),
-                    color: Colors.white,
-                    onPressed: () {
-                      setState(() {
-                        passwordVisible = !passwordVisible;
-                      });
-                    },
-                  ),
-                  alignLabelWithHint: false,
-                ),
-                style: const TextStyle(color: Colors.white),
-                keyboardType: TextInputType.visiblePassword,
-                textInputAction: TextInputAction.done,
-                onEditingComplete: () async{
-
-                },
+                  style: const TextStyle(color: Colors.white),
+                  keyboardType: TextInputType.visiblePassword,
+                  textInputAction: TextInputAction.done,
+                  onEditingComplete: () async{
+                  },
+                  validator: validatePassword,
+                )
+              
               ),
             ),
             const SizedBox(height: 360,),
@@ -126,16 +130,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 }
 
 
-String? validatePassword(String value) {
-    RegExp regex =
-        RegExp(r'^.{8,}$');
-    if (value.isEmpty) {
-      return 'Please enter password';
-    } else {
-      if (!regex.hasMatch(value)) {
-        return 'Enter valid password';
-      } else {
-        return null;
-      }
-    }
-  }
+String? validatePassword(String? value) {
+    const pattern = r'^.{8,}$' ;
+  final regex = RegExp(pattern);
+
+  return value!.isNotEmpty && !regex.hasMatch(value)
+      ? 'Enter a valid email address'
+      : null;
+}

@@ -9,10 +9,6 @@ class EmailCheckService extends IEmailCheck{
     final dio = Dio();
     Response response;
     response = await dio.post(api, data: data);
-    if(response.statusCode == 200){
-      return response.data['email'];
-    }else{
-      return null;
-    }
+    return response.data['email'];
   }
 }

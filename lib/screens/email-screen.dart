@@ -63,10 +63,10 @@ create an account''', style: TextStyle(color: Colors.white, fontFamily: 'Orbitro
                   textInputAction: TextInputAction.done,
                   onEditingComplete: () async{
                     email = await _emailCheck.EmailCheck(_emailController.text);
-                    if (email != null){
+                    if (email != "Email not found!"){
                       Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignInScreen(email: email)));
                     } else{
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUpScreen(email: email)));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUpScreen(email: _emailController.text)));
                     }
                   },
                   validator: validateEmail,
@@ -78,10 +78,10 @@ create an account''', style: TextStyle(color: Colors.white, fontFamily: 'Orbitro
             style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
             onPressed: () async{
               email = await _emailCheck.EmailCheck(_emailController.text);
-                  if (email != null){
+                  if (email != "Email not found!"){
                     Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignInScreen(email: email)));
                   } else{
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUpScreen(email: email)));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUpScreen(email: _emailController.text)));
                   }
             },
             child: const Padding(
