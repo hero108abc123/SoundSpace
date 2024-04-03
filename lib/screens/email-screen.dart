@@ -73,7 +73,7 @@ create an account''', style: TextStyle(color: Colors.white, fontFamily: 'Orbitro
                 ),
               )
             ),
-            const SizedBox(height: 360,),
+            const SizedBox(height: 336,),
             ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
             onPressed: () async{

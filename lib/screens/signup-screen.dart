@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soundspace/screens/screens.dart';
 import '../widgets/widgets.dart';
 
 
@@ -101,18 +102,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   style: const TextStyle(color: Colors.white),
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
-                  onEditingComplete: () async{
+                  onEditingComplete: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => TellMeMoreScreen(email : widget.email, password: _passwordController.text)));
                   },
                   validator: validatePassword,
                 )
               
               ),
             ),
-            const SizedBox(height: 360,),
+            const SizedBox(height: 367,),
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
               onPressed: () {
-                print('button pressed!');
+                Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => TellMeMoreScreen(email : widget.email, password: _passwordController.text)));
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 14,horizontal: 100),
