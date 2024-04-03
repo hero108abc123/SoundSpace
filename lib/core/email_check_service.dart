@@ -4,7 +4,7 @@ import 'package:soundspace/interface/interfaces.dart';
 class EmailCheckService extends IEmailCheck{
 
   EmailCheck(String email) async{
-    final api = 'https://localhost:7213/api/Auth/emailcheck';
+    final api = 'https://localhost:7213/api/Auth/email-check';
     final data = {"email": email};
     final dio = Dio();
     Response response;

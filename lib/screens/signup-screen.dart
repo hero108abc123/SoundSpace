@@ -13,7 +13,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _passwordController = TextEditingController();
-  
+  final _formKey = GlobalKey<FormState>();
   bool passwordVisible=false;
 
   @override
@@ -69,7 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Form(
-                autovalidateMode: AutovalidateMode.always,
+                key: _formKey,
                 child: TextFormField(
                   controller: _passwordController,
                   obscureText: passwordVisible,
@@ -103,8 +103,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
                   onEditingComplete: () {
-                    Navigator.of(context).push(MaterialPageRoute(
+                    if(_formKey.currentState!.validate()){
+                      Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => TellMeMoreScreen(email : widget.email, password: _passwordController.text)));
+                    }
+                    
                   },
                   validator: validatePassword,
                 )
@@ -115,8 +118,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
+                if(_formKey.currentState!.validate()){
+                      Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => TellMeMoreScreen(email : widget.email, password: _passwordController.text)));
+                    }
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 14,horizontal: 100),
@@ -139,6 +144,6 @@ String? validatePassword(String? value) {
   final regex = RegExp(pattern);
 
   return value!.isNotEmpty && !regex.hasMatch(value)
-      ? 'Enter a valid email address'
+      ? 'Please enter a valid email address'
       : null;
 }

@@ -15,6 +15,7 @@ class _EmailScreenState extends State<EmailScreen> {
   final IEmailCheck _emailCheck = EmailCheckService();
   final _emailController = TextEditingController();
   late String email;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ create an account''', style: TextStyle(color: Colors.white, fontFamily: 'Orbitro
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Form(
-                autovalidateMode: AutovalidateMode.always,
+                key: _formKey,
                 child: TextFormField(
                   controller: _emailController,
                   decoration: InputDecoration(
@@ -62,12 +63,15 @@ create an account''', style: TextStyle(color: Colors.white, fontFamily: 'Orbitro
                   style: const TextStyle(color: Colors.white),
                   textInputAction: TextInputAction.done,
                   onEditingComplete: () async{
-                    email = await _emailCheck.EmailCheck(_emailController.text);
-                    if (email != "Email not found!"){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignInScreen(email: email)));
-                    } else{
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUpScreen(email: _emailController.text)));
+                    if(_formKey.currentState!.validate()){
+                      email = await _emailCheck.EmailCheck(_emailController.text);
+                      if (email != "Email not found!"){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignInScreen(email: email)));
+                      } else{
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUpScreen(email: _emailController.text)));
+                      }
                     }
+                    
                   },
                   validator: validateEmail,
                 ),
@@ -77,12 +81,14 @@ create an account''', style: TextStyle(color: Colors.white, fontFamily: 'Orbitro
             ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
             onPressed: () async{
-              email = await _emailCheck.EmailCheck(_emailController.text);
+              if(_formKey.currentState!.validate()){
+                  email = await _emailCheck.EmailCheck(_emailController.text);
                   if (email != "Email not found!"){
                     Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignInScreen(email: email)));
                   } else{
                     Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUpScreen(email: _emailController.text)));
                   }
+              }
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(vertical: 14,horizontal: 100),
@@ -111,6 +117,6 @@ String? validateEmail(String? value) {
   final regex = RegExp(pattern);
 
   return value!.isNotEmpty && !regex.hasMatch(value)
-      ? 'Enter a valid email address'
+      ? 'Please enter a valid email address'
       : null;
 }
