@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soundspace/core/api_client.dart';
 import 'package:soundspace/interface/interfaces.dart';
+import 'package:soundspace/screens/screens.dart';
 
 import '../widgets/widgets.dart';
 
@@ -136,7 +137,11 @@ class _TellMeMoreScreenState extends State<TellMeMoreScreen> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
               onPressed: () async{
-                response = await _registerService.Register(widget.email, widget.password, _displayNameController.text, _ageController.text, currentItem)
+                response = await _registerService.Register(widget.email, widget.password, _displayNameController.text, int.parse(_ageController.text), currentItem);
+                if(response == "Successfully created") {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => SignInScreen(email: widget.email)));
+                }
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 14,horizontal: 100),
