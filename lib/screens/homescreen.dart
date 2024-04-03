@@ -20,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
             colors: [
               Color(0xff000000),
               Color(0xff35005d),
-              Color(0xff20f2ff)
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
