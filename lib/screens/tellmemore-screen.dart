@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soundspace/core/api_client.dart';
 import 'package:soundspace/interface/interfaces.dart';
+import 'package:soundspace/models/models.dart';
 import 'package:soundspace/screens/screens.dart';
 
 import '../widgets/widgets.dart';
@@ -19,8 +20,9 @@ class _TellMeMoreScreenState extends State<TellMeMoreScreen> {
   List<String> list = <String>['Female', 'Male','Others', 'Prefer not to say'];
   final _displayNameController = TextEditingController();
   final _ageController = TextEditingController();
-  late String currentItem;
+  String? currentItem;
   final IRegister _registerService = RegisterService();
+  final ILogin _loginService = LoginService();
   String? response;
 
   @override
@@ -139,8 +141,10 @@ class _TellMeMoreScreenState extends State<TellMeMoreScreen> {
               onPressed: () async{
                 response = await _registerService.Register(widget.email, widget.password, _displayNameController.text, int.parse(_ageController.text), currentItem);
                 if(response == "Successfully created") {
+                  UserModel? user = await _loginService.login(widget.email, widget.password);
+                  
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => SignInScreen(email: widget.email)));
+                    MaterialPageRoute(builder: (_) => HomeScreen(user: user)));
                 }
               },
               child: const Padding(
