@@ -1,8 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'screens/screens.dart';
+import 'package:soundspace/core/theme/theme.dart';
+import 'features/auth/presentation/screens/screens.dart';
+
 
 
 void main() {
@@ -15,13 +16,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      useInheritedMediaQuery: true,
+    return MaterialApp(
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'SoundSpace',
-      home: const GetStartedScreen(),
+      theme: AppTheme.darkThemeMode,
+      home: const EmailScreen(),
     );
   }
 }

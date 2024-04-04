@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soundspace/core/theme/app_pallete.dart';
 
 class ReturnButton extends StatelessWidget {
   const ReturnButton({
@@ -18,11 +19,11 @@ class ReturnButton extends StatelessWidget {
           width: 32,
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.white
+            color: AppPallete.whiteColor
           ),
           child: const Icon(
             Icons.chevron_left,
-            color: Color(0xff001A72),
+            color: AppPallete.iconColor,
           ),
         ),
       ),
