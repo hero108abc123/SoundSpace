@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'SoundSpace',
       theme: AppTheme.darkThemeMode,
-      home: const EmailScreen(),
+      home: const UserProfileScreen(),
     );
   }
 }

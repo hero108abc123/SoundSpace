@@ -9,17 +9,21 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       body: AuthBackground(
-        child: Column(
           children: <Widget>[
             const SizedBox(height: 247,),
             RichText(text: const TextSpan(
             text: 'Sound',
-            style: TextStyle(color: Colors.white, fontFamily: 'Orbitron', fontWeight: FontWeight.w500, fontSize: 50),
-              children: <TextSpan>[
+            style: TextStyle(
+              color: AppPallete.whiteColor, 
+              fontFamily: 'Orbitron', 
+              fontWeight: FontWeight.w500, 
+              fontSize: 50
+            ),
+            children: <TextSpan>[
                   TextSpan(
                     text: 'Space',
                     style: TextStyle(
-                      color: Color(0xff20f2ff), 
+                      color: AppPallete.gradient4, 
                       fontFamily: 'Orbitron', 
                       fontWeight: FontWeight.w500, 
                       fontSize: 50
@@ -42,7 +46,6 @@ class LoginScreen extends StatelessWidget {
               ),
           ]
         ),
-      ),
     );
   }
 }

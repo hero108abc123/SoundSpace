@@ -14,19 +14,31 @@ class _EmailScreenState extends State<EmailScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: AuthBackground(
-        child: Column(
           children: <Widget>[
             ReturnButton(),
             SizedBox(height: 106,),
             Text('''Sign in 
 or
-Create an account''', style: TextStyle(color: AppPallete.whiteColor, fontFamily: 'Orbitron', fontSize: 30, fontWeight: FontWeight.w700)),
+Create an account''', 
+              style: TextStyle(
+                color: AppPallete.whiteColor, 
+                fontFamily: 'Orbitron', 
+                fontSize: 30, 
+                fontWeight: FontWeight.w700)
+            ),
             SizedBox(height: 40,),
-            AuthField(label: "Your email address"),
+            AuthTextField(label: "Your email address"),
+            SizedBox(height: 356,),
+            AuthButton(
+              buttonName: "Continue", 
+              buttonColor: AppPallete.whiteColor, 
+              textColor: AppPallete.gradient4
+            ),
+            AuthHelper()
           ],
         ),
-      ),
     );
   }
 }
+
 

@@ -3,15 +3,20 @@ import 'package:soundspace/core/theme/app_pallete.dart';
 
 
 class AppTheme{
+  static _border([Color color = AppPallete.boxColor]) => OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(
+        color: color,
+        width: 3
+        ),
+      );
   static final darkThemeMode = ThemeData.dark().copyWith(
     inputDecorationTheme: InputDecorationTheme(
       isDense: true,
       filled: true,
-      fillColor: AppPallete.borderColor,
-      enabledBorder: UnderlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide.none
-      )
+      fillColor: AppPallete.boxColor,
+      enabledBorder: _border(),
+      focusedBorder: _border(AppPallete.borderColor)
     ),
   );
 }
