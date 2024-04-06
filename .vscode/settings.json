@@ -1,4 +1,5 @@
 {
     "cmake.sourceDirectory": "D:/STUDY/Do an/DNCNDPT/SoundSpace/SoundSpace/windows",
-    "dotnet.defaultSolution": "disable"
+    "dotnet.defaultSolution": "disable",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

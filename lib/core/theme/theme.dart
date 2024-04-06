@@ -15,8 +15,12 @@ class AppTheme{
       isDense: true,
       filled: true,
       fillColor: AppPallete.boxColor,
+      labelStyle: const TextStyle(
+            color: AppPallete.whiteColor,
+            fontSize: 12
+      ),
       enabledBorder: _border(),
-      focusedBorder: _border(AppPallete.borderColor)
+      focusedBorder: _border(AppPallete.borderColor),
     ),
   );
 }

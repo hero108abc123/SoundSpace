@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soundspace/core/theme/app_pallete.dart';
 
 class AuthHelper extends StatelessWidget {
   const AuthHelper({
@@ -8,8 +9,13 @@ class AuthHelper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(top: 20,right: 230),
-      child: Text('Need help?', style: TextStyle(color: Color(0xff9F05C5), fontSize: 15, fontFamily: 'Orbitron')),
+      padding: EdgeInsets.only(top: 20, right: 230),
+      child: Text('Need help?',
+          style: TextStyle(
+            color: AppPallete.gradient3,
+            fontSize: 15,
+            fontFamily: 'Orbitron',
+          )),
     );
   }
 }

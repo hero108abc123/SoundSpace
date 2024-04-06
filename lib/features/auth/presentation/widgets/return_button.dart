@@ -9,17 +9,20 @@ class ReturnButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         Navigator.pop(context);
       },
       child: Padding(
-        padding: const EdgeInsets.only(top: 25,right: 357),
+        padding: const EdgeInsets.only(
+          top: 25,
+          right: 357,
+        ),
         child: Container(
           height: 32,
           width: 32,
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
-            color: AppPallete.whiteColor
+            color: AppPallete.whiteColor,
           ),
           child: const Icon(
             Icons.chevron_left,
