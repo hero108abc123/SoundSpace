@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soundspace/core/common/widgets/loader.dart';
 import 'package:soundspace/core/theme/app_pallete.dart';
+import 'package:soundspace/core/utils/show_snackber.dart';
+import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 
 class AuthBackground extends StatelessWidget {
   final GlobalKey<FormState>? formKey;
@@ -20,11 +24,23 @@ class AuthBackground extends StatelessWidget {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       )),
-      child: Form(
-        key: formKey,
-        child: Column(
-          children: children,
-        ),
+      child: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is AuthFailure) {
+            showSnackBar(context, state.message);
+          }
+        },
+        builder: (context, state) {
+          if (state is AuthLoading) {
+            return const Loader();
+          }
+          return Form(
+            key: formKey,
+            child: Column(
+              children: children,
+            ),
+          );
+        },
       ),
     );
   }

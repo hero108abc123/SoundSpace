@@ -1,71 +1,84 @@
 import 'package:soundspace/core/error/exceptions.dart';
+import 'package:soundspace/features/auth/data/models/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-abstract interface class AuthRemoteDataSource{
-  Future<String> signUp({
+abstract interface class AuthRemoteDataSource {
+  Future<UserModel> signUp({
     required String email,
     required String password,
     required String displayName,
     required int age,
     required String? gender,
   });
-  Future<String> login({
+  Future<UserModel> login({
     required String email,
     required String password,
   });
 
-  Future<String> emailCheck({
+  Future<UserModel> emailCheck({
     required String email,
   });
 }
 
-class AuthRemoteDataSourceImpl implements AuthRemoteDataSource{
+class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final SupabaseClient supabaseClient;
-  AuthRemoteDataSourceImpl(this.supabaseClient)
+  AuthRemoteDataSourceImpl(this.supabaseClient);
 
   @override
-  Future<String> emailCheck({
+  Future<UserModel> emailCheck({
     required String email,
-  }) {
-    // TODO: implement emailCheck
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<String> login({
-    required String email, 
-    required String password,
-  }) {
-    // TODO: implement login
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<String> signUp({
-    required String email, 
-    required String password, 
-    required String displayName, 
-    required int age, 
-    required String? gender,
-  }) async{
-    try{
-      final response = await supabaseClient.auth.signUp(
-      password: password, 
-      email: email,
-      data: {
-        'displayName': displayName,
-        'age' : age,
-        'gender': gender,
-
+  }) async {
+    try {
+      final response = await supabaseClient.auth.admin.inviteUserByEmail(email);
+      if (response.user == null) {
+        throw const ServerException('User is null!');
       }
-    );
-    if (response.user == null){
-      throw const ServerException('User is null!');
-    }
-    return response.user!.id;
-    }catch(e){
+      return UserModel.fromJson(response.user!.toJson());
+    } catch (e) {
       throw ServerException(e.toString());
     }
   }
 
+  @override
+  Future<UserModel> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final response = await supabaseClient.auth.signInWithPassword(
+        password: password,
+        email: email,
+      );
+      if (response.user == null) {
+        throw const ServerException('User is null!');
+      }
+      return UserModel.fromJson(response.user!.toJson());
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<UserModel> signUp({
+    required String email,
+    required String password,
+    required String displayName,
+    required int age,
+    required String? gender,
+  }) async {
+    try {
+      final response = await supabaseClient.auth
+          .signUp(password: password, email: email, data: {
+        'displayName': displayName,
+        'age': age,
+        'gender': gender,
+      });
+      if (response.user == null) {
+        throw const ServerException('User is null!');
+      }
+      return UserModel.fromJson(response.user!.toJson());
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:soundspace/core/secret/app_secrets.dart';
+import 'package:soundspace/core/secrets/app_secrets.dart';
 import 'package:soundspace/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:soundspace/features/auth/data/sources/auth_remote_data_source.dart';
 import 'package:soundspace/features/auth/domain/repositories/auth_repository.dart';

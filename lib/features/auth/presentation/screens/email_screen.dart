@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soundspace/core/theme/app_pallete.dart';
+import 'package:soundspace/features/auth/presentation/screens/screens.dart';
 import 'package:soundspace/features/auth/presentation/widgets/widgets.dart';
 
 class EmailScreen extends StatefulWidget {
@@ -56,7 +57,12 @@ Create an account''',
           AuthButton(
             buttonName: "Continue",
             onPressed: () {
-              if (_formKey.currentState!.validate()) {}
+              if (_formKey.currentState!.validate()) {
+                Navigator.push(
+                  context,
+                  SignUpScreen.route(_emailController.text),
+                );
+              }
             },
           ),
           const AuthHelper(),
