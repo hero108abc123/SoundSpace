@@ -3,6 +3,8 @@ import 'package:soundspace/core/secrets/app_secrets.dart';
 import 'package:soundspace/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:soundspace/features/auth/data/sources/auth_remote_data_source.dart';
 import 'package:soundspace/features/auth/domain/repositories/auth_repository.dart';
+import 'package:soundspace/features/auth/domain/usecases/user_email_check.dart';
+import 'package:soundspace/features/auth/domain/usecases/user_login.dart';
 import 'package:soundspace/features/auth/domain/usecases/user_sign_up.dart';
 import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -37,9 +39,23 @@ void _initAuth() {
     ),
   );
 
+  serviceLocator.registerFactory(
+    () => Userlogin(
+      serviceLocator(),
+    ),
+  );
+
+  serviceLocator.registerFactory(
+    () => UserEmailCheck(
+      serviceLocator(),
+    ),
+  );
+
   serviceLocator.registerLazySingleton(
     () => AuthBloc(
       userSignUp: serviceLocator(),
+      userlogin: serviceLocator(),
+      userEmailCheck: serviceLocator(),
     ),
   );
 }

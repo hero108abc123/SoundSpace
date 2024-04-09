@@ -54,11 +54,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
         const SizedBox(
           height: 40,
         ),
-        const AuthDisplayField(
+        AuthDisplayField(
             label: 'Your email address',
             child: Text(
-              'empty',
-              style: TextStyle(
+              widget.email,
+              style: const TextStyle(
                 color: AppPallete.whiteColor,
               ),
             )),
@@ -84,7 +84,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   context,
                   UserProfileScreen.route(
                     widget.email,
-                    _passwordController.text,
+                    _passwordController.text.trim(),
                   ));
             }
           },

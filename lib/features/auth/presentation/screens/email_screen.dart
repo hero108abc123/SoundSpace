@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundspace/core/theme/app_pallete.dart';
+import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:soundspace/features/auth/presentation/screens/screens.dart';
 import 'package:soundspace/features/auth/presentation/widgets/widgets.dart';
 
@@ -58,10 +60,11 @@ Create an account''',
             buttonName: "Continue",
             onPressed: () {
               if (_formKey.currentState!.validate()) {
-                Navigator.push(
-                  context,
-                  SignUpScreen.route(_emailController.text),
-                );
+                context.read<AuthBloc>().add(
+                      AuthEmailCheck(
+                        email: _emailController.text.trim(),
+                      ),
+                    );
               }
             },
           ),

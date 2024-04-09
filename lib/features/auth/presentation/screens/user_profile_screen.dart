@@ -101,9 +101,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               context.read<AuthBloc>().add(AuthSignUp(
                     email: widget.email,
                     password: widget.password,
-                    displayName: _displayNameController.text,
-                    age: int.parse(_ageController.text),
-                    gender: currentItem,
+                    displayName: _displayNameController.text.trim(),
+                    age: int.parse(_ageController.text.trim()),
+                    gender: currentItem!.trim(),
                   ));
             }
           },

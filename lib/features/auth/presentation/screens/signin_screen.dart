@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundspace/core/theme/app_pallete.dart';
+import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:soundspace/features/auth/presentation/widgets/widgets.dart';
 
 class SignInScreen extends StatefulWidget {
-  static route() => MaterialPageRoute(
-        builder: (context) => const SignInScreen(),
+  static route(String email) => MaterialPageRoute(
+        builder: (context) => const SignInScreen(
+          email: email,
+        ),
       );
+  final String email;
   const SignInScreen({
     super.key,
+    required this.email,
   });
 
   @override
@@ -49,11 +55,11 @@ class _SignInScreenState extends State<SignInScreen> {
         const SizedBox(
           height: 40,
         ),
-        const AuthDisplayField(
+        AuthDisplayField(
             label: 'Your email address',
             child: Text(
-              'empty',
-              style: TextStyle(
+              widget.email,
+              style: const TextStyle(
                 color: AppPallete.whiteColor,
               ),
             )),
@@ -83,7 +89,14 @@ class _SignInScreenState extends State<SignInScreen> {
         AuthButton(
           buttonName: "Continue",
           onPressed: () {
-            if (_formKey.currentState!.validate()) {}
+            if (_formKey.currentState!.validate()) {
+              context.read<AuthBloc>().add(
+                    AuthLogin(
+                      email: widget.email.trim(),
+                      password: _passwordController.text.trim(),
+                    ),
+                  );
+            }
           },
         ),
         const AuthHelper(),
