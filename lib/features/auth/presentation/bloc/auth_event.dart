@@ -29,10 +29,12 @@ final class AuthLogin extends AuthEvent {
   });
 }
 
-final class AuthEmailCheck extends AuthEvent {
+final class AuthEmailValidation extends AuthEvent {
   final String email;
 
-  AuthEmailCheck({
+  AuthEmailValidation({
     required this.email,
   });
 }
+
+final class AuthIsUserLoggedIn extends AuthEvent {}

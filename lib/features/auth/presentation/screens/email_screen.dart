@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soundspace/core/theme/app_pallete.dart';
+import 'package:soundspace/config/theme/app_pallete.dart';
 import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:soundspace/features/auth/presentation/screens/screens.dart';
 import 'package:soundspace/features/auth/presentation/widgets/widgets.dart';
@@ -61,10 +61,26 @@ Create an account''',
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 context.read<AuthBloc>().add(
-                      AuthEmailCheck(
+                      AuthEmailValidation(
                         email: _emailController.text.trim(),
                       ),
                     );
+                BlocConsumer<AuthBloc, AuthState>(
+                  listener: (context, state) {
+                    if (state is EmailFailure) {
+                      Navigator.push(
+                          context,
+                          SignInScreen.route(
+                            _emailController.text.trim(),
+                          ));
+                    }
+                  },
+                  builder: (context, state) {
+                    return SignInScreen.route(
+                      _emailController.text.trim(),
+                    );
+                  },
+                );
               }
             },
           ),

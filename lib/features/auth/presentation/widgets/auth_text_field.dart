@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soundspace/core/theme/app_pallete.dart';
+import 'package:soundspace/config/theme/app_pallete.dart';
 
 class AuthTextField extends StatefulWidget {
   final String label;

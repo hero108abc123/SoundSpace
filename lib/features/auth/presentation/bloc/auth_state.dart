@@ -18,3 +18,13 @@ final class AuthFailure extends AuthState {
   final String message;
   const AuthFailure(this.message);
 }
+
+final class EmailSuccess extends AuthState {
+  final String email;
+  const EmailSuccess(this.email);
+}
+
+final class EmailFailure extends AuthState {
+  final String email;
+  const EmailFailure(this.email);
+}

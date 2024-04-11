@@ -1,8 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:soundspace/core/error/exceptions.dart';
 import 'package:soundspace/core/error/failure.dart';
-import 'package:soundspace/features/auth/data/sources/auth_remote_data_source.dart';
-import 'package:soundspace/features/auth/domain/entities/user.dart';
+import 'package:soundspace/features/auth/data/data_sources/auth_remote_data_source.dart';
+import 'package:soundspace/core/common/entities/user.dart';
 import 'package:soundspace/features/auth/domain/repositories/auth_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as sb;
 
@@ -11,14 +11,32 @@ class AuthRepositoryImpl implements AuthRepository {
   const AuthRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<Either<Failure, User>> emailCheck({
+  Future<Either<Failure, User>> currentUser() async {
+    try {
+      final user = await remoteDataSource.getCurrentUserData();
+      if (user == null) {
+        return left(Failure('User not logged in!'));
+      }
+
+      return right(user);
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> emailValidation({
     required String email,
   }) async {
-    return _getUser(
-      () async => await remoteDataSource.emailCheck(
-        email: email,
-      ),
-    );
+    try {
+      final userEmail = await remoteDataSource.emailValidation(email: email);
+      if (userEmail == 'Email not found!') {
+        return left(Failure('Email not found!'));
+      }
+      return right(email);
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
   }
 
   @override

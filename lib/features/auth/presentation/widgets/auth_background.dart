@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundspace/core/common/widgets/loader.dart';
-import 'package:soundspace/core/theme/app_pallete.dart';
+import 'package:soundspace/config/theme/app_pallete.dart';
 import 'package:soundspace/core/utils/show_snackber.dart';
 import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 

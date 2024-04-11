@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:soundspace/core/theme/app_pallete.dart';
+import 'package:soundspace/config/theme/app_pallete.dart';
 import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:soundspace/features/auth/presentation/widgets/widgets.dart';
 

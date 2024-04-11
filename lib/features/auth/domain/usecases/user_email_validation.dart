@@ -1,25 +1,25 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:soundspace/core/error/failure.dart';
 import 'package:soundspace/core/usecase/usecase.dart';
-import 'package:soundspace/features/auth/domain/entities/user.dart';
 import 'package:soundspace/features/auth/domain/repositories/auth_repository.dart';
 
-class UserEmailCheck implements UseCase<User, UserEmailCheckParams> {
+class UserEmailValidation
+    implements UseCase<String, UserEmailValidationParams> {
   final AuthRepository authRepository;
-  const UserEmailCheck(this.authRepository);
+  const UserEmailValidation(this.authRepository);
 
   @override
-  Future<Either<Failure, User>> call(UserEmailCheckParams params) {
-    return authRepository.emailCheck(
+  Future<Either<Failure, String>> call(UserEmailValidationParams params) {
+    return authRepository.emailValidation(
       email: params.email,
     );
   }
 }
 
-class UserEmailCheckParams {
+class UserEmailValidationParams {
   final String email;
 
-  UserEmailCheckParams({
+  UserEmailValidationParams({
     required this.email,
   });
 }

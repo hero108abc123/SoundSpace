@@ -1,4 +1,4 @@
-import 'package:soundspace/features/auth/domain/entities/user.dart';
+import 'package:soundspace/core/common/entities/user.dart';
 
 class UserModel extends User {
   UserModel({
@@ -16,6 +16,22 @@ class UserModel extends User {
       displayName: map['displayName'] ?? '',
       age: map['age'] ?? '',
       gender: map['gender'] ?? '',
+    );
+  }
+
+  UserModel copyWith({
+    String? id,
+    String? email,
+    String? displayName,
+    int? age,
+    String? gender,
+  }) {
+    return UserModel(
+      id: id ?? this.id,
+      email: email ?? this.email,
+      displayName: displayName ?? this.displayName,
+      age: age ?? this.age,
+      gender: gender ?? this.gender,
     );
   }
 }

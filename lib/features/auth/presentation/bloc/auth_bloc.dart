@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soundspace/features/auth/domain/entities/user.dart';
-import 'package:soundspace/features/auth/domain/usecases/user_email_check.dart';
+import 'package:soundspace/core/common/cubits/app_user/app_user_cubit.dart';
+import 'package:soundspace/core/usecase/usecase.dart';
+import 'package:soundspace/core/common/entities/user.dart';
+import 'package:soundspace/features/auth/domain/usecases/current_user.dart';
+import 'package:soundspace/features/auth/domain/usecases/user_email_validation.dart';
 import 'package:soundspace/features/auth/domain/usecases/user_login.dart';
 import 'package:soundspace/features/auth/domain/usecases/user_sign_up.dart';
 
@@ -11,21 +14,42 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final UserSignUp _userSignUp;
   final Userlogin _userlogin;
-  final UserEmailCheck _userEmailCheck;
+  final UserEmailValidation _userEmailValidation;
+  final CurrentUser _currentUser;
+  final AppUserCubit _appUserCubit;
   AuthBloc({
     required UserSignUp userSignUp,
     required Userlogin userlogin,
-    required UserEmailCheck userEmailCheck,
+    required UserEmailValidation userEmailValidation,
+    required CurrentUser currentUser,
+    required AppUserCubit appUserCubit,
   })  : _userSignUp = userSignUp,
         _userlogin = userlogin,
-        _userEmailCheck = userEmailCheck,
+        _userEmailValidation = userEmailValidation,
+        _currentUser = currentUser,
+        _appUserCubit = appUserCubit,
         super(AuthInitial()) {
     on<AuthSignUp>(_onAuthSignUp);
     on<AuthLogin>(_onAuthLogin);
-    on<AuthEmailCheck>(_onAuthEmailCheck);
+    on<AuthEmailValidation>(_onAuthEmailValidation);
+    on<AuthIsUserLoggedIn>(_isUserLoggedIn);
+  }
+  void _isUserLoggedIn(
+    AuthIsUserLoggedIn event,
+    Emitter<AuthState> emit,
+  ) async {
+    final res = await _currentUser(NoParams());
+
+    res.fold(
+      (failure) => emit(AuthFailure(failure.message)),
+      (user) => _emitAuthSuccess(user, emit),
+    );
   }
 
-  void _onAuthSignUp(AuthSignUp event, Emitter<AuthState> emit) async {
+  void _onAuthSignUp(
+    AuthSignUp event,
+    Emitter<AuthState> emit,
+  ) async {
     emit(AuthLoading());
     final res = await _userSignUp(
       UserSignUpParams(
@@ -39,11 +63,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     res.fold(
       (failure) => emit(AuthFailure(failure.message)),
-      (user) => emit(AuthSuccess(user)),
+      (user) => _emitAuthSuccess(user, emit),
     );
   }
 
-  void _onAuthLogin(AuthLogin event, Emitter<AuthState> emit) async {
+  void _onAuthLogin(
+    AuthLogin event,
+    Emitter<AuthState> emit,
+  ) async {
     emit(AuthLoading());
     final res = await _userlogin(
       UserLoginParams(
@@ -54,21 +81,38 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     res.fold(
       (failure) => emit(AuthFailure(failure.message)),
-      (user) => emit(AuthSuccess(user)),
+      (user) => _emitAuthSuccess(user, emit),
     );
   }
 
-  void _onAuthEmailCheck(AuthEmailCheck event, Emitter<AuthState> emit) async {
+  void _onAuthEmailValidation(
+    AuthEmailValidation event,
+    Emitter<AuthState> emit,
+  ) async {
     emit(AuthLoading());
-    final res = await _userEmailCheck(
-      UserEmailCheckParams(
+    final res = await _userEmailValidation(
+      UserEmailValidationParams(
         email: event.email,
       ),
     );
 
     res.fold(
-      (failure) => emit(AuthFailure(failure.message)),
-      (user) => emit(AuthSuccess(user)),
+      (failure) {
+        print(failure.message);
+        emit(EmailFailure(failure.message));
+      },
+      (email) {
+        print(email);
+        emit(EmailSuccess(email));
+      },
     );
+  }
+
+  void _emitAuthSuccess(
+    User user,
+    Emitter<AuthState> emit,
+  ) {
+    _appUserCubit.updateUser(user);
+    emit(AuthSuccess(user));
   }
 }
