@@ -1,9 +1,10 @@
 import 'package:soundspace/core/error/exceptions.dart';
+import 'package:soundspace/core/network/constants/endpoints.dart';
+import 'package:soundspace/core/network/remote/dio_client.dart';
+import 'package:soundspace/features/auth/data/models/email_model.dart';
 import 'package:soundspace/features/auth/data/models/user_model.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract interface class AuthRemoteDataSource {
-  Session? get currentUserSession;
   Future<UserModel> signUp({
     required String email,
     required String password,
@@ -16,7 +17,7 @@ abstract interface class AuthRemoteDataSource {
     required String password,
   });
 
-  Future<String> emailValidation({
+  Future<EmailModel> emailValidation({
     required String email,
   });
 
@@ -24,23 +25,30 @@ abstract interface class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  final SupabaseClient supabaseClient;
-  AuthRemoteDataSourceImpl(this.supabaseClient);
+  final DioClient _dioClient;
+  AuthRemoteDataSourceImpl(this._dioClient);
 
   @override
-  Session? get currentUserSession => supabaseClient.auth.currentSession;
+  Future<UserModel?> getCurrentUserData() {
+    // TODO: implement currentUser
+    throw UnimplementedError();
+  }
 
   @override
-  Future<String> emailValidation({
+  Future<EmailModel> emailValidation({
     required String email,
   }) async {
     try {
-      final response =
-          await supabaseClient.from('auth.users').select().eq('email', email);
-      if (response.isEmpty) {
-        return throw const ServerException('Email not found!');
+      final response = await _dioClient.post(
+        "${Endpoints.auth}/email-check",
+        data: {
+          "email": email,
+        },
+      );
+      if (response == null) {
+        return throw const ServerException('Something went wrong!');
       }
-      return UserModel.fromJson(response.first).email;
+      return EmailModel.fromJson(response);
     } catch (e) {
       throw ServerException(e.toString());
     }
@@ -52,14 +60,17 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required String password,
   }) async {
     try {
-      final response = await supabaseClient.auth.signInWithPassword(
-        password: password,
-        email: email,
+      final response = await _dioClient.post(
+        "${Endpoints.auth}/login",
+        data: {
+          "email": email,
+          "password": password,
+        },
       );
-      if (response.user == null) {
+      if (response == null) {
         throw const ServerException('User is null!');
       }
-      return UserModel.fromJson(response.user!.toJson());
+      return UserModel.fromJson(response);
     } catch (e) {
       throw ServerException(e.toString());
     }
@@ -74,34 +85,20 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required String? gender,
   }) async {
     try {
-      final response = await supabaseClient.auth
-          .signUp(password: password, email: email, data: {
-        'displayName': displayName,
-        'age': age,
-        'gender': gender,
-      });
+      final response = await _dioClient.post(
+        "${Endpoints.auth}/register",
+        data: {
+          "email": email,
+          "password": password,
+          "displayName": displayName,
+          "age": age,
+          "gender": gender,
+        },
+      );
       if (response.user == null) {
         throw const ServerException('User is null!');
       }
       return UserModel.fromJson(response.user!.toJson());
-    } catch (e) {
-      throw ServerException(e.toString());
-    }
-  }
-
-  @override
-  Future<UserModel?> getCurrentUserData() async {
-    try {
-      if (currentUserSession != null) {
-        final userData = await supabaseClient
-            .from('profiles')
-            .select()
-            .eq('id', currentUserSession!.user.id);
-        return UserModel.fromJson(userData.first).copyWith(
-          email: currentUserSession!.user.email,
-        );
-      }
-      return null;
     } catch (e) {
       throw ServerException(e.toString());
     }

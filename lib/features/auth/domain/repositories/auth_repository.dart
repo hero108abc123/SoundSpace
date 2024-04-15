@@ -1,6 +1,7 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:soundspace/core/error/failure.dart';
 import 'package:soundspace/core/common/entities/user.dart';
+import 'package:soundspace/core/error/failure.dart';
+import 'package:soundspace/features/auth/domain/entities/email.dart';
 
 abstract interface class AuthRepository {
   Future<Either<Failure, User>> signUp({
@@ -16,7 +17,7 @@ abstract interface class AuthRepository {
     required String password,
   });
 
-  Future<Either<Failure, String>> emailValidation({
+  Future<Either<Failure, Email>> emailValidation({
     required String email,
   });
 

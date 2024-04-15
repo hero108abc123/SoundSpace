@@ -65,22 +65,17 @@ Create an account''',
                         email: _emailController.text.trim(),
                       ),
                     );
-                BlocConsumer<AuthBloc, AuthState>(
-                  listener: (context, state) {
-                    if (state is EmailFailure) {
-                      Navigator.push(
-                          context,
-                          SignInScreen.route(
-                            _emailController.text.trim(),
-                          ));
-                    }
-                  },
-                  builder: (context, state) {
-                    return SignInScreen.route(
+
+                BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+                  if (state is AuthFailure) {
+                    return SignUpScreen.route(
                       _emailController.text.trim(),
                     );
-                  },
-                );
+                  }
+                  return SignInScreen.route(
+                    _emailController.text.trim(),
+                  );
+                });
               }
             },
           ),

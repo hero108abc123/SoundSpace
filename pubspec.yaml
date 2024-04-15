@@ -45,6 +45,10 @@ dependencies:
   flutter_bloc: ^8.1.5
   get_it: ^7.6.8
   flutter_mobx: ^2.2.1+1
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
+  build_runner: any
+  mobx_codegen: ^2.6.1
 
 dev_dependencies:
   flutter_test:

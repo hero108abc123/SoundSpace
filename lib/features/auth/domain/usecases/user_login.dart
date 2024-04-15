@@ -1,7 +1,7 @@
 import 'package:fpdart/fpdart.dart';
+import 'package:soundspace/core/common/entities/user.dart';
 import 'package:soundspace/core/error/failure.dart';
 import 'package:soundspace/core/usecase/usecase.dart';
-import 'package:soundspace/core/common/entities/user.dart';
 import 'package:soundspace/features/auth/domain/repositories/auth_repository.dart';
 
 class Userlogin implements UseCase<User, UserLoginParams> {

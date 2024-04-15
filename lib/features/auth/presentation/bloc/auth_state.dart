@@ -20,11 +20,6 @@ final class AuthFailure extends AuthState {
 }
 
 final class EmailSuccess extends AuthState {
-  final String email;
+  final Email email;
   const EmailSuccess(this.email);
-}
-
-final class EmailFailure extends AuthState {
-  final String email;
-  const EmailFailure(this.email);
 }
