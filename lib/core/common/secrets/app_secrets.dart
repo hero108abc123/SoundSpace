@@ -1,6 +1,5 @@
 class AppSecrets {
-  static const supabaseUrl = 'https://odseeacxvpdejlpdqqec.supabase.co';
-  static const supabaseAnonKey =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9kc2VlYWN4dnBkZWpscGRxcWVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTI0MTI0MTMsImV4cCI6MjAyNzk4ODQxM30.RQEKPrPwbjJNPduuBjrddL4YfYmFABaG0KclwopJXYg';
   static const soundSpaceApi = 'https://localhost:7213/api';
+  static const token =
+      'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibnVsbCIsImV4cCI6MTcxMzMyMzk0M30.GiVyYEiHiTs7sa1GGJRM8pMnf7gq97c0cA4PyfzcOD6LUnPgV9VOo1B39CTXKGLwBXZv0JyDywuUz3XzVWG9Sw';
 }

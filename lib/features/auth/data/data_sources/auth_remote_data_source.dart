@@ -1,8 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:soundspace/core/error/exceptions.dart';
 import 'package:soundspace/core/network/constants/endpoints.dart';
 import 'package:soundspace/core/network/remote/dio_client.dart';
 import 'package:soundspace/features/auth/data/models/email_model.dart';
 import 'package:soundspace/features/auth/data/models/user_model.dart';
+import 'package:soundspace/features/auth/domain/repositories/token_repository.dart';
 
 abstract interface class AuthRemoteDataSource {
   Future<UserModel> signUp({
@@ -25,13 +27,33 @@ abstract interface class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
+  final TokenRepository _tokenRepository;
   final DioClient _dioClient;
-  AuthRemoteDataSourceImpl(this._dioClient);
+  AuthRemoteDataSourceImpl(
+    this._dioClient,
+    this._tokenRepository,
+  );
 
   @override
-  Future<UserModel?> getCurrentUserData() {
-    // TODO: implement currentUser
-    throw UnimplementedError();
+  Future<UserModel?> getCurrentUserData() async {
+    try {
+      final token = _tokenRepository.getToken();
+      final response = await _dioClient.get(
+        "${Endpoints.auth}/current-user",
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $token',
+          },
+        ),
+      );
+      if (response == null) {
+        throw const ServerException('Unauthorize!');
+      }
+      return UserModel.fromJson(response);
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
   }
 
   @override
@@ -67,9 +89,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
           "password": password,
         },
       );
-      if (response == null) {
+      if (response.statusCode == 401) {
         throw const ServerException('User is null!');
       }
+      await _tokenRepository.saveToken(response.data['token']);
       return UserModel.fromJson(response);
     } catch (e) {
       throw ServerException(e.toString());
@@ -98,6 +121,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       if (response.user == null) {
         throw const ServerException('User is null!');
       }
+      await _tokenRepository.deleteToken();
       return UserModel.fromJson(response.user!.toJson());
     } catch (e) {
       throw ServerException(e.toString());

@@ -49,6 +49,7 @@ dependencies:
   json_annotation: ^4.8.1
   build_runner: any
   mobx_codegen: ^2.6.1
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
