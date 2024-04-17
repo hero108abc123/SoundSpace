@@ -35,7 +35,7 @@ class TrackCard extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: AppPallete.whiteColor.withOpacity(0.8),
+              color: AppPallete.boxColor.withOpacity(0.8),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -47,7 +47,7 @@ class TrackCard extends StatelessWidget {
                     Text(
                       track.title,
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            color: AppPallete.gradient2,
+                            color: AppPallete.gradient4,
                             fontWeight: FontWeight.w700,
                           ),
                     ),
@@ -62,7 +62,7 @@ class TrackCard extends StatelessWidget {
                 ),
                 const Icon(
                   Icons.play_circle,
-                  color: AppPallete.gradient2,
+                  color: AppPallete.gradient4,
                 ),
               ],
             ),
