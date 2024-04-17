@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
 import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:soundspace/features/auth/presentation/screens/screens.dart';
-import 'package:soundspace/features/auth/presentation/widgets/widgets.dart';
+import 'package:soundspace/features/auth/presentation/screens/auth_screens.dart';
+import 'package:soundspace/features/auth/presentation/widgets/auth_widgets.dart';
 
 class EmailScreen extends StatefulWidget {
   static route() => MaterialPageRoute(

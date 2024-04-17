@@ -3,7 +3,7 @@ import 'package:soundspace/core/common/secrets/app_secrets.dart';
 import 'package:soundspace/features/auth/domain/repositories/token_repository.dart';
 
 class TokenRepositoryImpl implements TokenRepository {
-  static String _tokenKey = AppSecrets.token;
+  static const String _tokenKey = AppSecrets.token;
 
   @override
   Future<void> deleteToken() async {

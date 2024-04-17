@@ -7,7 +7,7 @@ class AppTheme {
         borderSide: BorderSide(color: color, width: 3),
       );
   static final darkThemeMode = ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: AppPallete.gradient1,
+    scaffoldBackgroundColor: AppPallete.transparentColor,
     inputDecorationTheme: InputDecorationTheme(
       isDense: true,
       filled: true,

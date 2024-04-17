@@ -7,7 +7,7 @@ import 'package:soundspace/config/theme/theme.dart';
 import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:soundspace/features/home/presentation/screens/home_screen.dart';
 import 'package:soundspace/init_dependencies.dart';
-import 'features/auth/presentation/screens/screens.dart';
+import 'features/auth/presentation/screens/auth_screens.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
 import 'package:soundspace/features/auth/presentation/screens/email_screen.dart';
-import '../widgets/widgets.dart';
+import '../widgets/auth_widgets.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({
