@@ -19,7 +19,7 @@ class SectionHeader extends StatelessWidget {
           title,
           style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 color: AppPallete.whiteColor,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.bold,
               ),
         ),
         Text(
