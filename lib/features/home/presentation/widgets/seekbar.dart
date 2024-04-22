@@ -3,16 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
 
-class SeekBarData {
-  final Duration position;
-  final Duration duration;
-
-  SeekBarData(
-    this.position,
-    this.duration,
-  );
-}
-
 class SeekBar extends StatefulWidget {
   final Duration position;
   final Duration duration;

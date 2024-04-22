@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
+import 'package:soundspace/features/home/data/models/seekbar_model.dart';
 import 'package:soundspace/features/home/data/models/track_model.dart';
 import 'package:rxdart/rxdart.dart' as rxdart;
 
@@ -39,11 +40,11 @@ class _TrackScreenState extends State<TrackScreen> {
     super.dispose();
   }
 
-  Stream<SeekBarData> get _seekBarDataStream =>
-      rxdart.Rx.combineLatest2<Duration, Duration?, SeekBarData>(
+  Stream<SeekBarModel> get _seekBarDataStream =>
+      rxdart.Rx.combineLatest2<Duration, Duration?, SeekBarModel>(
           audioPlayer.positionStream, audioPlayer.durationStream,
           (Duration position, Duration? duration) {
-        return SeekBarData(
+        return SeekBarModel(
           position,
           duration ?? Duration.zero,
         );
@@ -79,11 +80,11 @@ class _TrackScreenState extends State<TrackScreen> {
 class _MusicPlayer extends StatelessWidget {
   const _MusicPlayer({
     required this.track,
-    required Stream<SeekBarData> seekBarDataStream,
+    required Stream<SeekBarModel> seekBarDataStream,
     required this.audioPlayer,
   }) : _seekBarDataStream = seekBarDataStream;
 
-  final Stream<SeekBarData> _seekBarDataStream;
+  final Stream<SeekBarModel> _seekBarDataStream;
   final AudioPlayer audioPlayer;
   final TrackModel track;
 
@@ -119,7 +120,7 @@ class _MusicPlayer extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          StreamBuilder<SeekBarData>(
+          StreamBuilder<SeekBarModel>(
             stream: _seekBarDataStream,
             builder: (context, snapshot) {
               final positionData = snapshot.data;

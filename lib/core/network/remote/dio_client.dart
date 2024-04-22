@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:soundspace/core/error/exceptions.dart';
 
 class DioClient {
   // dio instance
@@ -26,7 +25,7 @@ class DioClient {
       );
       return response.data;
     } catch (e) {
-      throw ServerException(e.toString());
+      rethrow;
     }
   }
 
@@ -52,7 +51,7 @@ class DioClient {
       );
       return response.data;
     } catch (e) {
-      throw ServerException(e.toString());
+      rethrow;
     }
   }
 
@@ -78,7 +77,7 @@ class DioClient {
       );
       return response.data;
     } catch (e) {
-      throw ServerException(e.toString());
+      rethrow;
     }
   }
 
@@ -102,7 +101,7 @@ class DioClient {
       );
       return response.data;
     } catch (e) {
-      throw ServerException(e.toString());
+      rethrow;
     }
   }
 }

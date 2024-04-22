@@ -56,28 +56,36 @@ Create an account''',
           const SizedBox(
             height: 356,
           ),
-          AuthButton(
-            buttonName: "Continue",
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                context.read<AuthBloc>().add(
-                      AuthEmailValidation(
-                        email: _emailController.text.trim(),
-                      ),
-                    );
-
-                BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-                  if (state is AuthFailure) {
-                    return SignUpScreen.route(
-                      _emailController.text.trim(),
-                    );
-                  }
-                  return SignInScreen.route(
+          BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              if (state is EmailSuccess) {
+                Navigator.push(
+                  context,
+                  SignInScreen.route(
                     _emailController.text.trim(),
-                  );
-                });
+                  ),
+                );
+              } else if (state is AuthFailure) {
+                Navigator.push(
+                  context,
+                  SignUpScreen.route(
+                    _emailController.text.trim(),
+                  ),
+                );
               }
             },
+            child: AuthButton(
+              buttonName: "Continue",
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  context.read<AuthBloc>().add(
+                        AuthEmailValidation(
+                          email: _emailController.text.trim(),
+                        ),
+                      );
+                }
+              },
+            ),
           ),
           const AuthHelper(),
         ],

@@ -11,25 +11,25 @@ class TrackModel extends Track {
   static List<TrackModel> tracks = [
     TrackModel(
       title: 'Goat',
-      description: 'Goat',
+      description: 'Polyphia',
       url: 'assets/tracks/Goat.mp3',
       coverUrl: 'assets/images/Goat.jpg',
     ),
     TrackModel(
       title: 'Goose',
-      description: 'Goose',
+      description: 'Polyphia',
       url: 'assets/tracks/Goose.mp3',
       coverUrl: 'assets/images/Goose.jpg',
     ),
     TrackModel(
       title: 'Lychee',
-      description: 'Lychee',
+      description: 'RJ Pasin',
       url: 'assets/tracks/Lychee.mp3',
       coverUrl: 'assets/images/Lychee.jpg',
     ),
     TrackModel(
       title: 'The Worst',
-      description: 'The Worst',
+      description: 'Polyphia',
       url: 'assets/tracks/The Worst.mp3',
       coverUrl: 'assets/images/The Worst.jpg',
     ),
