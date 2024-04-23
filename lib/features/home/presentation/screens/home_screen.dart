@@ -204,16 +204,16 @@ class _CustomNavBar extends StatelessWidget {
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.favorite_outline),
-          label: 'Favorites',
+          icon: Icon(Icons.album),
+          label: 'Discovery',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.play_circle_outline),
+          icon: Icon(Icons.search),
+          label: 'Search',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.play_circle_outlined),
           label: 'Play',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.people_outline),
-          label: 'Profile',
         ),
       ],
     );
