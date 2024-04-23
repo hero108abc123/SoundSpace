@@ -7,7 +7,7 @@ import 'package:soundspace/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:soundspace/config/theme/theme.dart';
 import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:soundspace/init_dependencies.dart';
-// import 'features/auth/presentation/screens/auth_screens.dart';
+import 'features/auth/presentation/screens/auth_screens.dart';
 import 'features/home/presentation/screens/homepage_screens.dart';
 
 void main() async {
@@ -81,7 +81,7 @@ class _MyAppState extends State<MyApp> {
           if (isLoggedIn) {
             return const HomeScreen();
           }
-          return const HomeScreen();
+          return const LoginScreen();
         },
       ),
       getPages: [
