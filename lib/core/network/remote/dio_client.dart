@@ -8,7 +8,7 @@ class DioClient {
   DioClient(this._dio);
 
   // Get:-----------------------------------------------------------------------
-  Future<dynamic> get(
+  Future<Response> get(
     String uri, {
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -23,14 +23,14 @@ class DioClient {
         cancelToken: cancelToken,
         onReceiveProgress: onReceiveProgress,
       );
-      return response.data;
+      return response;
     } catch (e) {
       rethrow;
     }
   }
 
   // Post:----------------------------------------------------------------------
-  Future<dynamic> post(
+  Future<Response> post(
     String uri, {
     data,
     Map<String, dynamic>? queryParameters,
@@ -49,14 +49,14 @@ class DioClient {
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
-      return response.data;
+      return response;
     } catch (e) {
       rethrow;
     }
   }
 
   // Put:-----------------------------------------------------------------------
-  Future<dynamic> put(
+  Future<Response> put(
     String uri, {
     data,
     Map<String, dynamic>? queryParameters,
@@ -75,14 +75,14 @@ class DioClient {
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
-      return response.data;
+      return response;
     } catch (e) {
       rethrow;
     }
   }
 
   // Delete:--------------------------------------------------------------------
-  Future<dynamic> delete(
+  Future<Response> delete(
     String uri, {
     data,
     Map<String, dynamic>? queryParameters,
@@ -99,7 +99,7 @@ class DioClient {
         options: options,
         cancelToken: cancelToken,
       );
-      return response.data;
+      return response;
     } catch (e) {
       rethrow;
     }

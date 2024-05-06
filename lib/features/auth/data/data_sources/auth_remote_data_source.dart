@@ -47,10 +47,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
           },
         ),
       );
-      if (response == null) {
+      if (response.statusCode == 200) {
+        return UserModel.fromJson(response.data);
+      } else if (response.statusCode == 401) {
         throw const ServerException('Unauthorize!');
+      } else {
+        return throw const ServerException('Something went wrong!');
       }
-      return UserModel.fromJson(response);
     } catch (e) {
       throw ServerException(e.toString());
     }
@@ -67,10 +70,11 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
           "email": email,
         },
       );
-      if (response == null) {
+      if (response.statusCode == 200) {
+        return EmailModel.fromJson(response.data);
+      } else {
         return throw const ServerException('Something went wrong!');
       }
-      return EmailModel.fromJson(response);
     } catch (e) {
       throw ServerException(e.toString());
     }
@@ -89,11 +93,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
           "password": password,
         },
       );
-      if (response.statusCode == 401) {
-        throw const ServerException('User is null!');
+      if (response.statusCode == 200) {
+        await _tokenRepository.saveToken(response.data['token']);
+        return UserModel.fromJson(response.data);
+      } else {
+        return throw const ServerException('Something went wrong!');
       }
-      await _tokenRepository.saveToken(response.data['token']);
-      return UserModel.fromJson(response);
     } catch (e) {
       throw ServerException(e.toString());
     }
@@ -118,11 +123,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
           "gender": gender,
         },
       );
-      if (response.user == null) {
-        throw const ServerException('User is null!');
+      if (response.statusCode == 200) {
+        await _tokenRepository.saveToken(response.data['token']);
+        return UserModel.fromJson(response.data);
+      } else {
+        return throw const ServerException('Something went wrong!');
       }
-      await _tokenRepository.deleteToken();
-      return UserModel.fromJson(response.user!.toJson());
     } catch (e) {
       throw ServerException(e.toString());
     }

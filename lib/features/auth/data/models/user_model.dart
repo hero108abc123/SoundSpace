@@ -10,6 +10,7 @@ class UserModel extends User {
     required super.displayName,
     required super.age,
     required super.gender,
+    required super.token,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {

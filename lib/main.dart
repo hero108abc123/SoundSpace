@@ -1,5 +1,5 @@
-// import 'package:device_preview/device_preview.dart';
-// import 'package:flutter/foundation.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -16,6 +16,20 @@ void main() async {
   runApp(
     //----------------------------App mobile-------------------------------------------------
 
+    //   MultiBlocProvider(
+    //     providers: [
+    //       BlocProvider(
+    //         create: (_) => serviceLocator<AppUserCubit>(),
+    //       ),
+    //       BlocProvider(
+    //         create: (_) => serviceLocator<AuthBloc>(),
+    //       ),
+    //     ],
+    //     child: const MyApp(),
+    //   ),
+
+    //----------------------------Device Preview-------------------------------------------------
+
     MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -25,27 +39,14 @@ void main() async {
           create: (_) => serviceLocator<AuthBloc>(),
         ),
       ],
-      child: const MyApp(),
+      child: DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (content) => const MyApp(),
+      ),
     ),
+
+    //-------------------------------------------------------------------------------------------
   );
-
-  //----------------------------Device Preview-------------------------------------------------
-
-  //   DevicePreview(
-  //     enabled: !kReleaseMode,
-  //     builder: (content) => MultiBlocProvider(
-  //       providers: [
-  //         BlocProvider(
-  //           create: (_) => serviceLocator<AppUserCubit>(),
-  //         ),
-  //         BlocProvider(
-  //           create: (_) => serviceLocator<AuthBloc>(),
-  //         ),
-  //       ],
-  //       child: const MyApp(),
-  //     ),
-  //   ),
-  // );
 }
 
 class MyApp extends StatefulWidget {
@@ -68,8 +69,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // locale: DevicePreview.locale(context),
-      // builder: DevicePreview.appBuilder,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'SoundSpace',
       theme: AppTheme.darkThemeMode,
@@ -82,6 +83,7 @@ class _MyAppState extends State<MyApp> {
             return const HomeScreen();
           }
           return const LoginScreen();
+          // return const HomeScreen();
         },
       ),
       getPages: [

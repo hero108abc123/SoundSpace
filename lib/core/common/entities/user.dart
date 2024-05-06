@@ -4,6 +4,7 @@ class User {
   final String displayName;
   final int age;
   final String gender;
+  final String token;
 
   User({
     required this.id,
@@ -11,5 +12,6 @@ class User {
     required this.displayName,
     required this.age,
     required this.gender,
+    required this.token,
   });
 }
