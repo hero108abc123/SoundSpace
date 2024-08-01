@@ -14,9 +14,29 @@ final class AuthSuccess extends AuthState {
   const AuthSuccess(this.user);
 }
 
+final class ProfileFailure extends AuthState {
+  final String message;
+  const ProfileFailure(this.message);
+}
+
+final class ProfileSuccess extends AuthState {
+  final Profile profile;
+  const ProfileSuccess(this.profile);
+}
+
 final class AuthFailure extends AuthState {
   final String message;
   const AuthFailure(this.message);
+}
+
+final class AccountFailure extends AuthState {
+  final String message;
+  const AccountFailure(this.message);
+}
+
+final class AccountSuccess extends AuthState {
+  final String message;
+  const AccountSuccess(this.message);
 }
 
 final class EmailFailure extends AuthState {
@@ -25,6 +45,6 @@ final class EmailFailure extends AuthState {
 }
 
 final class EmailSuccess extends AuthState {
-  final Email email;
+  final String email;
   const EmailSuccess(this.email);
 }

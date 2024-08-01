@@ -7,12 +7,12 @@ class AppTheme {
         borderSide: BorderSide(color: color, width: 3),
       );
   static final darkThemeMode = ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: AppPallete.transparentColor,
+    scaffoldBackgroundColor: AppPallete.whiteColor,
     inputDecorationTheme: InputDecorationTheme(
       isDense: true,
       filled: true,
       fillColor: AppPallete.boxColor,
-      labelStyle: const TextStyle(color: AppPallete.whiteColor, fontSize: 12),
+      labelStyle: const TextStyle(color: AppPallete.gradient1, fontSize: 12),
       enabledBorder: _border(),
       focusedBorder: _border(AppPallete.borderColor),
     ),

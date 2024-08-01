@@ -5,11 +5,6 @@ part 'user_model.g.dart';
 @JsonSerializable()
 class UserModel extends User {
   UserModel({
-    required super.id,
-    required super.email,
-    required super.displayName,
-    required super.age,
-    required super.gender,
     required super.token,
   });
 

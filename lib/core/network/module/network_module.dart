@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:soundspace/core/network/constants/endpoints.dart';
+
+import '../constants/endpoints.dart';
 
 abstract class NetworkModule {
   static Dio provideDio() {

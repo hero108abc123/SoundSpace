@@ -1,45 +1,47 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:soundspace/core/error/exceptions.dart';
 import 'package:soundspace/core/network/constants/endpoints.dart';
 import 'package:soundspace/core/network/remote/dio_client.dart';
-import 'package:soundspace/features/auth/data/models/email_model.dart';
 import 'package:soundspace/features/auth/data/models/user_model.dart';
-import 'package:soundspace/features/auth/domain/repositories/token_repository.dart';
+import 'package:soundspace/features/auth/data/models/user_profile_model.dart';
 
 abstract interface class AuthRemoteDataSource {
-  Future<UserModel> signUp({
+  Future<String> signUp({
     required String email,
     required String password,
-    required String displayName,
-    required int age,
-    required String? gender,
   });
   Future<UserModel> login({
     required String email,
     required String password,
   });
 
-  Future<EmailModel> emailValidation({
+  Future<String> emailValidation({
     required String email,
   });
 
-  Future<UserModel?> getCurrentUserData();
+  Future<String> createProfile({
+    required String displayName,
+    required int age,
+    required String gender,
+  });
+
+  Future<ProfileModel?> getCurrentUserData();
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  final TokenRepository _tokenRepository;
-  final DioClient _dioClient;
+  final DioClient _dio;
+  static const storage = FlutterSecureStorage();
   AuthRemoteDataSourceImpl(
-    this._dioClient,
-    this._tokenRepository,
+    this._dio,
   );
 
   @override
-  Future<UserModel?> getCurrentUserData() async {
+  Future<ProfileModel?> getCurrentUserData() async {
     try {
-      final token = _tokenRepository.getToken();
-      final response = await _dioClient.get(
-        "${Endpoints.auth}/current-user",
+      var token = await storage.read(key: 'token');
+      Response response = await _dio.get(
+        "${Endpoints.user}/get-user",
         options: Options(
           headers: {
             'Content-Type': 'application/json',
@@ -47,12 +49,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
           },
         ),
       );
+
       if (response.statusCode == 200) {
-        return UserModel.fromJson(response.data);
+        return ProfileModel.fromJson(response.data);
       } else if (response.statusCode == 401) {
-        throw const ServerException('Unauthorize!');
+        return throw const ServerException('User not logged in!');
       } else {
-        return throw const ServerException('Something went wrong!');
+        throw const ServerException('Something went wrong!');
       }
     } catch (e) {
       throw ServerException(e.toString());
@@ -60,20 +63,22 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<EmailModel> emailValidation({
+  Future<String> emailValidation({
     required String email,
   }) async {
     try {
-      final response = await _dioClient.post(
-        "${Endpoints.auth}/email-check",
+      Response response = await _dio.post(
+        "${Endpoints.auth}/email-valid",
         data: {
           "email": email,
         },
       );
       if (response.statusCode == 200) {
-        return EmailModel.fromJson(response.data);
+        return email;
+      } else if (response.statusCode == 400) {
+        return response.data['message'];
       } else {
-        return throw const ServerException('Something went wrong!');
+        throw const ServerException('Something went wrong!');
       }
     } catch (e) {
       throw ServerException(e.toString());
@@ -86,7 +91,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required String password,
   }) async {
     try {
-      final response = await _dioClient.post(
+      Response response = await _dio.post(
         "${Endpoints.auth}/login",
         data: {
           "email": email,
@@ -94,10 +99,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         },
       );
       if (response.statusCode == 200) {
-        await _tokenRepository.saveToken(response.data['token']);
+        await storage.write(key: 'token', value: response.data['token']);
         return UserModel.fromJson(response.data);
       } else {
-        return throw const ServerException('Something went wrong!');
+        throw const ServerException('Something went wrong!');
       }
     } catch (e) {
       throw ServerException(e.toString());
@@ -105,29 +110,47 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<UserModel> signUp({
+  Future<String> signUp({
     required String email,
     required String password,
-    required String displayName,
-    required int age,
-    required String? gender,
   }) async {
     try {
-      final response = await _dioClient.post(
-        "${Endpoints.auth}/register",
+      Response response = await _dio.post(
+        "${Endpoints.auth}/create",
         data: {
           "email": email,
           "password": password,
+        },
+      );
+      if (response.statusCode == 200) {
+        return "Create account success";
+      } else {
+        throw const ServerException('Something went wrong!');
+      }
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<String> createProfile({
+    required String displayName,
+    required int age,
+    required String gender,
+  }) async {
+    try {
+      Response response = await _dio.post(
+        "${Endpoints.user}/create",
+        data: {
           "displayName": displayName,
           "age": age,
           "gender": gender,
         },
       );
       if (response.statusCode == 200) {
-        await _tokenRepository.saveToken(response.data['token']);
-        return UserModel.fromJson(response.data);
+        return "Create profile success";
       } else {
-        return throw const ServerException('Something went wrong!');
+        throw const ServerException('Something went wrong!');
       }
     } catch (e) {
       throw ServerException(e.toString());

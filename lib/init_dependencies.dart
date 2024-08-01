@@ -4,51 +4,63 @@ import 'package:soundspace/core/network/module/network_module.dart';
 import 'package:soundspace/core/network/remote/dio_client.dart';
 import 'package:soundspace/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:soundspace/features/auth/data/data_sources/auth_remote_data_source.dart';
-import 'package:soundspace/features/auth/data/repositories/token_repository_impl.dart';
 import 'package:soundspace/features/auth/domain/repositories/auth_repository.dart';
-import 'package:soundspace/features/auth/domain/repositories/token_repository.dart';
 import 'package:soundspace/features/auth/domain/usecases/current_user.dart';
 import 'package:soundspace/features/auth/domain/usecases/user_email_validation.dart';
 import 'package:soundspace/features/auth/domain/usecases/user_login.dart';
+import 'package:soundspace/features/auth/domain/usecases/user_profile.dart';
 import 'package:soundspace/features/auth/domain/usecases/user_sign_up.dart';
 import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:soundspace/features/home/data/data_sources/home_remote_data_source.dart';
+import 'package:soundspace/features/home/data/repositories/home_repository_impl.dart';
+import 'package:soundspace/features/home/domain/repositories/home_repository.dart';
+import 'package:soundspace/features/home/domain/usecase/load_track.dart';
+
+import 'features/home/presentation/bloc/home_bloc.dart';
 
 final serviceLocator = GetIt.instance;
 
 Future<void> initDependencies() async {
   _initAuth();
-  serviceLocator.registerLazySingleton(() => NetworkModule.provideDio());
-
   //core
+  serviceLocator.registerLazySingleton(() => NetworkModule.provideDio());
   serviceLocator.registerLazySingleton(() => AppUserCubit());
 }
 
 void _initAuth() {
   serviceLocator
-    ..registerFactory<TokenRepository>(
-      () => TokenRepositoryImpl(),
-    )
+
+    //Datasource
     ..registerFactory<DioClient>(
       () => DioClient(
         serviceLocator(),
       ),
     )
-
-    //Datasource
     ..registerFactory<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImpl(
         serviceLocator(),
+      ),
+    )
+    ..registerFactory<HomeRemoteDataSource>(
+      () => HomeRemoteDataSourceImpl(
         serviceLocator(),
       ),
     )
-
+    ..registerFactory<HomeLocalDataSource>(
+      () => HomeLocalDataSourceImpl(),
+    )
     //Repository
     ..registerFactory<AuthRepository>(
       () => AuthRepositoryImpl(
         serviceLocator(),
       ),
     )
-
+    ..registerFactory<HomeRepository>(
+      () => HomeRepositoryImpl(
+        serviceLocator(),
+        serviceLocator(),
+      ),
+    )
     //Service
     ..registerFactory(
       () => CurrentUser(
@@ -70,6 +82,16 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
+    ..registerFactory(
+      () => UserProfile(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => LoadData(
+        serviceLocator(),
+      ),
+    )
     //Bloc
     ..registerLazySingleton(
       () => AuthBloc(
@@ -77,7 +99,13 @@ void _initAuth() {
         userlogin: serviceLocator(),
         userEmailValidation: serviceLocator(),
         currentUser: serviceLocator(),
+        userProfile: serviceLocator(),
         appUserCubit: serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => HomeBloc(
+        loadData: serviceLocator(),
       ),
     );
 }

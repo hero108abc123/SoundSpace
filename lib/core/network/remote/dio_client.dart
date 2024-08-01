@@ -3,8 +3,6 @@ import 'package:dio/dio.dart';
 class DioClient {
   // dio instance
   final Dio _dio;
-
-  // injecting dio instance
   DioClient(this._dio);
 
   // Get:-----------------------------------------------------------------------

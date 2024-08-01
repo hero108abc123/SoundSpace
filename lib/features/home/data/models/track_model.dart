@@ -1,37 +1,33 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
+part 'track_model.g.dart';
 
+@JsonSerializable()
 class TrackModel extends Track {
   TrackModel({
+    required super.id,
     required super.title,
-    required super.description,
-    required super.url,
-    required super.coverUrl,
+    required super.album,
+    required super.artist,
+    required super.source,
+    required super.image,
+    required super.duration,
+    required super.favorite,
+    required super.counter,
+    required super.replay,
   });
 
-  static List<TrackModel> tracks = [
-    TrackModel(
-      title: 'Goat',
-      description: 'Polyphia',
-      url: 'assets/tracks/Goat.mp3',
-      coverUrl: 'assets/images/Goat.jpg',
-    ),
-    TrackModel(
-      title: 'Goose',
-      description: 'Polyphia',
-      url: 'assets/tracks/Goose.mp3',
-      coverUrl: 'assets/images/Goose.jpg',
-    ),
-    TrackModel(
-      title: 'Lychee',
-      description: 'RJ Pasin',
-      url: 'assets/tracks/Lychee.mp3',
-      coverUrl: 'assets/images/Lychee.jpg',
-    ),
-    TrackModel(
-      title: 'The Worst',
-      description: 'Polyphia',
-      url: 'assets/tracks/The Worst.mp3',
-      coverUrl: 'assets/images/The Worst.jpg',
-    ),
-  ];
+  factory TrackModel.fromJson(Map<String, dynamic> json) {
+    return _$TrackModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() => _$TrackModelToJson(this);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TrackModel && runtimeType == other.runtimeType && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
 }

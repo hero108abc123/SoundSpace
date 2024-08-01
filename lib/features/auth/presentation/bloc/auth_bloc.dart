@@ -3,16 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundspace/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:soundspace/core/common/entities/user.dart';
 import 'package:soundspace/core/usecase/usecase.dart';
-import 'package:soundspace/features/auth/domain/entities/email.dart';
 import 'package:soundspace/features/auth/domain/usecases/current_user.dart';
 import 'package:soundspace/features/auth/domain/usecases/user_email_validation.dart';
 import 'package:soundspace/features/auth/domain/usecases/user_login.dart';
+import 'package:soundspace/features/auth/domain/usecases/user_profile.dart';
 import 'package:soundspace/features/auth/domain/usecases/user_sign_up.dart';
+
+import '../../../../core/common/entities/user_profile.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  final UserProfile _userProfile;
   final UserSignUp _userSignUp;
   final Userlogin _userlogin;
   final UserEmailValidation _userEmailValidation;
@@ -21,17 +24,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   AuthBloc({
     required UserSignUp userSignUp,
+    required UserProfile userProfile,
     required Userlogin userlogin,
     required UserEmailValidation userEmailValidation,
     required CurrentUser currentUser,
     required AppUserCubit appUserCubit,
-  })  : _userSignUp = userSignUp,
+  })  : _userProfile = userProfile,
+        _userSignUp = userSignUp,
         _userlogin = userlogin,
         _userEmailValidation = userEmailValidation,
         _currentUser = currentUser,
         _appUserCubit = appUserCubit,
         super(AuthInitial()) {
     on<AuthEvent>((_, emit) => emit(AuthLoading()));
+    on<AuthCreateProfile>(_onAuthCreateProfile);
     on<AuthSignUp>(_onAuthSignUp);
     on<AuthLogin>(_onAuthLogin);
     on<AuthEmailValidation>(_onAuthEmailValidation);
@@ -46,7 +52,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     res.fold(
       (failure) => emit(AuthFailure(failure.message)),
-      (user) => _emitAuthSuccess(user, emit),
+      (profile) => _emitAuthSuccess(profile, emit),
     );
   }
 
@@ -58,15 +64,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       UserSignUpParams(
         email: event.email,
         password: event.password,
-        displayName: event.displayName,
+      ),
+    );
+
+    res.fold(
+      (failure) => emit(AccountFailure(failure.message)),
+      (status) => emit(AccountSuccess(status)),
+    );
+  }
+
+  void _onAuthCreateProfile(
+    AuthCreateProfile event,
+    Emitter<AuthState> emit,
+  ) async {
+    final res = await _userProfile(
+      UserProfileParams(
+        displaName: event.displayName,
         age: event.age,
         gender: event.gender,
       ),
     );
 
     res.fold(
-      (failure) => emit(AuthFailure(failure.message)),
-      (user) => _emitAuthSuccess(user, emit),
+      (failure) => emit(AccountFailure(failure.message)),
+      (status) => emit(AccountSuccess(status)),
     );
   }
 
@@ -83,7 +104,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     res.fold(
       (failure) => emit(AuthFailure(failure.message)),
-      (user) => _emitAuthSuccess(user, emit),
+      (user) => emit(AuthSuccess(user)),
     );
   }
 
@@ -104,10 +125,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   void _emitAuthSuccess(
-    User user,
+    Profile profile,
     Emitter<AuthState> emit,
   ) {
-    _appUserCubit.updateUser(user);
-    emit(AuthSuccess(user));
+    _appUserCubit.updateUser(profile);
+    emit(ProfileSuccess(profile));
   }
 }
