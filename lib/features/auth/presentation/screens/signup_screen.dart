@@ -49,61 +49,62 @@ class _SignUpScreenState extends State<SignUpScreen> {
         }
       },
       child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: AuthBackground(
-        formKey: _formKey,
-        children: <Widget>[
-          const ReturnButton(),
-          const SizedBox(
-            height: 106,
-          ),
-          const Text(
-            'Create an account',
-            style: TextStyle(
-              color: AppPallete.whiteColor,
-              fontFamily: 'Orbitron',
-              fontSize: 30,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-          AuthDisplayField(
-              label: 'Your email address',
-              child: Text(
-                widget.email,
-                style: const TextStyle(
+            formKey: _formKey,
+            children: <Widget>[
+              const ReturnButton(),
+              const SizedBox(
+                height: 106,
+              ),
+              const Text(
+                'Create an account',
+                style: TextStyle(
                   color: AppPallete.whiteColor,
+                  fontFamily: 'Orbitron',
+                  fontSize: 30,
+                  fontWeight: FontWeight.w700,
                 ),
-              )),
-          const SizedBox(
-            height: 30,
-          ),
-          AuthTextField(
-            label: 'Your password (min. 8 charecters)',
-            controller: _passwordController,
-            passwordVisible: true,
-          ),
-          const SizedBox(
-            height: 13,
-          ),
-          const SizedBox(
-            height: 347,
-          ),
-          AuthButton(
-            buttonName: "Continue",
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                context.read<AuthBloc>().add(AuthSignUp(
-                      email: widget.email,
-                      password: _passwordController.text.trim(),
-                    ));
-              }
-            },
-          ),
-          const AuthHelper(),
-        ],
-      )),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              AuthDisplayField(
+                  label: 'Your email address',
+                  child: Text(
+                    widget.email,
+                    style: const TextStyle(
+                      color: AppPallete.whiteColor,
+                    ),
+                  )),
+              const SizedBox(
+                height: 30,
+              ),
+              AuthTextField(
+                label: 'Your password (min. 8 charecters)',
+                controller: _passwordController,
+                passwordVisible: true,
+              ),
+              const SizedBox(
+                height: 13,
+              ),
+              const SizedBox(
+                height: 250,
+              ),
+              AuthButton(
+                buttonName: "Continue",
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    context.read<AuthBloc>().add(AuthSignUp(
+                          email: widget.email,
+                          password: _passwordController.text.trim(),
+                        ));
+                  }
+                },
+              ),
+              const AuthHelper(),
+            ],
+          )),
     );
   }
 }

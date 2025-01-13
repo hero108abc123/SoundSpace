@@ -90,6 +90,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               }
             },
             child: Scaffold(
+              resizeToAvoidBottomInset: false,
               body: AuthBackground(
                 formKey: _formKey,
                 children: <Widget>[
@@ -157,7 +158,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 238,
+                    height: 100,
                   ),
                   AuthButton(
                     buttonName: "Continue",

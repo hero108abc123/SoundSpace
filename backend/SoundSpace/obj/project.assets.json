@@ -4327,11 +4327,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\STUDY\\Do an\\DNCNDPT\\SoundSpaceServer\\SoundSpace\\SoundSpace\\SoundSpace.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\Desktop\\SoundSpace\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
       "projectName": "SoundSpace",
-      "projectPath": "D:\\STUDY\\Do an\\DNCNDPT\\SoundSpaceServer\\SoundSpace\\SoundSpace\\SoundSpace.csproj",
+      "projectPath": "C:\\Users\\DELL\\Desktop\\SoundSpace\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\STUDY\\Do an\\DNCNDPT\\SoundSpaceServer\\SoundSpace\\SoundSpace\\obj\\",
+      "outputPath": "C:\\Users\\DELL\\Desktop\\SoundSpace\\SoundSpace\\backend\\SoundSpace\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4425,7 +4425,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

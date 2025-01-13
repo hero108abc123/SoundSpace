@@ -53,6 +53,7 @@ class _SignInScreenState extends State<SignInScreen> {
             }
           },
           child: Scaffold(
+            resizeToAvoidBottomInset: false,
             body: AuthBackground(
               formKey: _formKey,
               children: <Widget>[
@@ -104,7 +105,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       )),
                 ),
                 const SizedBox(
-                  height: 330,
+                  height: 250,
                 ),
                 AuthButton(
                   buttonName: "Continue",

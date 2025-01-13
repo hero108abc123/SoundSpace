@@ -1,5 +1,7 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:device_preview/device_preview.dart';
+// import 'package:flutter/foundation.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundspace/core/common/cubits/app_user/app_user_cubit.dart';
@@ -13,25 +15,9 @@ import 'features/auth/presentation/screens/auth_screens.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initDependencies();
+  HttpOverrides.global = MyHttpOverrides();
   runApp(
     //----------------------------App mobile-------------------------------------------------
-
-    // MultiBlocProvider(
-    //   providers: [
-    //     BlocProvider(
-    //       create: (_) => serviceLocator<AppUserCubit>(),
-    //     ),
-    //     BlocProvider(
-    //       create: (_) => serviceLocator<AuthBloc>(),
-    //     ),
-    //     BlocProvider(
-    //       create: (_) => serviceLocator<HomeBloc>(),
-    //     )
-    //   ],
-    //   child: const MyApp(),
-    // ),
-
-    //----------------------------Device Preview-------------------------------------------------
 
     MultiBlocProvider(
       providers: [
@@ -45,11 +31,28 @@ void main() async {
           create: (_) => serviceLocator<HomeBloc>(),
         )
       ],
-      child: DevicePreview(
-        enabled: !kReleaseMode,
-        builder: (content) => const MyApp(),
-      ),
+      child: const MyApp(),
     ),
+
+    //----------------------------Device Preview-------------------------------------------------
+
+    // MultiBlocProvider(
+    //   providers: [
+    //     BlocProvider(
+    //       create: (_) => serviceLocator<AppUserCubit>(),
+    //     ),
+    //     BlocProvider(
+    //       create: (_) => serviceLocator<AuthBloc>(),
+    //     ),
+    //     BlocProvider(
+    //       create: (_) => serviceLocator<HomeBloc>(),
+    //     )
+    //   ],
+    //   child: DevicePreview(
+    //     enabled: !kReleaseMode,
+    //     builder: (content) => const MyApp(),
+    //   ),
+    // ),
 
     //-------------------------------------------------------------------------------------------
   );
@@ -75,8 +78,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
+      // locale: DevicePreview.locale(context),
+      // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'SoundSpace',
       theme: AppTheme.darkThemeMode,
@@ -94,5 +97,14 @@ class _MyAppState extends State<MyApp> {
         },
       ),
     );
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
