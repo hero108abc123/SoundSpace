@@ -2,11 +2,14 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SoundSpace.Dbcontexts;
-using SoundSpace.Services.Implements;
-using SoundSpace.Services.Interfaces;
+using SoundSpace.Services.Implements.Auth;
+using SoundSpace.Services.Implements.Product;
+using SoundSpace.Services.Interfaces.Auth;
+using SoundSpace.Services.Interfaces.Product;
 
 
 
@@ -23,7 +26,7 @@ namespace SoundSpace
             // Add services to the container.
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection1"));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
            
@@ -94,6 +97,12 @@ namespace SoundSpace
 
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IUserFollowService, UserFollowService>();
+            builder.Services.AddScoped<ITrackService, TrackService>();
+            builder.Services.AddScoped<IPlaylistService, PlaylistService>();
+            builder.Services.AddScoped<IPlaylistFollowService, PlaylistFollowService>();
+            builder.Services.AddScoped<ITrackPlaylistService, TrackPlaylistService>();
+            builder.Services.AddScoped<IFavoriteTrackService, FavoriteTrackService>();
 
             var app = builder.Build();
 
@@ -103,6 +112,18 @@ namespace SoundSpace
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(),"Users")),
+                RequestPath = "/Users"
+            });
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), "Tracks")),
+                RequestPath = "/Tracks"
+            });
 
             app.UseHttpsRedirection();
 

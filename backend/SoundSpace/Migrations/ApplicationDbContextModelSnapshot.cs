@@ -21,7 +21,7 @@ namespace SoundSpace.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SoundSpace.Entities.Account", b =>
+            modelBuilder.Entity("SoundSpace.Entities.Auth.Account", b =>
                 {
                     b.Property<int>("AccountId")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace SoundSpace.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("SoundSpace.Entities.User", b =>
+            modelBuilder.Entity("SoundSpace.Entities.Auth.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -61,9 +61,284 @@ namespace SoundSpace.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Auth.UserFollow", b =>
+                {
+                    b.Property<int>("FollowerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FollowingId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.HasKey("FollowerId", "FollowingId");
+
+                    b.HasIndex("FollowingId");
+
+                    b.ToTable("UserFollows");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.FavoriteTrack", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TrackId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.HasKey("UserId", "TrackId");
+
+                    b.HasIndex("TrackId");
+
+                    b.ToTable("FavoriteTracks");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.Playlist", b =>
+                {
+                    b.Property<int>("PlaylistId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlaylistId"));
+
+                    b.Property<int>("CreateBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PlaylistId");
+
+                    b.HasIndex("CreateBy");
+
+                    b.ToTable("Playlists");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.PlaylistFollow", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlaylistId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.HasKey("UserId", "PlaylistId");
+
+                    b.HasIndex("PlaylistId");
+
+                    b.ToTable("PlaylistFollows");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.Track", b =>
+                {
+                    b.Property<int>("TrackId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TrackId"));
+
+                    b.Property<string>("Album")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ArtistId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Source")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TrackId");
+
+                    b.HasIndex("ArtistId");
+
+                    b.ToTable("Tracks");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.TrackPlaylist", b =>
+                {
+                    b.Property<int>("PlaylistId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TrackId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.HasKey("PlaylistId", "TrackId");
+
+                    b.HasIndex("TrackId");
+
+                    b.ToTable("TrackPlaylists");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Auth.UserFollow", b =>
+                {
+                    b.HasOne("SoundSpace.Entities.Auth.User", "Follower")
+                        .WithMany("Following")
+                        .HasForeignKey("FollowerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SoundSpace.Entities.Auth.User", "Following")
+                        .WithMany("Followers")
+                        .HasForeignKey("FollowingId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Follower");
+
+                    b.Navigation("Following");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.FavoriteTrack", b =>
+                {
+                    b.HasOne("SoundSpace.Entities.Product.Track", "Track")
+                        .WithMany("Favorite")
+                        .HasForeignKey("TrackId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SoundSpace.Entities.Auth.User", "User")
+                        .WithMany("FavoriteTracks")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Track");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.Playlist", b =>
+                {
+                    b.HasOne("SoundSpace.Entities.Auth.User", "User")
+                        .WithMany("Playlists")
+                        .HasForeignKey("CreateBy")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.PlaylistFollow", b =>
+                {
+                    b.HasOne("SoundSpace.Entities.Product.Playlist", "Playlist")
+                        .WithMany("Followers")
+                        .HasForeignKey("PlaylistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SoundSpace.Entities.Auth.User", "User")
+                        .WithMany("PlaylistFollows")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Playlist");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.Track", b =>
+                {
+                    b.HasOne("SoundSpace.Entities.Auth.User", "Artist")
+                        .WithMany("Tracks")
+                        .HasForeignKey("ArtistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Artist");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.TrackPlaylist", b =>
+                {
+                    b.HasOne("SoundSpace.Entities.Product.Playlist", "Playlist")
+                        .WithMany("Tracks")
+                        .HasForeignKey("PlaylistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SoundSpace.Entities.Product.Track", "Track")
+                        .WithMany("Playlists")
+                        .HasForeignKey("TrackId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Playlist");
+
+                    b.Navigation("Track");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Auth.User", b =>
+                {
+                    b.Navigation("FavoriteTracks");
+
+                    b.Navigation("Followers");
+
+                    b.Navigation("Following");
+
+                    b.Navigation("PlaylistFollows");
+
+                    b.Navigation("Playlists");
+
+                    b.Navigation("Tracks");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.Playlist", b =>
+                {
+                    b.Navigation("Followers");
+
+                    b.Navigation("Tracks");
+                });
+
+            modelBuilder.Entity("SoundSpace.Entities.Product.Track", b =>
+                {
+                    b.Navigation("Favorite");
+
+                    b.Navigation("Playlists");
                 });
 #pragma warning restore 612, 618
         }

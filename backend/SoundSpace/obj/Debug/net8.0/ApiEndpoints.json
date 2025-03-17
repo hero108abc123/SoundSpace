@@ -1,0 +1,637 @@
+[
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.AuthController",
+    "Method": "CreateAccountAsync",
+    "RelativePath": "api/Auth/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "SoundSpace.Dtos.Auth.AuthDtos.CreateAccountDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.AuthController",
+    "Method": "EmailValidAsync",
+    "RelativePath": "api/Auth/email-valid",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "SoundSpace.Dtos.Auth.AuthDtos.EmailValidDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.AuthController",
+    "Method": "LoginAsync",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "SoundSpace.Dtos.Auth.AuthDtos.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.AuthController",
+    "Method": "Logout",
+    "RelativePath": "api/Auth/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.FavoriteTrackController",
+    "Method": "AddFavoriteTrack",
+    "RelativePath": "api/FavoriteTrack/add/{trackId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "trackId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.FavoriteTrackController",
+    "Method": "RemoveFavoriteTrack",
+    "RelativePath": "api/FavoriteTrack/remove/{trackId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "trackId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.FollowController",
+    "Method": "FollowUser",
+    "RelativePath": "api/Follow/follow/{targetUserId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "targetUserId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.FollowController",
+    "Method": "GetFollowedArtists",
+    "RelativePath": "api/Follow/get-followed-artists",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.FollowController",
+    "Method": "GetUnfollowedArtists",
+    "RelativePath": "api/Follow/get-unfollowed-artists",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.FollowController",
+    "Method": "UnfollowUser",
+    "RelativePath": "api/Follow/unfollow/{targetUserId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "targetUserId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "CreatePlaylist",
+    "RelativePath": "api/Playlist/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "DeletePlaylist",
+    "RelativePath": "api/Playlist/delete/{playlistId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "playlistId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "GetAllPlaylists",
+    "RelativePath": "api/Playlist/get-all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "GetFollowedPlaylists",
+    "RelativePath": "api/Playlist/get-followed-playlist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "GetOwnPlaylists",
+    "RelativePath": "api/Playlist/get-my-playlists",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "GetPlaylistsFromFollowing",
+    "RelativePath": "api/Playlist/get-playlist-from-following",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "GetPlaylistsFromUnfollowing",
+    "RelativePath": "api/Playlist/get-playlist-from-unfollowing",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "GetPlaylistsByUserId",
+    "RelativePath": "api/Playlist/get-playlists-by-userid/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "GetTracksFromPlaylist",
+    "RelativePath": "api/Playlist/get-tracks/{playlistId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "playlistId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "GetUnfollowedPlaylists",
+    "RelativePath": "api/Playlist/get-unfollowed-playlist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "GetPlaylist",
+    "RelativePath": "api/Playlist/get/{playlistId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "playlistId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistController",
+    "Method": "UpdatePlaylist",
+    "RelativePath": "api/Playlist/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PlaylistId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistFollowController",
+    "Method": "FollowPlaylist",
+    "RelativePath": "api/PlaylistFollow/follow/{playlistId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "playlistId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistFollowController",
+    "Method": "UnfollowPlaylist",
+    "RelativePath": "api/PlaylistFollow/unfollow/{playlistId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "playlistId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "CreateTrack",
+    "RelativePath": "api/Track/add-track",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Source",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Album",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "DeleteTrack",
+    "RelativePath": "api/Track/delete-track",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "trackId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "GetAllTracks",
+    "RelativePath": "api/Track/get-all-tracks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "GetArtist",
+    "RelativePath": "api/Track/get-artist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "trackId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "GetFavoriteTracks",
+    "RelativePath": "api/Track/get-favorite-tracks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "GetMyTracks",
+    "RelativePath": "api/Track/get-my-tracks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "GetTrack",
+    "RelativePath": "api/Track/get-track",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "trackId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "GetTracksFromFollowing",
+    "RelativePath": "api/Track/get-track-from-following",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "GetTracksFromNonFollowing",
+    "RelativePath": "api/Track/get-track-from-nonfollowing",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "GetTracksByUserId",
+    "RelativePath": "api/Track/get-tracks-by-user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "GetUnfavoritedTracks",
+    "RelativePath": "api/Track/get-unfavorited-tracks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackController",
+    "Method": "UpdateTrack",
+    "RelativePath": "api/Track/update-track",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Source",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Album",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackPlaylistController",
+    "Method": "AddTrackToPlaylist",
+    "RelativePath": "api/TrackPlaylist/add/{trackId}/{playlistId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "trackId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "playlistId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.TrackPlaylistController",
+    "Method": "RemoveTrackFromPlaylist",
+    "RelativePath": "api/TrackPlaylist/remove/{trackId}/{playlistId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "trackId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "playlistId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.UserController",
+    "Method": "CreateUserAsync",
+    "RelativePath": "api/User/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "SoundSpace.Dtos.Auth.UserDtos.CreateUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.UserController",
+    "Method": "DeleteUserAsync",
+    "RelativePath": "api/User/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.UserController",
+    "Method": "GetUserAsync",
+    "RelativePath": "api/User/get-user",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.UserController",
+    "Method": "UpdateUserAsync",
+    "RelativePath": "api/User/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DisplayName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Age",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gender",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

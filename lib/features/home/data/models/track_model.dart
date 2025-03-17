@@ -5,16 +5,13 @@ part 'track_model.g.dart';
 @JsonSerializable()
 class TrackModel extends Track {
   TrackModel({
-    required super.id,
+    required super.trackId,
     required super.title,
     required super.album,
     required super.artist,
     required super.source,
     required super.image,
-    required super.duration,
     required super.favorite,
-    required super.counter,
-    required super.replay,
   });
 
   factory TrackModel.fromJson(Map<String, dynamic> json) {
@@ -26,8 +23,10 @@ class TrackModel extends Track {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TrackModel && runtimeType == other.runtimeType && id == other.id;
+      other is TrackModel &&
+          runtimeType == other.runtimeType &&
+          trackId == other.trackId;
 
   @override
-  int get hashCode => id.hashCode;
+  int get hashCode => trackId.hashCode;
 }

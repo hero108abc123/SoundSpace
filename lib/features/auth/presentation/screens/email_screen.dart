@@ -50,6 +50,7 @@ class _EmailScreenState extends State<EmailScreen> {
         }
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: AuthBackground(
           formKey: _formKey,
           children: <Widget>[
@@ -74,7 +75,7 @@ Create an account''',
               controller: _emailController,
             ),
             const SizedBox(
-              height: 356,
+              height: 250,
             ),
             AuthButton(
               buttonName: "Continue",

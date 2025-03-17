@@ -5,7 +5,7 @@ import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:soundspace/features/auth/presentation/widgets/auth_widgets.dart';
 
 import '../../../../core/common/cubits/app_user/app_user_cubit.dart';
-import '../../../home/presentation/screens/home_screen.dart';
+import '../../../home/presentation/screens/home/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   static route(
@@ -38,13 +38,10 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<AppUserCubit, AppUserState, bool>(
-      selector: (state) {
-        return state is AppUserLoggedIn;
-      },
-      builder: (context, isLoggedIn) {
-        if (isLoggedIn) {
-          return const HomeScreen();
+    return BlocBuilder<AppUserCubit, AppUserState>(
+      builder: (context, state) {
+        if (state is AppUserLoggedIn) {
+          return HomeScreen(user: state.user);
         }
         return BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
@@ -53,6 +50,7 @@ class _SignInScreenState extends State<SignInScreen> {
             }
           },
           child: Scaffold(
+            resizeToAvoidBottomInset: false,
             body: AuthBackground(
               formKey: _formKey,
               children: <Widget>[
@@ -104,7 +102,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       )),
                 ),
                 const SizedBox(
-                  height: 330,
+                  height: 250,
                 ),
                 AuthButton(
                   buttonName: "Continue",

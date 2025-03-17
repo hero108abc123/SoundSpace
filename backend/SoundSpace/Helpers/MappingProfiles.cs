@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using SoundSpace.Dtos.UserDtos;
-using SoundSpace.Entities;
+using SoundSpace.Dtos.Auth.UserDtos;
+using SoundSpace.Entities.Auth;
 
 namespace SoundSpace.Helper
 {

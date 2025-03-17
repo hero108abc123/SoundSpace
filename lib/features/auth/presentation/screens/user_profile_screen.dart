@@ -6,7 +6,7 @@ import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:soundspace/features/auth/presentation/screens/auth_screens.dart';
 import 'package:soundspace/features/auth/presentation/screens/email_screen.dart';
 import 'package:soundspace/features/auth/presentation/widgets/auth_widgets.dart';
-import 'package:soundspace/features/home/presentation/screens/home_screen.dart';
+import 'package:soundspace/features/home/presentation/screens/home/home_screen.dart';
 
 import '../../../../core/common/cubits/app_user/app_user_cubit.dart';
 
@@ -58,13 +58,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<AppUserCubit, AppUserState, bool>(
-      selector: (state) {
-        return state is AppUserLoggedIn;
-      },
-      builder: (context, isLoggedIn) {
-        if (isLoggedIn) {
-          return const HomeScreen();
+    return BlocBuilder<AppUserCubit, AppUserState>(
+      builder: (context, state) {
+        if (state is AppUserLoggedIn) {
+          return HomeScreen(user: state.user);
         }
         return BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
@@ -90,6 +87,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               }
             },
             child: Scaffold(
+              resizeToAvoidBottomInset: false,
               body: AuthBackground(
                 formKey: _formKey,
                 children: <Widget>[
@@ -157,7 +155,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 238,
+                    height: 100,
                   ),
                   AuthButton(
                     buttonName: "Continue",

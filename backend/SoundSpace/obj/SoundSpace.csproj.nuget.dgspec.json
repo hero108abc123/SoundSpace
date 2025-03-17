@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\STUDY\\Do an\\DNCNDPT\\SoundSpaceServer\\SoundSpace\\SoundSpace\\SoundSpace.csproj": {}
+    "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj": {}
   },
   "projects": {
-    "D:\\STUDY\\Do an\\DNCNDPT\\SoundSpaceServer\\SoundSpace\\SoundSpace\\SoundSpace.csproj": {
+    "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\STUDY\\Do an\\DNCNDPT\\SoundSpaceServer\\SoundSpace\\SoundSpace\\SoundSpace.csproj",
+        "projectUniqueName": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
         "projectName": "SoundSpace",
-        "projectPath": "D:\\STUDY\\Do an\\DNCNDPT\\SoundSpaceServer\\SoundSpace\\SoundSpace\\SoundSpace.csproj",
+        "projectPath": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\STUDY\\Do an\\DNCNDPT\\SoundSpaceServer\\SoundSpace\\SoundSpace\\obj\\",
+        "outputPath": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -105,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

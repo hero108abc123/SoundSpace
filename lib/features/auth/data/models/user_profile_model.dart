@@ -11,6 +11,9 @@ class ProfileModel extends Profile {
     required super.displayName,
     required super.age,
     required super.gender,
+    required super.image,
+    required super.followersCount,
+    required super.followingCount,
   });
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) {

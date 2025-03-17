@@ -47,11 +47,12 @@ class _AuthTextFieldState extends State<AuthTextField> {
       padding: const EdgeInsets.symmetric(horizontal: 40),
       child: TextFormField(
         controller: controller,
+        style: const TextStyle(color: Colors.white),
         obscureText: isObsureText,
         decoration: InputDecoration(
           labelText: label,
           labelStyle: const TextStyle(
-            color: AppPallete.whiteColor,
+            color: Color.fromARGB(255, 255, 255, 255),
             fontSize: 12,
           ),
           suffixIcon: icon,

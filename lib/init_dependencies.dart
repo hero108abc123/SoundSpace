@@ -14,6 +14,9 @@ import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:soundspace/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:soundspace/features/home/data/repositories/home_repository_impl.dart';
 import 'package:soundspace/features/home/domain/repositories/home_repository.dart';
+import 'package:soundspace/features/home/domain/usecase/get_playlists_from_unfollowing.dart';
+import 'package:soundspace/features/home/domain/usecase/get_tracks_from_unfollowings.dart';
+import 'package:soundspace/features/home/domain/usecase/get_unfollowed_artist.dart';
 import 'package:soundspace/features/home/domain/usecase/load_track.dart';
 
 import 'features/home/presentation/bloc/home_bloc.dart';
@@ -46,9 +49,6 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
-    ..registerFactory<HomeLocalDataSource>(
-      () => HomeLocalDataSourceImpl(),
-    )
     //Repository
     ..registerFactory<AuthRepository>(
       () => AuthRepositoryImpl(
@@ -58,10 +58,9 @@ void _initAuth() {
     ..registerFactory<HomeRepository>(
       () => HomeRepositoryImpl(
         serviceLocator(),
-        serviceLocator(),
       ),
     )
-    //Service
+    //Auth Service
     ..registerFactory(
       () => CurrentUser(
         serviceLocator(),
@@ -87,8 +86,25 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
+
+    //Home Service
     ..registerFactory(
       () => LoadData(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => GetPlaylistsFromUnfollowings(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => GetUnfollowedArtists(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => GetTracksFromUnfollowings(
         serviceLocator(),
       ),
     )
@@ -106,6 +122,9 @@ void _initAuth() {
     ..registerFactory(
       () => HomeBloc(
         loadData: serviceLocator(),
+        getPlaylistsFromUnfollowings: serviceLocator(),
+        getUnfollowedArtists: serviceLocator(),
+        getTracksFromUnfollowings: serviceLocator(),
       ),
     );
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IfwVpUA4DrG6y1dGNHMSg04GxTSzB37+Z88GJfaYjc5yeoKvzXBJKNz/F0vUqvIQDK//ofP+4RiuoON7VB3sRg==",
+  "dgSpecHash": "FUah/MTi+qI=",
   "success": true,
-  "projectFilePath": "D:\\STUDY\\Do an\\DNCNDPT\\SoundSpaceServer\\SoundSpace\\SoundSpace\\SoundSpace.csproj",
+  "projectFilePath": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
