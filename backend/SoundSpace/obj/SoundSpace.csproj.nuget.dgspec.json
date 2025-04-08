@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj": {}
+    "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj": {}
   },
   "projects": {
-    "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj": {
+    "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
+        "projectUniqueName": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
         "projectName": "SoundSpace",
-        "projectPath": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
+        "projectPath": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
         "packagesPath": "C:\\Users\\Bop\\.nuget\\packages\\",
-        "outputPath": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\obj\\",
+        "outputPath": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
