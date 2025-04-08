@@ -35,10 +35,6 @@ namespace SoundSpace.Services.Implements.Product
             if (!playlist.Tracks.Any(t => t.TrackId == trackId))
             {
                 playlist.Tracks.Add(new TrackPlaylist { PlaylistId = playlistId, TrackId = trackId });
-                if (playlist.Image == null)
-                {
-                    playlist.Image = track.Image;
-                }
                 await _dbContext.SaveChangesAsync();
             }
         }

@@ -9,5 +9,6 @@
         public string Source { get; set; }
         public string Album { get; set; }
         public int Favorite { get; set; }
+        public string Lyric { get; set; }
     }
 }

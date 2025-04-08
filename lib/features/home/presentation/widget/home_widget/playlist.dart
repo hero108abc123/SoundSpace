@@ -16,13 +16,14 @@ class TrackItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         GestureDetector(
           onTap: () {},
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Stack(children: [
-              Image.asset(
+              Image.network(
                 track.image,
                 fit: BoxFit.cover,
                 width: 150,

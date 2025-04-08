@@ -8,9 +8,8 @@ import 'package:soundspace/features/home/data/models/track_model.dart';
 
 abstract interface class HomeRemoteDataSource {
   Future<List<TrackModel>?> loadData();
-  Future<List<TrackModel>?> getTracksFromUnfollowings();
-  Future<List<PlaylistModel>?> getPlaylistsFromUnfollowings();
-  Future<List<ArtistModel>?> getUnfollowedArtists();
+  Future<List<PlaylistModel>?> getPlaylistsFromFollowings(); // New method
+  Future<List<ArtistModel>?> getFollowedArtists(); // New method
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
@@ -42,34 +41,11 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   }
 
   @override
-  Future<List<TrackModel>?> getTracksFromUnfollowings() async {
+  Future<List<PlaylistModel>?> getPlaylistsFromFollowings() async {
     try {
       var token = await storage.read(key: 'token');
       Response response = await _dio.get(
-        "${Endpoints.track}/get-track-from-nonfollowing",
-        options: Options(headers: {
-          "accept": "application/json; charset=utf-8",
-          'Authorization': 'Bearer $token',
-        }),
-      );
-
-      if (response.statusCode == 200) {
-        List<dynamic> trackList = response.data as List<dynamic>;
-        return trackList.map((track) => TrackModel.fromJson(track)).toList();
-      } else {
-        return null;
-      }
-    } catch (e) {
-      throw Exception("Failed to load tracks: ${e.toString()}");
-    }
-  }
-
-  @override
-  Future<List<PlaylistModel>?> getPlaylistsFromUnfollowings() async {
-    try {
-      var token = await storage.read(key: 'token');
-      Response response = await _dio.get(
-        "${Endpoints.playlist}/get-playlist-from-unfollowing",
+        "${Endpoints.playlist}/get-playlist-from-following",
         options: Options(headers: {
           "accept": "application/json; charset=utf-8",
           'Authorization': 'Bearer $token',
@@ -85,16 +61,16 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
         return null;
       }
     } catch (e) {
-      throw Exception("Failed to load playlists: ${e.toString()}");
+      throw Exception("Failed to load followed playlists: ${e.toString()}");
     }
   }
 
   @override
-  Future<List<ArtistModel>?> getUnfollowedArtists() async {
+  Future<List<ArtistModel>?> getFollowedArtists() async {
     try {
       var token = await storage.read(key: 'token');
       Response response = await _dio.get(
-        "${Endpoints.follow}/get-unfollowed-artists",
+        "${Endpoints.follow}/get-followed-artists",
         options: Options(headers: {
           "accept": "application/json; charset=utf-8",
           'Authorization': 'Bearer $token',
@@ -110,7 +86,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
         return null;
       }
     } catch (e) {
-      throw Exception("Failed to load unfollowed artists: ${e.toString()}");
+      throw Exception("Failed to load followed artists: ${e.toString()}");
     }
   }
 }

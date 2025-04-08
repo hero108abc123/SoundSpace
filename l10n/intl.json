@@ -1,0 +1,34 @@
+{
+    "en":{
+    "settings": "Settings",
+    "language": "Language",
+    "night_mode": "Night Mode",
+    "log_out": "Log Out",
+    "select_language": "Select Language",
+    "language_changed": "Do you want to change the language?",
+    "you_have_selected": "You have selected:",
+    "log_out_question": "Log Out?",
+    "log_out_confirmation": "Are you sure you want to sign out?",
+    "privacy_policy": "Privacy Policy - Terms of Service",
+    "version": "Version: Beta 0.1",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "yes": "Yes"},
+
+    "vi": {
+        "settings": "Cài đặt",
+        "language": "Ngôn ngữ",
+        "night_mode": "Chế độ ban đêm",
+        "log_out": "Đăng xuất",
+        "select_language": "Chọn ngôn ngữ",
+        "language_changed": "Bạn muốn thay đổi ngôn ngữ?",
+        "you_have_selected": "Bạn đã chọn: ",
+        "log_out_question": "Đăng xuất?",
+        "log_out_confirmation": "Bạn có chắc chắn muốn đăng xuất không?",
+        "privacy_policy": "Chính sách bảo mật - Điều khoản dịch vụ",
+        "version": "Phiên bản: Beta 0.1",
+        "cancel": "Hủy",
+        "ok": "Đồng ý",
+        "yes": "Có"
+    }
+}

@@ -12,6 +12,7 @@ class TrackModel extends Track {
     required super.source,
     required super.image,
     required super.favorite,
+    required super.lyric,
   });
 
   factory TrackModel.fromJson(Map<String, dynamic> json) {

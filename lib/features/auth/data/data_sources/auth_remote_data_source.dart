@@ -141,11 +141,18 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       Response response = await _dio.post(
         "${Endpoints.user}/create",
-        data: {
+        options: Options(headers: {
+          "accept": "multipart/form-data; charset=utf-8",
+        }),
+        data: FormData.fromMap({
           "displayName": displayName,
           "age": age,
           "gender": gender,
-        },
+          "image": await MultipartFile.fromFile(
+            'assets/images/default_avatar.jpg', // Replace with the actual image path
+            filename: 'default_avatar.jpg', // Replace with the desired filename
+          ),
+        }),
       );
       if (response.statusCode == 200) {
         return "Create profile success";

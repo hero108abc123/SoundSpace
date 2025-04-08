@@ -4,6 +4,9 @@ import 'package:soundspace/features/auth/presentation/screens/email_screen.dart'
 import '../widgets/auth_widgets.dart';
 
 class LoginScreen extends StatelessWidget {
+  static route() => MaterialPageRoute(
+        builder: (context) => const LoginScreen(),
+      );
   const LoginScreen({
     super.key,
   });

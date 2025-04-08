@@ -12,5 +12,8 @@ namespace SoundSpace.Dtos.Product.Playlist
             get => _title;
             set => _title = value?.Trim();
         }
+
+        [Required]
+        public int TrackId { get; set; }
     }
 }

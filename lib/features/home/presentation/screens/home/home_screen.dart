@@ -9,11 +9,13 @@ import 'package:soundspace/config/theme/app_pallete.dart';
 import 'package:soundspace/core/common/entities/user_profile.dart';
 import 'package:soundspace/core/common/widgets/loader.dart';
 import 'package:soundspace/core/common/widgets/show_snackber.dart';
+import 'package:soundspace/features/home/domain/entitites/artist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
 import 'package:soundspace/features/home/domain/entitites/playlist.dart';
-import 'package:soundspace/features/home/presentation/bloc/home_bloc.dart';
+import 'package:soundspace/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:soundspace/features/home/presentation/screens/home/playing_screen.dart';
 import 'package:soundspace/features/home/presentation/widget/home_widget/favorite_artist.dart';
+import 'package:soundspace/features/home/presentation/widget/home_widget/featured_album_widget.dart';
 import 'package:soundspace/features/home/presentation/widget/home_widget/navbar.dart';
 import 'package:soundspace/features/home/presentation/widget/home_widget/playlist.dart';
 import 'package:soundspace/features/home/presentation/widget/home_widget/song_list.dart';
@@ -55,12 +57,16 @@ class HomeTabPage extends StatefulWidget {
 
 class _HomeTabPageState extends State<HomeTabPage> {
   final List<Track> tracks = [];
-  StreamController<List<Track>> trackStream = StreamController();
+  final List<Playlist> playlists = [];
+  final List<Artist> artists = [];
+  StreamController<List<Track>> trackStream = StreamController.broadcast();
 
   @override
   void initState() {
     super.initState();
     context.read<HomeBloc>().add(HomeTrackLoadData());
+    context.read<HomeBloc>().add(HomePlaylistsLoadData());
+    context.read<HomeBloc>().add(HomeArtistsLoadData());
     observeData();
     Future.delayed(Duration.zero, () {
       trackStream.add(tracks);
@@ -87,6 +93,10 @@ class _HomeTabPageState extends State<HomeTabPage> {
         listener: (context, state) {
           if (state is TrackFailure) {
             showSnackBar(context, state.error);
+          } else if (state is PlaylistsFailure) {
+            showSnackBar(context, state.error);
+          } else if (state is ArtistsFailure) {
+            showSnackBar(context, state.error);
           }
         },
         builder: (context, state) {
@@ -94,20 +104,26 @@ class _HomeTabPageState extends State<HomeTabPage> {
             return const Loader();
           }
           if (state is TrackSuccess) {
-            final newTracks = state.tracks!
-                .where(
-                    (track) => !tracks.any((t) => t.trackId == track.trackId))
-                .toList();
-            if (newTracks.isNotEmpty) {
-              trackStream.add(newTracks);
-            }
-
-            return HomeContent(
-              tracks: tracks,
-              parent: this,
-            );
+            tracks.clear();
+            tracks.addAll(state.tracks!.where(
+                (track) => !tracks.any((t) => t.trackId == track.trackId)));
+            trackStream.add(tracks);
           }
-          return const SizedBox();
+          if (state is PlaylistsSuccess) {
+            playlists.clear();
+            playlists.addAll(state.playlists as Iterable<Playlist>);
+          }
+          if (state is ArtistsSuccess) {
+            artists.clear();
+            artists.addAll(state.artists as Iterable<Artist>);
+          }
+
+          return HomeContent(
+            tracks: tracks,
+            playlists: playlists,
+            artists: artists,
+            parent: this,
+          );
         },
       ),
     );
@@ -143,9 +159,16 @@ class _HomeTabPageState extends State<HomeTabPage> {
 
 class HomeContent extends StatelessWidget {
   final List<Track> tracks;
+  final List<Playlist> playlists;
+  final List<Artist> artists;
   final _HomeTabPageState parent;
 
-  const HomeContent({super.key, required this.parent, required this.tracks});
+  const HomeContent(
+      {super.key,
+      required this.parent,
+      required this.tracks,
+      required this.playlists,
+      required this.artists});
 
   @override
   Widget build(BuildContext context) {
@@ -154,6 +177,7 @@ class HomeContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildHeader(),
+          FeaturedAlbumWidget(),
           _buildFavoriteArtistCards(),
           _buildPlaylistSection(parent),
           _buildSong(parent)
@@ -163,77 +187,18 @@ class HomeContent extends StatelessWidget {
   }
 
   Widget _buildHeader() {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Text(
-            'SoundScape',
-            style: TextStyle(
-              fontFamily: 'Orbitron',
-              color: Colors.white,
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-            ),
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+        child: Text(
+          'SoundScape',
+          style: TextStyle(
+            fontFamily: 'Orbitron',
+            color: Colors.white,
+            fontSize: 22,
+            fontWeight: FontWeight.w700,
           ),
-          Stack(
-            alignment: Alignment.bottomRight,
-            children: [
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(20.0),
-                decoration: BoxDecoration(
-                  color: const Color.fromRGBO(37, 168, 205, 1),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'New Album',
-                      style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      'Happier Than',
-                      style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                    const SizedBox(height: 1),
-                    Text(
-                      'Ever',
-                      style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      'Billie Eilish',
-                      style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                child: Image.asset(
-                  'assets/images/billie-eilish-Home.png',
-                  width: 316,
-                  height: 184,
-                ),
-              ),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -244,24 +209,37 @@ class HomeContent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'My Favorite Artists',
-            style: GoogleFonts.poppins(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'My Favorite Artists',
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              Text(
+                'See More',
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w300,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 10),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: tracks.map((track) {
+              children: artists.map((artist) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: FavoriteArtist(
-                    image: track.image,
-                    artist: track.artist,
+                    image: artist.image,
+                    artist: artist.displayName,
                   ),
                 );
               }).toList(),
@@ -273,34 +251,9 @@ class HomeContent extends StatelessWidget {
   }
 
   Widget _buildPlaylistSection(_HomeTabPageState parent) {
-    final List<Playlist> playlists = [
-      Playlist(
-        id: 1,
-        title: 'Chill Vibes',
-        image: 'assets/images/Billielish3.jpg',
-        follower: 1200,
-        createBy: 'Nguyenbeo',
-        trackCount: 10,
-      ),
-      Playlist(
-        id: 2,
-        title: 'Workout Mix',
-        image: 'assets/images/Lychee.jpg',
-        follower: 800,
-        createBy: 'Nguyetbeo',
-        trackCount: 10,
-      ),
-      Playlist(
-        id: 3,
-        title: 'Relaxing Beats',
-        image: 'assets/images/Billielish3.jpg',
-        follower: 500,
-        createBy: 'Nguyetbeo',
-        trackCount: 10,
-      ),
-    ];
-
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
@@ -328,18 +281,21 @@ class HomeContent extends StatelessWidget {
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: playlists.map((playlist) {
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                child: TrackItem(
-                  track: playlist,
-                  onNavigate: (Playlist playlist) {
-                    parent.navigate(playlist as Track);
-                  },
-                ),
-              );
-            }).toList(),
+          child: Container(
+            alignment: Alignment.centerLeft,
+            child: Row(
+              children: playlists.map((playlist) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: TrackItem(
+                    track: playlist,
+                    onNavigate: (Playlist playlist) {
+                      parent.navigate(playlist as Track);
+                    },
+                  ),
+                );
+              }).toList(),
+            ),
           ),
         ),
       ],
@@ -376,7 +332,7 @@ class HomeContent extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Column(
-            children: tracks.map((track) {
+            children: tracks.take(5).map((track) {
               return Songlist(
                 track: track,
                 onNavigate: (Track selectedTrack) {

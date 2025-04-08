@@ -1,36 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:soundspace/features/auth/presentation/screens/login_home_screen.dart';
+import 'package:soundspace/core/common/widgets/show_snackber.dart';
+import 'package:soundspace/features/auth/presentation/screens/auth_screens.dart';
+import 'package:soundspace/features/home/presentation/bloc/home/home_bloc.dart';
+import 'package:soundspace/features/home/presentation/bloc/user/user_bloc.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/setting_widget/language_option.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/setting_widget/setting_item.dart';
 import '../../../../../config/theme/app_pallete.dart';
+import 'package:provider/provider.dart';
+import '../../provider/language_provider.dart';
 
-class SettingTab extends StatefulWidget {
+class SettingTab extends StatelessWidget {
   const SettingTab({super.key});
 
   @override
-  State<SettingTab> createState() => _SettingTabState();
-}
-
-class _SettingTabState extends State<SettingTab> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              AppPallete.gradient1,
-              AppPallete.gradient2,
-              AppPallete.gradient4,
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+    return BlocListener<UserBloc, UserState>(
+      listener: (context, state) {
+        if (state is UserLogoutSuccess) {
+          Navigator.of(context).pushAndRemoveUntil(
+            LoginScreen.route(),
+            (route) => false, // Clear the navigation stack
+          );
+        } else if (state is UserLogoutFailure) {
+          showSnackBar(context, state.message);
+        }
+      },
+      child: Scaffold(
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                AppPallete.gradient1,
+                AppPallete.gradient2,
+                AppPallete.gradient4,
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
           ),
+          child: const Setting(),
         ),
-        child: const Setting(),
       ),
     );
   }
@@ -41,6 +54,8 @@ class Setting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -54,15 +69,15 @@ class Setting extends StatelessWidget {
                 const SizedBox(height: 30),
                 GestureDetector(
                   onTap: () {
-                    _showLanguageDialog(context);
+                    _showLanguageDialog(context, languageProvider);
                   },
-                  child: const SettingItem(
-                    title: 'Language',
+                  child: SettingItem(
+                    title: languageProvider.translate('language'),
                     iconPath: 'assets/images/icon/user_setting/language.png',
                   ),
                 ),
                 SettingItem(
-                  title: 'Night Mode',
+                  title: languageProvider.translate('night_mode'),
                   iconPath: 'assets/images/icon/user_setting/nightmode.png',
                   trailing: Transform.scale(
                     scale: 0.8,
@@ -76,7 +91,7 @@ class Setting extends StatelessWidget {
             ),
           ),
         ),
-        _logOut(context),
+        _logOut(context, languageProvider),
       ],
     );
   }
@@ -98,7 +113,7 @@ class Setting extends StatelessWidget {
         Expanded(
           child: Center(
             child: Text(
-              'Settings',
+              Provider.of<LanguageProvider>(context).translate('settings'),
               style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -111,7 +126,7 @@ class Setting extends StatelessWidget {
     );
   }
 
-  Widget _logOut(BuildContext context) {
+  Widget _logOut(BuildContext context, LanguageProvider languageProvider) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Center(
@@ -128,10 +143,10 @@ class Setting extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                _showLogoutDialog(context);
+                _showLogoutDialog(context, languageProvider);
               },
               child: Text(
-                'Log Out',
+                languageProvider.translate('log_out'),
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -141,7 +156,7 @@ class Setting extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              'Privacy Policy - Terms of Service',
+              languageProvider.translate('privacy_policy'),
               style: GoogleFonts.poppins(
                 fontSize: 12,
                 fontWeight: FontWeight.w300,
@@ -150,7 +165,7 @@ class Setting extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             Text(
-              'Version : Beta 0.1',
+              languageProvider.translate('version'),
               style: GoogleFonts.poppins(
                 fontSize: 12,
                 fontWeight: FontWeight.w300,
@@ -163,15 +178,14 @@ class Setting extends StatelessWidget {
     );
   }
 
-  void _showLanguageDialog(BuildContext context) {
-    String? selectedLanguage = 'en'; // Default selection
-
+  void _showLanguageDialog(
+      BuildContext context, LanguageProvider languageProvider) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            'Select Language',
+            languageProvider.translate('select_language'),
             style: GoogleFonts.poppins(
               fontSize: 16,
               fontWeight: FontWeight.w600,
@@ -186,22 +200,22 @@ class Setting extends StatelessWidget {
                   language: 'English',
                   flagImagePath: 'assets/images/icon/user_setting/england.png',
                   value: 'en',
-                  groupValue: selectedLanguage,
+                  groupValue: languageProvider.selectedLanguage,
                   onChanged: (value) {
-                    selectedLanguage = value;
+                    languageProvider.changeLanguage(value!);
                     Navigator.of(context).pop();
-                    _showConfirmationDialog(context, selectedLanguage);
+                    _showConfirmationDialog(context, value);
                   },
                 ),
                 LanguageOption(
                   language: 'Vietnamese',
                   flagImagePath: 'assets/images/icon/user_setting/vietnam.png',
                   value: 'vi',
-                  groupValue: selectedLanguage,
+                  groupValue: languageProvider.selectedLanguage,
                   onChanged: (value) {
-                    selectedLanguage = value;
+                    languageProvider.changeLanguage(value!);
                     Navigator.of(context).pop();
-                    _showConfirmationDialog(context, selectedLanguage);
+                    _showConfirmationDialog(context, value);
                   },
                 ),
               ],
@@ -213,7 +227,7 @@ class Setting extends StatelessWidget {
                 Navigator.of(context).pop();
               },
               child: Text(
-                'Cancel',
+                languageProvider.translate('cancel'),
                 style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.w300,
@@ -227,12 +241,14 @@ class Setting extends StatelessWidget {
   }
 
   void _showConfirmationDialog(BuildContext context, String? language) {
+    final languageProvider =
+        Provider.of<LanguageProvider>(context, listen: false);
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            'Language Changed',
+            languageProvider.translate('language_changed'),
             style: GoogleFonts.poppins(
               fontSize: 16,
               fontWeight: FontWeight.w300,
@@ -240,7 +256,7 @@ class Setting extends StatelessWidget {
             ),
           ),
           content: Text(
-            'You have selected: $language',
+            '${languageProvider.translate('you_have_selected')} $language',
             style: GoogleFonts.poppins(
               fontSize: 16,
               fontWeight: FontWeight.w300,
@@ -253,7 +269,7 @@ class Setting extends StatelessWidget {
                 Navigator.of(context).pop();
               },
               child: Text(
-                'OK',
+                languageProvider.translate('ok'),
                 style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.w300,
@@ -266,58 +282,67 @@ class Setting extends StatelessWidget {
     );
   }
 
-  void _showLogoutDialog(BuildContext context) {
+  void _showLogoutDialog(
+      BuildContext context, LanguageProvider languageProvider) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Log Out?',
-            style: GoogleFonts.poppins(
-              fontSize: 16,
-              fontWeight: FontWeight.w300,
-              color: const Color.fromARGB(255, 0, 0, 0),
-            ),
-          ),
-          content: Text(
-            'Are you sure you want to sign out?',
-            style: GoogleFonts.poppins(
-              fontSize: 16,
-              fontWeight: FontWeight.w300,
-              color: const Color.fromARGB(255, 0, 0, 0),
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text(
-                'Cancel',
+        return BlocBuilder<UserBloc, UserState>(
+          builder: (context, state) {
+            if (state is UserLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return AlertDialog(
+              title: Text(
+                languageProvider.translate('log_out'),
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w300,
-                  color: const Color.fromARGB(255, 21, 3, 39),
+                  color: const Color.fromARGB(255, 0, 0, 0),
                 ),
               ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: Text(
-                'Yes',
+              content: Text(
+                languageProvider.translate('log_out_confirmation'),
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w300,
-                  color: const Color.fromARGB(255, 28, 6, 82),
+                  color: const Color.fromARGB(255, 0, 0, 0),
                 ),
               ),
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
-                );
-              },
-            ),
-          ],
+              actions: <Widget>[
+                TextButton(
+                  child: Text(
+                    languageProvider.translate('cancel'),
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w300,
+                      color: const Color.fromARGB(255, 21, 3, 39),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Dismiss the dialog
+                  },
+                ),
+                TextButton(
+                  child: Text(
+                    languageProvider.translate('yes'),
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w300,
+                      color: const Color.fromARGB(255, 28, 6, 82),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    context.read<UserBloc>().add(UserLogoutRequested(
+                          homeBloc: context.read<HomeBloc>(),
+                        ));
+                    // Dismiss the dialog
+                  },
+                ),
+              ],
+            );
+          },
         );
       },
     );

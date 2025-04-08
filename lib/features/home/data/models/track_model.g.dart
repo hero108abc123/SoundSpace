@@ -14,6 +14,7 @@ TrackModel _$TrackModelFromJson(Map<String, dynamic> json) => TrackModel(
       source: json['source'] as String,
       image: json['image'] as String,
       favorite: (json['favorite'] as num).toInt(),
+      lyric: json['lyric'] as String,
     );
 
 Map<String, dynamic> _$TrackModelToJson(TrackModel instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$TrackModelToJson(TrackModel instance) =>
       'source': instance.source,
       'album': instance.album,
       'favorite': instance.favorite,
+      'lyric': instance.lyric,
     };

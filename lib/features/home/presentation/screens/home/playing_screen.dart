@@ -1,8 +1,10 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
+import 'package:soundspace/features/home/presentation/screens/home/lyric_screen.dart';
 import '../../../domain/entitites/track.dart';
 import '../../widget/home_widget/audio_player_manager.dart';
 
@@ -46,6 +48,10 @@ class _NowPlayingPageState extends State<NowPlayingPage>
   late int _selectedItemIndex;
   late Track _track;
   late double _currentAnimationPosition;
+  late Set<int>
+      _favoriteTrackIds; // t víeeets cái favoriteTrackId đây nhé, sai thì sửa
+  bool _isRepeating = false;
+  bool _isShuffling = false;
 
   @override
   void initState() {
@@ -59,9 +65,21 @@ class _NowPlayingPageState extends State<NowPlayingPage>
     _audioPlayerManager = AudioPlayerManager(trackUrl: _track.source);
     _audioPlayerManager.init();
     _selectedItemIndex = widget.tracks.indexOf(widget.playingTrack);
+    _favoriteTrackIds = {}; //đây nhé
+    _isRepeating = _audioPlayerManager.player.loopMode == LoopMode.one;
+    _isShuffling = _audioPlayerManager.player.shuffleModeEnabled;
+    _audioPlayerManager.player.positionStream.listen((position) async {
+      final duration = _audioPlayerManager.player.duration;
+
+      if (duration != null && position >= duration) {
+        if (_isRepeating) {
+          _audioPlayerManager.player.seek(Duration.zero);
+          _audioPlayerManager.player.play();
+        }
+      }
+    });
   }
 
-  @override
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -82,7 +100,7 @@ class _NowPlayingPageState extends State<NowPlayingPage>
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -101,7 +119,7 @@ class _NowPlayingPageState extends State<NowPlayingPage>
               child: SingleChildScrollView(
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -114,8 +132,16 @@ class _NowPlayingPageState extends State<NowPlayingPage>
                           child: FadeInImage.assetNetwork(
                             placeholder: 'assets/images/Goat.jpg',
                             image: _track.image,
+                            width: 260,
+                            height: 260,
+                            fit: BoxFit.cover,
                             imageErrorBuilder: (context, error, stackTrace) {
-                              return Image.asset('assets/images/Goat.jpg');
+                              return Image.asset(
+                                'assets/images/Goat.jpg',
+                                width: 260,
+                                height: 260,
+                                fit: BoxFit.cover,
+                              );
                             },
                           ),
                         ),
@@ -165,34 +191,41 @@ class _NowPlayingPageState extends State<NowPlayingPage>
               children: [
                 Text(
                   _track.title,
-                  style: const TextStyle(
-                    fontFamily: 'Orbitron',
+                  style: GoogleFonts.poppins(
                     fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
                     decoration: TextDecoration.none,
                   ),
                 ),
                 const SizedBox(height: 10),
                 Text(
                   _track.artist,
-                  style: const TextStyle(
-                    fontFamily: 'Orbitron',
+                  style: GoogleFonts.poppins(
+                    fontSize: 16,
                     fontWeight: FontWeight.w500,
-                    fontSize: 15,
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    color: Colors.white,
                     decoration: TextDecoration.none,
                   ),
                 ),
               ],
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  if (_favoriteTrackIds.contains(_track.trackId)) {
+                    _favoriteTrackIds.remove(_track.trackId);
+                  } else {
+                    _favoriteTrackIds.add(_track.trackId);
+                  }
+                });
+              },
               icon: Image.asset(
-                'assets/images/icon/navbar/heart.png',
+                _favoriteTrackIds.contains(_track.trackId)
+                    ? 'assets/images/icon/home/red_heart.png'
+                    : 'assets/images/icon/home/white_heart.png',
                 height: 26,
                 width: 26,
-                color: const Color.fromARGB(255, 255, 255, 255),
               ),
             ),
           ],
@@ -206,10 +239,10 @@ class _NowPlayingPageState extends State<NowPlayingPage>
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const MediaButtonControl(
-            function: null,
+          MediaButtonControl(
+            function: _setRepeatTrack,
             imagePath: 'assets/images/icon/playlist/icon Repeat.png',
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: _isRepeating ? AppPallete.gradient2 : Colors.white,
             size: 24,
           ),
           MediaButtonControl(
@@ -225,10 +258,10 @@ class _NowPlayingPageState extends State<NowPlayingPage>
             color: const Color.fromARGB(255, 255, 255, 255),
             size: 36,
           ),
-          const MediaButtonControl(
-            function: null,
+          MediaButtonControl(
+            function: _setShuffleTrack,
             imagePath: 'assets/images/icon/playlist/icon Shuffle.png',
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: _isShuffling ? AppPallete.gradient2 : Colors.white,
             size: 24,
           ),
         ],
@@ -296,7 +329,17 @@ class _NowPlayingPageState extends State<NowPlayingPage>
     return Column(
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LyricScreen(
+                  track: _track,
+                  audioPlayerManager: _audioPlayerManager,
+                ),
+              ),
+            );
+          },
           icon: Image.asset(
             'assets/images/icon/playlist/icon_push.png',
             width: 39,
@@ -304,13 +347,12 @@ class _NowPlayingPageState extends State<NowPlayingPage>
             color: const Color.fromARGB(255, 255, 255, 255),
           ),
         ),
-        const Text(
+        Text(
           'Lyrics',
-          style: TextStyle(
-            fontFamily: 'Orbitron',
-            fontSize: 15,
+          style: GoogleFonts.poppins(
+            fontSize: 16,
             fontWeight: FontWeight.w400,
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: Colors.white,
             decoration: TextDecoration.none,
           ),
         ),
@@ -337,24 +379,93 @@ class _NowPlayingPageState extends State<NowPlayingPage>
   }
 
   void _setNextTrack() {
-    if (_selectedItemIndex < widget.tracks.length - 1) {
-      setState(() {
+    setState(() {
+      if (_isShuffling) {
+        _selectedItemIndex = widget.tracks.length *
+            (DateTime.now().millisecondsSinceEpoch % 100) ~/
+            100;
+      } else if (_selectedItemIndex < widget.tracks.length - 1) {
         _selectedItemIndex++;
-        _track = widget.tracks[_selectedItemIndex];
-        _audioPlayerManager.updateTrackUrl(_track.source);
-      });
-    }
+      } else if (_isRepeating) {
+        _selectedItemIndex =
+            0; // Quay lại bài đầu tiên nếu đang lặp lại danh sách
+      }
+
+      _track = widget.tracks[_selectedItemIndex];
+      _audioPlayerManager.updateTrackUrl(_track.source);
+    });
   }
 
   void _setPrevTrack() {
-    if (_selectedItemIndex > 0) {
-      setState(() {
+    setState(() {
+      if (_selectedItemIndex > 0) {
         _selectedItemIndex--;
-        _track = widget.tracks[_selectedItemIndex];
-        _audioPlayerManager.updateTrackUrl(_track.source);
+      } else if (_isRepeating) {
+        _selectedItemIndex = widget.tracks.length -
+            1; // Quay lại bài cuối nếu đang lặp lại danh sách
+      }
+
+      _track = widget.tracks[_selectedItemIndex];
+      _audioPlayerManager.updateTrackUrl(_track.source);
+    });
+  }
+
+  void _setRepeatTrack() {
+    if (_isShuffling) return; 
+
+    setState(() {
+      _isRepeating = !_isRepeating;
+      _audioPlayerManager.player
+          .setLoopMode(_isRepeating ? LoopMode.one : LoopMode.off);
+
+      if (_isRepeating) {
+        _isShuffling = false;
+        _audioPlayerManager.player.setShuffleModeEnabled(false);
+      }
+    });
+  }
+
+void _setShuffleTrack() {
+  if (_isRepeating) return;
+
+  setState(() {
+    _isShuffling = !_isShuffling;
+    _audioPlayerManager.player.setShuffleModeEnabled(_isShuffling);
+
+    if (_isShuffling) {
+      _isRepeating = false;
+      _audioPlayerManager.player.setLoopMode(LoopMode.off);
+      List<Track> shuffledTracks = List.from(widget.tracks)..shuffle();
+
+      Future.microtask(() {
+        _audioPlayerManager.player.setAudioSource(
+          ConcatenatingAudioSource(
+            children: shuffledTracks.map((track) => AudioSource.uri(Uri.parse(track.source))).toList(),
+          ),
+        ).then((_) {
+          _selectedItemIndex = 0;
+          _track = shuffledTracks[_selectedItemIndex];
+          _audioPlayerManager.updateTrackUrl(_track.source);
+          _audioPlayerManager.player.play();
+        }).catchError((error) {
+          debugPrint("Lỗi khi setAudioSource: $error");
+        });
       });
     }
-  }
+  });
+}
+
+
+//đay nhé
+  // void _toggleFavorite() {
+  //   setState(() {
+  //     if (_favoriteTrackIds.contains(_track.trackId)) {
+  //       _favoriteTrackIds.remove(_track.trackId);
+  //     } else {
+  //       _favoriteTrackIds.add(_track.trackId);
+  //     }
+  //   });
+  // }
 }
 
 class MediaButtonControl extends StatelessWidget {

@@ -19,7 +19,7 @@ namespace SoundSpace.Dbcontexts
         public DbSet<PlaylistFollow> PlaylistFollows { get; set; }
         public DbSet<TrackPlaylist> TrackPlaylists { get; set; }
         public DbSet<FavoriteTrack> FavoriteTracks { get; set; }
-
+        public DbSet<RevokedToken> RevokedTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -102,6 +102,12 @@ namespace SoundSpace.Dbcontexts
                 .WithMany(t => t.Favorite)
                 .HasForeignKey(ft => ft.TrackId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<RevokedToken>()
+                .HasOne(rt => rt.Account)
+                .WithMany()  // Nếu Account có danh sách RevokedTokens thì dùng `.WithMany(a => a.RevokedTokens)`
+                .HasForeignKey(rt => rt.AccountId)
+                .OnDelete(DeleteBehavior.Cascade); // Khi xóa Account, xóa luôn token bị thu hồi
 
         }
     }

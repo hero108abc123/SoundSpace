@@ -10,6 +10,7 @@ using SoundSpace.Services.Implements.Auth;
 using SoundSpace.Services.Implements.Product;
 using SoundSpace.Services.Interfaces.Auth;
 using SoundSpace.Services.Interfaces.Product;
+using SoundSpace.Utils;
 
 
 
@@ -26,10 +27,11 @@ namespace SoundSpace
             // Add services to the container.
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));        
+            }, ServiceLifetime.Scoped);
 
-           
+            builder.Services.AddScoped<ApplicationDbContext>();
+
             builder
                 .Services.AddAuthentication(options =>
                 {
@@ -129,6 +131,9 @@ namespace SoundSpace
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseMiddleware<TokenRevocationMiddleware>();
+
 
             app.MapControllers();
 

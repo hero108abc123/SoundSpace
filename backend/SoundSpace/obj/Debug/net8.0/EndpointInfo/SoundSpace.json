@@ -226,6 +226,18 @@
         }
       }
     },
+    "/api/Follow/get-followers": {
+      "get": {
+        "tags": [
+          "Follow"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Playlist/create": {
       "post": {
         "tags": [
@@ -236,7 +248,8 @@
             "multipart/form-data": {
               "schema": {
                 "required": [
-                  "Title"
+                  "Title",
+                  "TrackId"
                 ],
                 "type": "object",
                 "properties": {
@@ -244,11 +257,18 @@
                     "maxLength": 30,
                     "minLength": 3,
                     "type": "string"
+                  },
+                  "TrackId": {
+                    "type": "integer",
+                    "format": "int32"
                   }
                 }
               },
               "encoding": {
                 "Title": {
+                  "style": "form"
+                },
+                "TrackId": {
                   "style": "form"
                 }
               }
@@ -527,6 +547,7 @@
                 "required": [
                   "Album",
                   "Image",
+                  "Lyric",
                   "Source",
                   "Title"
                 ],
@@ -549,6 +570,9 @@
                     "maxLength": 30,
                     "minLength": 3,
                     "type": "string"
+                  },
+                  "Lyric": {
+                    "type": "string"
                   }
                 }
               },
@@ -563,6 +587,9 @@
                   "style": "form"
                 },
                 "Album": {
+                  "style": "form"
+                },
+                "Lyric": {
                   "style": "form"
                 }
               }
@@ -643,6 +670,7 @@
               "schema": {
                 "required": [
                   "Image",
+                  "Lyric",
                   "Source"
                 ],
                 "type": "object",
@@ -668,6 +696,9 @@
                     "maxLength": 30,
                     "minLength": 3,
                     "type": "string"
+                  },
+                  "Lyric": {
+                    "type": "string"
                   }
                 }
               },
@@ -685,6 +716,9 @@
                   "style": "form"
                 },
                 "Album": {
+                  "style": "form"
+                },
+                "Lyric": {
                   "style": "form"
                 }
               }
@@ -874,19 +908,48 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
+                "required": [
+                  "Age",
+                  "DisplayName",
+                  "Gender"
+                ],
+                "type": "object",
+                "properties": {
+                  "DisplayName": {
+                    "maxLength": 30,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "Age": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Gender": {
+                    "maxLength": 30,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "Image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "DisplayName": {
+                  "style": "form"
+                },
+                "Age": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                },
+                "Image": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -998,31 +1061,6 @@
             "type": "string"
           },
           "password": {
-            "maxLength": 30,
-            "minLength": 3,
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateUserDto": {
-        "required": [
-          "age",
-          "displayName",
-          "gender"
-        ],
-        "type": "object",
-        "properties": {
-          "displayName": {
-            "maxLength": 30,
-            "minLength": 3,
-            "type": "string"
-          },
-          "age": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "gender": {
             "maxLength": 30,
             "minLength": 3,
             "type": "string"

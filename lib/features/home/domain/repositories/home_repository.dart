@@ -7,7 +7,8 @@ import '../entitites/track.dart';
 
 abstract interface class HomeRepository {
   Future<Either<Failure, List<Track>?>> loadData();
-  Future<Either<Failure, List<Track>?>> getTracksFromUnfollowings();
-  Future<Either<Failure, List<Playlist>?>> getPlaylistsFromUnfollowings();
-  Future<Either<Failure, List<Artist>?>> getUnfollowedArtists();
+  Future<Either<Failure, List<Playlist>?>>
+      getPlaylistsFromFollowings(); // New method
+  Future<Either<Failure, List<Artist>?>> getFollowedArtists();
+// New method
 }

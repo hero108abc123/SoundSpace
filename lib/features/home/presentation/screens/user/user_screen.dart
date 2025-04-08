@@ -4,14 +4,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:soundspace/core/common/entities/user_profile.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
 import 'package:soundspace/features/home/presentation/screens/user/edit_profile_page.dart';
+import 'package:soundspace/features/home/presentation/screens/user/followers_page.dart';
+import 'package:soundspace/features/home/presentation/screens/user/following_page.dart';
 import 'package:soundspace/features/home/presentation/screens/user/setting_screen.dart';
+import 'package:soundspace/features/home/presentation/screens/user/upload_track_page.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/playlist_item.dart';
-import 'package:soundspace/features/home/presentation/widget/user_widget/songs_item.dart';
 import '../../../../../config/theme/app_pallete.dart';
 
 class UserScreen extends StatefulWidget {
   final List<Track> tracks;
   final Profile user;
+
   const UserScreen({super.key, required this.tracks, required this.user});
 
   @override
@@ -19,6 +22,20 @@ class UserScreen extends StatefulWidget {
 }
 
 class _UserScreenState extends State<UserScreen> {
+  String? avatarUrl;
+
+  @override
+  void initState() {
+    super.initState();
+    avatarUrl = widget.user.image;
+  }
+
+  void _updateAvatar(String newAvatarPath) {
+    setState(() {
+      avatarUrl = newAvatarPath;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,8 +53,10 @@ class _UserScreenState extends State<UserScreen> {
         ),
       ),
       child: UserAccount(
-        tracks: const [],
+        tracks: widget.tracks,
         user: widget.user,
+        avatarUrl: avatarUrl,
+        onAvatarChanged: _updateAvatar,
       ),
     );
   }
@@ -46,8 +65,16 @@ class _UserScreenState extends State<UserScreen> {
 class UserAccount extends StatelessWidget {
   final Profile user;
   final List<Track> tracks;
+  final String? avatarUrl;
+  final ValueChanged<String> onAvatarChanged;
 
-  const UserAccount({super.key, required this.tracks, required this.user});
+  const UserAccount({
+    super.key,
+    required this.tracks,
+    required this.user,
+    required this.avatarUrl,
+    required this.onAvatarChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -109,9 +136,12 @@ class UserAccount extends StatelessWidget {
                   width: 2,
                 ),
               ),
-              child: const CircleAvatar(
+              child: CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('assets/images/Billielish3.jpg'),
+                backgroundImage: avatarUrl != null && avatarUrl!.isNotEmpty
+                    ? NetworkImage(avatarUrl!)
+                    : const AssetImage('assets/images/default_avatar.jpg')
+                        as ImageProvider<Object>, // Default avatar
               ),
             ),
             const SizedBox(height: 10),
@@ -126,7 +156,7 @@ class UserAccount extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
+                backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -149,17 +179,58 @@ class UserAccount extends StatelessWidget {
             Text(
               user.displayName,
               style: GoogleFonts.poppins(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
             ),
             const SizedBox(height: 5),
-            Text(
-              '${user.followersCount} followers • ${user.followingCount} following',
-              style: GoogleFonts.poppins(fontSize: 12, color: Colors.white),
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FollowersPage(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    '${user.followersCount} followers',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: Colors.white,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+                const Text(
+                  ' • ',
+                  style: TextStyle(fontSize: 12, color: Colors.white),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FollowingPage(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    '${user.followingCount} following',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: Colors.white,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
-        ),
+        )
       ],
     );
   }
@@ -194,7 +265,7 @@ class UserAccount extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 4),
-            // Ví dụ về playlist với danh sách bài hát
+            // Example playlist with song list
             PlaylistItem(
               title: '★ . .',
               followers: 8,
@@ -207,7 +278,8 @@ class UserAccount extends StatelessWidget {
                     image: 'assets/images/Lychee.jpg',
                     album: '1',
                     source: '11',
-                    favorite: 0),
+                    favorite: 0,
+                    lyric: 'Lyric 1'),
                 Track(
                     title: 'Track 2',
                     artist: 'Artist 2',
@@ -215,10 +287,11 @@ class UserAccount extends StatelessWidget {
                     image: 'assets/images/Lychee.jpg',
                     album: '1',
                     source: '11',
-                    favorite: 0),
+                    favorite: 0,
+                    lyric: 'Lyric 2'),
               ],
             ),
-            // Thêm các PlaylistItem khác nếu cần
+            // Add more PlaylistItem if needed
           ],
         ),
       ),
@@ -243,7 +316,13 @@ class UserAccount extends StatelessWidget {
                       color: Colors.white),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UploadTrackPage()),
+                    );
+                  },
                   icon: Image.asset(
                     'assets/images/icon/home/icon_add.png',
                     width: 24,
@@ -252,9 +331,6 @@ class UserAccount extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 4),
-            // Hiển thị danh sách bài hát
-            ...tracks.map((track) => SongsItem(track: track)) // Sửa ở đây
           ],
         ),
       ),

@@ -63,6 +63,7 @@ namespace SoundSpace.Services.Implements.Product
                 Image = imagePath,
                 Source = audioPath,
                 Album = input.Album,
+                Lyric = input.Lyric
             });
             await _dbContext.SaveChangesAsync();
         }
@@ -115,6 +116,7 @@ namespace SoundSpace.Services.Implements.Product
                 track.Image = imagePath;
                 track.Source = audioPath;
                 track.Album = input.Album;
+                track.Lyric = input.Lyric;
                 await _dbContext.SaveChangesAsync();
             }
             else
@@ -139,7 +141,8 @@ namespace SoundSpace.Services.Implements.Product
                 Image = UploadFile.GetFileUrl(track.Image, _httpContextAccessor),
                 Source = UploadFile.GetFileUrl(track.Source, _httpContextAccessor),
                 Album = track.Album,
-                Favorite = favoriteCount
+                Favorite = favoriteCount,
+                Lyric = track.Lyric
             };
         }
 
@@ -161,7 +164,8 @@ namespace SoundSpace.Services.Implements.Product
                     Image = UploadFile.GetFileUrl(track.Image, _httpContextAccessor),
                     Source = UploadFile.GetFileUrl(track.Source, _httpContextAccessor),
                     Album = track.Album,
-                    Favorite = favoriteCount
+                    Favorite = favoriteCount,
+                    Lyric = track.Lyric
                 });
             }
 
@@ -220,7 +224,8 @@ namespace SoundSpace.Services.Implements.Product
                     Image = UploadFile.GetFileUrl(track.Image, _httpContextAccessor),
                     Source = UploadFile.GetFileUrl(track.Source, _httpContextAccessor),
                     Album = track.Album,
-                    Favorite = favoriteCount
+                    Favorite = favoriteCount,
+                    Lyric = track.Lyric
                 });
             }
 
@@ -253,7 +258,8 @@ namespace SoundSpace.Services.Implements.Product
                     Image = UploadFile.GetFileUrl(track.Image, _httpContextAccessor),
                     Source = UploadFile.GetFileUrl(track.Source, _httpContextAccessor),
                     Album = track.Album,
-                    Favorite = favoriteCount
+                    Favorite = favoriteCount,
+                    Lyric = track.Lyric
                 });
             }
 
@@ -282,7 +288,8 @@ namespace SoundSpace.Services.Implements.Product
                     Image = UploadFile.GetFileUrl(ft.Track.Image, _httpContextAccessor),
                     Source = UploadFile.GetFileUrl(ft.Track.Source, _httpContextAccessor),
                     Album = ft.Track.Album,
-                    Favorite = favoriteCount
+                    Favorite = favoriteCount,
+                    Lyric = ft.Track.Lyric
                 });
             }
 
@@ -310,7 +317,8 @@ namespace SoundSpace.Services.Implements.Product
                     Image = UploadFile.GetFileUrl(track.Image, _httpContextAccessor),
                     Source = UploadFile.GetFileUrl(track.Source, _httpContextAccessor),
                     Album = track.Album,
-                    Favorite = favoriteCount
+                    Favorite = favoriteCount,
+                    Lyric = track.Lyric
                 });
             }
 
@@ -336,7 +344,8 @@ namespace SoundSpace.Services.Implements.Product
                     Image = UploadFile.GetFileUrl(track.Image, _httpContextAccessor),
                     Source = UploadFile.GetFileUrl(track.Source, _httpContextAccessor),
                     Album = track.Album,
-                    Favorite = favoriteCount
+                    Favorite = favoriteCount,
+                    Lyric = track.Lyric
                 });
             }
 
@@ -372,7 +381,9 @@ namespace SoundSpace.Services.Implements.Product
                     Image = UploadFile.GetFileUrl(track.Image, _httpContextAccessor),
                     Source = UploadFile.GetFileUrl(track.Source, _httpContextAccessor),
                     Album = track.Album,
-                    Favorite = favoriteCount
+                    Favorite = favoriteCount,
+                    Lyric = track.Lyric
+
                 });
             }
 

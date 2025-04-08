@@ -1,7 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,11 +8,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:soundspace/core/common/widgets/loader.dart';
 import 'package:soundspace/core/common/widgets/show_snackber.dart';
 import 'package:soundspace/features/home/domain/entitites/artist.dart';
+import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
-import 'package:soundspace/features/home/presentation/bloc/home_bloc.dart';
+import 'package:soundspace/features/home/presentation/bloc/discovery/discovery_bloc.dart';
 import 'package:soundspace/features/home/presentation/screens/home/playing_screen.dart';
 import 'package:soundspace/features/home/presentation/widget/discovery_widget/followers_top.dart';
 import 'package:soundspace/features/home/presentation/widget/discovery_widget/song_new.dart';
+import 'package:soundspace/features/home/presentation/screens/discovery/user_artist.dart';
 import '../../../../../config/theme/app_pallete.dart';
 
 class DiscoveryScreen extends StatefulWidget {
@@ -26,17 +27,20 @@ class DiscoveryScreen extends StatefulWidget {
 class _DiscoveryScreenState extends State<DiscoveryScreen> {
   final List<Track> tracks = [];
   final List<Artist> users = [];
-  StreamController<List<Track>> trackStream = StreamController();
+  StreamController<List<Track>> trackStream = StreamController.broadcast();
+  late StreamSubscription _trackSubscription;
 
   @override
   void initState() {
     super.initState();
-    context.read<HomeBloc>().add(DiscoveryTrackLoadData());
-    context.read<HomeBloc>().add(DiscoveryArtistLoadData());
+    context.read<DiscoveryBloc>().add(DiscoveryTrackLoadData());
+    context.read<DiscoveryBloc>().add(DiscoveryArtistLoadData());
 
     observeData();
     Future.delayed(Duration.zero, () {
-      trackStream.add(tracks);
+      if (!trackStream.isClosed) {
+        trackStream.add(tracks);
+      }
     });
   }
 
@@ -59,38 +63,35 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
         ),
         child: MultiBlocListener(
           listeners: [
-            BlocListener<HomeBloc, HomeState>(
-              listener: (context, state) {
-                if (state is TrackFailure) {
-                  showSnackBar(context, state.error);
-                } else if (state is ArtistFailure) {
-                  showSnackBar(context, state.error);
-                }
-              },
-            ),
-            BlocListener<HomeBloc, HomeState>(
-              listener: (context, state) {
-                if (state is ArtistSuccess) {
-                  setState(() {
-                    users.clear();
-                    users.addAll(state.artists as Iterable<Artist>);
-                  });
-                }
-              },
-            ),
+           BlocListener<DiscoveryBloc, DiscoveryState>(
+  listener: (context, state) {
+    if (state is DiscoveryTrackFailure) {
+      showSnackBar(context, state.message);
+    } else if (state is DiscoveryArtistFailure) {
+      showSnackBar(context, state.message);
+    } else if (state is DiscoveryArtistSuccess) {
+      setState(() {
+        users.clear();
+        if (state.artists != null) {
+          users.addAll(state.artists!);
+        }
+      });
+    }
+  },
+),
+
           ],
-          child: BlocBuilder<HomeBloc, HomeState>(
+          child: BlocBuilder<DiscoveryBloc, DiscoveryState>(
             builder: (context, state) {
-              if (state is HomeLoading) {
+              if (state is DiscoveryLoading) {
                 return const Loader();
               }
-              if (state is TrackSuccess) {
-                final newTracks = state.tracks!
-                    .where((track) =>
-                        !tracks.any((t) => t.trackId == track.trackId))
-                    .toList();
-                if (newTracks.isNotEmpty) {
-                  trackStream.add(newTracks);
+              if (state is DiscoveryTrackSuccess) {
+                tracks.clear();
+                tracks.addAll(state.tracks!.where(
+                    (track) => !tracks.any((t) => t.trackId == track.trackId)));
+                if (!trackStream.isClosed) {
+                  trackStream.add(tracks);
                 }
               }
               return Discovery(
@@ -107,12 +108,14 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
 
   @override
   void dispose() {
+    _trackSubscription.cancel();
     trackStream.close();
     super.dispose();
   }
 
   void observeData() {
-    trackStream.stream.listen((trackList) {
+    _trackSubscription = trackStream.stream.listen((trackList) {
+      if (!mounted) return;
       setState(() {
         for (var track in trackList) {
           if (!tracks.any((t) => t.trackId == track.trackId)) {
@@ -209,7 +212,7 @@ class Discovery extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: tracks.map((track) {
+              children: tracks.take(100).map((track) { 
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Songnew(
@@ -245,12 +248,30 @@ class Discovery extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: users!.map((user) {
+              children: users!.take(10).map((user) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Followerstop(
                     track: user,
-                    onNavigate: (selectedTrack) {},
+                    onNavigate: (selectedTrack) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UserArtist(
+                            playlist: Playlist(
+                              title: 'Default Playlist',
+                              image: '',
+                              trackCount: 0,
+                              id: 0,
+                              follower: 0,
+                              createBy: '',
+                            ),
+                            track: selectedTrack,
+                            onNavigate: (track) {},
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 );
               }).toList(),

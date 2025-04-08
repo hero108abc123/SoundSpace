@@ -18,7 +18,7 @@ namespace SoundSpace.Controllers.Auth
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> CreateUserAsync([FromBody] CreateUserDto input)
+        public async Task<IActionResult> CreateUserAsync([FromForm] CreateUserDto input)
         {
             try
             {

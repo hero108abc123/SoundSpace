@@ -11,7 +11,7 @@ class UserProfile implements UseCase<String, UserProfileParams> {
   @override
   Future<Either<Failure, String>> call(UserProfileParams params) async {
     return await authRepository.createProfile(
-      displayName: params.displaName,
+      displayName: params.displayName,
       age: params.age,
       gender: params.gender,
     );
@@ -19,12 +19,12 @@ class UserProfile implements UseCase<String, UserProfileParams> {
 }
 
 class UserProfileParams {
-  final String displaName;
+  final String displayName;
   final int age;
   final String gender;
 
   UserProfileParams({
-    required this.displaName,
+    required this.displayName,
     required this.age,
     required this.gender,
   });

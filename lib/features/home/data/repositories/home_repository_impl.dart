@@ -23,11 +23,10 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Either<Failure, List<Playlist>?>>
-      getPlaylistsFromUnfollowings() async {
+  Future<Either<Failure, List<Playlist>?>> getPlaylistsFromFollowings() async {
     try {
       final remotePlaylists =
-          await _homeRemoteDataSource.getPlaylistsFromUnfollowings();
+          await _homeRemoteDataSource.getPlaylistsFromFollowings();
       return right(remotePlaylists);
     } on ServerException catch (e) {
       return left(Failure(e.message));
@@ -35,21 +34,10 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Either<Failure, List<Artist>?>> getUnfollowedArtists() async {
+  Future<Either<Failure, List<Artist>?>> getFollowedArtists() async {
     try {
-      final remoteArtists = await _homeRemoteDataSource.getUnfollowedArtists();
+      final remoteArtists = await _homeRemoteDataSource.getFollowedArtists();
       return right(remoteArtists);
-    } on ServerException catch (e) {
-      return left(Failure(e.message));
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<Track>?>> getTracksFromUnfollowings() async {
-    try {
-      final remoteTracks =
-          await _homeRemoteDataSource.getTracksFromUnfollowings();
-      return right(remoteTracks);
     } on ServerException catch (e) {
       return left(Failure(e.message));
     }

@@ -7,28 +7,124 @@
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\implements\\product\\playlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\product\\playlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\implements\\product\\trackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\product\\trackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\dtos\\auth\\authdtos\\emailvaliddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\authdtos\\emailvaliddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\implements\\auth\\userfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\auth\\userfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\interfaces\\product\\iplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\interfaces\\product\\iplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\dtos\\auth\\authdtos\\createaccountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\authdtos\\createaccountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\controllers\\product\\playlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\product\\playlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\implements\\auth\\userfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\auth\\userfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\controllers\\auth\\followcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\auth\\followcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\implements\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\interfaces\\auth\\iuserfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\interfaces\\auth\\iuserfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\controllers\\auth\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\auth\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\dtos\\auth\\userdtos\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\userdtos\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\implements\\auth\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\auth\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\dtos\\auth\\userdtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\userdtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\utils\\tokenrevocationmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\utils\\tokenrevocationmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\entities\\auth\\revokedtokens.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\entities\\auth\\revokedtokens.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\dbcontexts\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dbcontexts\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\dtos\\product\\playlist\\addplaylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\product\\playlist\\addplaylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\entities\\auth\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\entities\\auth\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328182745_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SoundSpace\\Migrations\\20250328182745_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\implements\\product\\playlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\product\\playlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\implements\\product\\trackplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\product\\trackplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\dtos\\product\\song\\addtrackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\product\\song\\addtrackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\controllers\\product\\trackplaylistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\product\\trackplaylistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\implements\\product\\trackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\product\\trackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\controllers\\product\\favoritetrackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\product\\favoritetrackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\entities\\product\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\entities\\product\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\dtos\\product\\song\\updatetrackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\product\\song\\updatetrackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\dtos\\product\\song\\trackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\product\\song\\trackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\services\\interfaces\\product\\iplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\interfaces\\product\\iplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|e:\\study\\do an\\dncndpt\\nangcao\\soundspace\\backend\\soundspace\\migrations\\20250328190148_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\migrations\\20250328190148_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,8 +134,298 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 24,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CreateAccountDto.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
+              "RelativeToolTip": "SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T16:32:02.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmailValidDto.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
+              "RelativeToolTip": "SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T08:08:55.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IUserFollowService.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
+              "RelativeToolTip": "SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T18:12:32.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FollowController.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\FollowController.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Auth\\FollowController.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\FollowController.cs",
+              "RelativeToolTip": "SoundSpace\\Controllers\\Auth\\FollowController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAIwE8AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T18:10:26.868Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\UserController.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Auth\\UserController.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\UserController.cs",
+              "RelativeToolTip": "SoundSpace\\Controllers\\Auth\\UserController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwDAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T20:48:46.262Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
+              "RelativeToolTip": "SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T20:35:06.201Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CreateUserDto.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
+              "RelativeToolTip": "SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T20:34:58.356Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\AuthController.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Auth\\AuthController.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\AuthController.cs",
+              "RelativeToolTip": "SoundSpace\\Controllers\\Auth\\AuthController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T19:06:33.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "20250328190148_InitialCreate.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
+              "RelativeToolTip": "SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T19:01:48.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Account.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\Account.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Entities\\Auth\\Account.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\Account.cs",
+              "RelativeToolTip": "SoundSpace\\Entities\\Auth\\Account.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T18:49:13.949Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "20250328182745_InitialCreate.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328182745_InitialCreate.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Migrations\\20250328182745_InitialCreate.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328182745_InitialCreate.cs",
+              "RelativeToolTip": "SoundSpace\\Migrations\\20250328182745_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T18:27:45.846Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "TokenRevocationMiddleware.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
+              "RelativeToolTip": "SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAQwCAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T17:44:19.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
+              "RelativeToolTip": "SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAswG0AAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T17:40:24.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RevokedTokens.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
+              "RelativeToolTip": "SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T17:39:04.368Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
+              "RelativeToolTip": "SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAcwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T16:04:39.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AddPlaylistDto.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
+              "RelativeToolTip": "SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T20:11:02.618Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Program.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Program.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Program.cs",
+              "RelativeToolTip": "SoundSpace\\Program.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAkwIsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T17:56:32.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "UpdateTrackDto.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
+              "RelativeToolTip": "SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwCMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T16:52:49.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AddTrackDto.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
+              "RelativeToolTip": "SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T16:51:43.536Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "TrackDto.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
+              "RelativeToolTip": "SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T16:43:30.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Track.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Entities\\Product\\Track.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Entities\\Product\\Track.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Entities\\Product\\Track.cs",
+              "RelativeToolTip": "SoundSpace\\Entities\\Product\\Track.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T16:42:22.998Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "TrackPlaylistService.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
+              "RelativeToolTip": "SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAxwCQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T07:15:10.055Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "TrackPlaylistController.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
+              "RelativeToolTip": "SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T07:15:00.082Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "FavoriteTrackController.cs",
+              "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
+              "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
+              "RelativeToolTip": "SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T07:14:56.137Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -48,38 +434,38 @@
               "RelativeDocumentMoniker": "SoundSpace\\appsettings.json",
               "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\appsettings.json",
               "RelativeToolTip": "SoundSpace\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAADtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAADoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-03-17T05:48:40.131Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "UserFollowService.cs",
               "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
               "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
               "RelativeToolTip": "SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
-              "ViewState": "AgIAAF8AAAAAAAAAAAAwwEAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAiwKwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-13T10:55:02.346Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 24,
               "Title": "TrackService.cs",
               "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
               "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
               "RelativeToolTip": "SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
-              "ViewState": "AgIAAFIBAAAAAAAAAADwv3oBAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAcwEEAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-13T10:40:43.341Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 29,
               "Title": "IPlaylistService.cs",
               "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Product\\IPlaylistService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Interfaces\\Product\\IPlaylistService.cs",
@@ -91,31 +477,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 20,
               "Title": "PlaylistService.cs",
               "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
               "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
               "RelativeToolTip": "SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
-              "ViewState": "AgIAAEcBAAAAAAAAAAAzwE4BAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAACwBAAAAAAAAAAAcwIMBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-13T10:38:24.035Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "PlaylistController.cs",
               "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\PlaylistController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Product\\PlaylistController.cs",
               "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\PlaylistController.cs",
               "RelativeToolTip": "SoundSpace\\Controllers\\Product\\PlaylistController.cs",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAkwLkAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAYwLkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-12T07:33:13.328Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "UserDto.cs",
               "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\UserDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\UserDtos\\UserDto.cs",

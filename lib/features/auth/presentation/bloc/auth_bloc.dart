@@ -79,7 +79,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     final res = await _userProfile(
       UserProfileParams(
-        displaName: event.displayName,
+        displayName: event.displayName,
         age: event.age,
         gender: event.gender,
       ),

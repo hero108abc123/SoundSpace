@@ -72,5 +72,19 @@ namespace SoundSpace.Controllers.Auth
             }
         }
 
+        [HttpGet("get-followers")]
+        public async Task<IActionResult> GetFollowers()
+        {
+            try
+            {
+                List<ArtistDto> followers = await _userFollowService.GetFollowersAsync();
+                return Ok(followers);
+            }
+            catch (Exception ex)
+            {
+                return ReturnException(ex);
+            }
+        }
+
     }
 }

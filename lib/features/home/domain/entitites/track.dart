@@ -6,6 +6,7 @@ class Track {
   final String source;
   final String album;
   final int favorite;
+  final String lyric;
 
   Track({
     required this.trackId,
@@ -15,5 +16,6 @@ class Track {
     required this.album,
     required this.source,
     required this.favorite,
+    required this.lyric,
   });
 }

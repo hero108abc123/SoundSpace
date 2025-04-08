@@ -25,6 +25,7 @@ namespace SoundSpace.Dtos.Auth.UserDtos
             get => _gender; 
             set => _gender = value?.Trim(); 
         }
+        public IFormFile? Image { get; set; }
 
     }
 }

@@ -117,6 +117,16 @@
   },
   {
     "ContainingType": "SoundSpace.Controllers.Auth.FollowController",
+    "Method": "GetFollowers",
+    "RelativePath": "api/Follow/get-followers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.FollowController",
     "Method": "GetUnfollowedArtists",
     "RelativePath": "api/Follow/get-unfollowed-artists",
     "HttpMethod": "GET",
@@ -152,6 +162,11 @@
       {
         "Name": "Title",
         "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TrackId",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],
@@ -361,6 +376,11 @@
         "Name": "Album",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "Lyric",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -521,6 +541,11 @@
         "Name": "Album",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "Lyric",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -576,9 +601,24 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "input",
-        "Type": "SoundSpace.Dtos.Auth.UserDtos.CreateUserDto",
-        "IsRequired": true
+        "Name": "DisplayName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Age",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gender",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

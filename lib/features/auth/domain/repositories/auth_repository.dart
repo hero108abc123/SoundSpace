@@ -23,6 +23,5 @@ abstract interface class AuthRepository {
     required int age,
     required String gender,
   });
-
   Future<Either<Failure, Profile>> currentUser();
 }

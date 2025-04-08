@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soundspace/core/common/entities/user_profile.dart';
+import 'package:soundspace/core/common/widgets/show_snackber.dart';
+import 'package:soundspace/features/home/presentation/bloc/user/user_bloc.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/edit_profile.dart';
 import '../../../../../config/theme/app_pallete.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class EditProfilePage extends StatefulWidget {
   final Profile user;
+
   const EditProfilePage({super.key, required this.user});
 
   @override
@@ -13,25 +19,85 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
+  String? avatarUrl;
+  late TextEditingController displayNameController;
+  late TextEditingController ageController;
+  String gender = '';
+
+  @override
+  void initState() {
+    super.initState();
+    avatarUrl = widget.user.image;
+    displayNameController = TextEditingController(text: widget.user.displayName);
+    ageController = TextEditingController(text: widget.user.age.toString());
+    gender = widget.user.gender;
+  }
+
+  @override
+  void dispose() {
+    displayNameController.dispose();
+    ageController.dispose();
+    super.dispose();
+  }
+
+  void saveProfile() {
+    if (avatarUrl == null || avatarUrl!.isEmpty) {
+      showSnackBar(context, 'Please select an avatar');
+      return;
+    }
+
+    context.read<UserBloc>().add(
+          UserProfileUpdateRequested(
+            displayName: displayNameController.text.trim(),
+            age: int.tryParse(ageController.text.trim()) ?? widget.user.age,
+            gender: gender,
+            image: avatarUrl!,
+          ),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              AppPallete.gradient1,
-              AppPallete.gradient2,
-              AppPallete.gradient4,
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+    return BlocListener<UserBloc, UserState>(
+      listener: (context, state) {
+        if (state is UserProfileUpdateSuccess) {
+          Navigator.pop(context);
+        } else if (state is UserProfileUpdateFailure) {
+          showSnackBar(context, state.message);
+        }
+      },
+      child: Scaffold(
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                AppPallete.gradient1,
+                AppPallete.gradient2,
+                AppPallete.gradient4,
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
           ),
-        ),
-        child: Setting(
-          user: widget.user,
+          child: Setting(
+            displayNameController: displayNameController,
+            ageController: ageController,
+            gender: gender,
+            onGenderChanged: (newGender) {
+              setState(() {
+                gender = newGender;
+              });
+            },
+            avatarUrl: avatarUrl,
+            onAvatarChanged: (newUrl) {
+              setState(() {
+                avatarUrl = newUrl;
+              });
+            },
+            onSave: saveProfile,
+          ),
         ),
       ),
     );
@@ -39,8 +105,24 @@ class _EditProfilePageState extends State<EditProfilePage> {
 }
 
 class Setting extends StatelessWidget {
-  final Profile user;
-  const Setting({super.key, required this.user});
+  final TextEditingController displayNameController;
+  final TextEditingController ageController;
+  final String gender;
+  final ValueChanged<String> onGenderChanged;
+  final String? avatarUrl;
+  final ValueChanged<String> onAvatarChanged;
+  final VoidCallback onSave;
+
+  const Setting({
+    super.key,
+    required this.displayNameController,
+    required this.ageController,
+    required this.gender,
+    required this.onGenderChanged,
+    required this.avatarUrl,
+    required this.onAvatarChanged,
+    required this.onSave,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,25 +136,27 @@ class Setting extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildHeader(context),
-                const SizedBox(height: 10),
                 _buildAvatarSection(context),
                 const SizedBox(height: 10),
-                const EditProfile(
-                    nameTitle: 'Full Name',
-                    title: 'FullName',
-                    icon: Icon(Icons.person)),
-                const EditProfile(
-                    nameTitle: 'Display Name',
-                    title: 'DisplayName',
-                    icon: Icon(Icons.person_2)),
-                const EditProfile(
-                    nameTitle: 'Gender',
-                    title: 'Gender',
-                    icon: Icon(Icons.man)),
-                const EditProfile(
-                    nameTitle: 'Age', title: 'Age', icon: Icon(Icons.cake)),
+                EditProfile(
+                nameTitle: 'Display Name',
+                controller: displayNameController,
+                onChanged: (value) {},
+              ),
+              EditProfile(
+                nameTitle: 'Gender',
+                initialValue: gender,
+                options: const ['Female', 'Male', 'Others', 'Prefer not to say'],
+                onChanged: onGenderChanged,
+              ),
+              EditProfile(
+                nameTitle: 'Age',
+                controller: ageController, 
+                onChanged: (value) {},
+              ),
+
                 const SizedBox(height: 20),
-                _buildSaveButton(context),
+                _buildSaveButton(),
               ],
             ),
           ),
@@ -80,8 +164,7 @@ class Setting extends StatelessWidget {
       ],
     );
   }
-
-  Widget _buildHeader(BuildContext context) {
+Widget _buildHeader(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Row(
@@ -113,65 +196,42 @@ class Setting extends StatelessWidget {
       ),
     );
   }
-
   Widget _buildAvatarSection(BuildContext context) {
     return Center(
       child: Stack(
         alignment: Alignment.bottomRight,
         children: [
-          Container(
-            width: 130,
-            height: 130,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.white,
-                width: 2,
-              ),
-            ),
-            child: const CircleAvatar(
-              radius: 46,
-              backgroundImage: AssetImage('assets/images/Billielish3.jpg'),
-            ),
+          CircleAvatar(
+            radius: 65,
+            backgroundImage: avatarUrl != null && avatarUrl!.isNotEmpty
+                ? (avatarUrl!.startsWith('http')
+                    ? NetworkImage(avatarUrl!) as ImageProvider
+                    : FileImage(File(avatarUrl!)))
+                : const AssetImage('assets/images/default_avatar.jpg'),
           ),
-          Positioned(
-            right: 10,
-            bottom: 3,
-            child: IconButton(
-              icon: const Icon(
-                Icons.camera_enhance,
-                color: Color.fromARGB(255, 180, 180, 180),
-                size: 30,
-              ),
-              onPressed: () {},
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
-              tooltip: 'Change Avatar',
-            ),
+          IconButton(
+            icon: const Icon(Icons.camera_alt, color: Colors.white, size: 30),
+            onPressed: () async {
+              final ImagePicker picker = ImagePicker();
+              final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+              if (image != null) {
+                onAvatarChanged(image.path);
+              }
+            },
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSaveButton(BuildContext context) {
+  Widget _buildSaveButton() {
     return Center(
       child: ElevatedButton(
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Profile updated successfully!')),
-          );
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.black,
-        ),
+        onPressed: onSave,
+        style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
         child: Text(
           'Save',
-          style: GoogleFonts.poppins(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-          ),
+          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
         ),
       ),
     );

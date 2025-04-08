@@ -10,6 +10,7 @@ namespace SoundSpace.Services.Interfaces.Auth
         Task<int> GetFollowingCountAsync(int userId);
         Task<List<ArtistDto>> GetFollowedArtistsAsync();
         Task<List<ArtistDto>> GetUnfollowedArtistsAsync();
+        Task<List<ArtistDto>> GetFollowersAsync();
 
     }
 }

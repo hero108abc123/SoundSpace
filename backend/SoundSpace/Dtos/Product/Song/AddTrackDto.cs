@@ -28,5 +28,13 @@ namespace SoundSpace.Dtos.Product.Song
             set => _album = value?.Trim();
         }
 
+        private string _lyric;
+        [Required]
+        public string Lyric
+        {
+            get => _lyric;
+            set => _lyric = value?.Trim();
+        }
+
     }
 }

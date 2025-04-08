@@ -15,6 +15,7 @@ namespace SoundSpace.Entities.Product
         public string Image { get; set; }
         public string Source { get; set; }
         public string Album { get; set; }
+        public string Lyric { get; set; }
 
         // Mối quan hệ 1-1 với User (người đăng bài hát)
         [ForeignKey("User")]

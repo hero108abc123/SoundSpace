@@ -1,4 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:soundspace/config/theme/app_pallete.dart';
+import 'package:soundspace/core/common/widgets/loader.dart';
+import 'package:soundspace/core/common/widgets/show_snackber.dart';
+import 'package:soundspace/features/home/domain/entitites/playlist.dart';
+import 'package:soundspace/features/home/domain/entitites/track.dart';
+import 'package:soundspace/features/home/presentation/bloc/favorite/favorite_bloc.dart';
+import 'package:soundspace/features/home/presentation/widget/favorite_widget/music_card.dart';
+import 'package:soundspace/features/home/presentation/widget/favorite_widget/playlist_card.dart';
 
 class FavoriteScreen extends StatelessWidget {
   static route() => MaterialPageRoute(
@@ -9,155 +19,166 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Ví dụ về danh sách bài hát yêu thích
-    final List<Song> songs = [
-      Song('Cơn mưa băng giá', 'Bằng Kiều', 'assets/images/Lychee.jpg'),
-      Song('Chuyện hẹn hò', 'Quang Lê', 'assets/images/Lychee.jpg'),
-      Song('Forget', 'Pogo', 'assets/images/Lychee.jpg'),
-      Song('Mắt kết nối', 'Dương Đình Trí', 'assets/images/Lychee.jpg'),
-    ];
-
-    // Ví dụ về danh sách playlist yêu thích
-    final List<Playlist> playlists = [
-      Playlist('Happy #1', 'assets/images/Lychee.jpg'),
-      Playlist('Wall Board', 'assets/images/Lychee.jpg'),
-      Playlist('Rock', 'assets/images/Lychee.jpg'),
-    ];
-
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Favorite', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              AppPallete.gradient1,
+              AppPallete.gradient2,
+              AppPallete.gradient4,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: const Favorite(),
       ),
-      backgroundColor: const Color(0xFF1A1A2E),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
+    );
+  }
+}
+
+class Favorite extends StatefulWidget {
+  const Favorite({super.key});
+
+  @override
+  State<Favorite> createState() => _FavoriteState();
+}
+
+class _FavoriteState extends State<Favorite> {
+  final List<Track> favoriteTracks = [];
+  final List<Playlist> favoritePlaylists = [];
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<FavoriteBloc>().add(FavoriteTrackLoadData());
+    context.read<FavoriteBloc>().add(FavoritePlaylistLoadData());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<FavoriteBloc, FavoriteState>(
+      listener: (context, state) {
+        if (state is FavoriteTrackFailure) {
+          showSnackBar(context, state.message);
+        } else if (state is FavoritePlaylistFailure) {
+          showSnackBar(context, state.message);
+        }
+      },
+      builder: (context, state) {
+        if (state is FavoriteLoading) {
+          return const Loader();
+        }
+        if (state is FavoriteTrackSuccess) {
+          favoriteTracks.clear();
+          favoriteTracks.addAll(state.tracks as Iterable<Track>);
+        }
+        if (state is FavoritePlaylistSuccess) {
+          favoritePlaylists.clear();
+          favoritePlaylists.addAll(state.playlists as Iterable<Playlist>);
+        }
+
+        return SingleChildScrollView(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Songs',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: songs.length,
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 10),
-                itemBuilder: (context, index) {
-                  final song = songs[index];
-                  return SongCard(song: song);
-                },
-              ),
               const SizedBox(height: 20),
-              const Text(
-                'Playlists',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
+              _buildFavoriteSong(context),
               const SizedBox(height: 10),
-              SizedBox(
-                height: 150,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: playlists.length,
-                  itemBuilder: (context, index) {
-                    final playlist = playlists[index];
-                    return PlaylistCard(playlist: playlist);
-                  },
-                ),
-              ),
+              _buildFavoritePlaylist(context),
+              const SizedBox(height: 10),
             ],
           ),
-        ),
-      ),
+        );
+      },
     );
   }
-}
 
-class Song {
-  final String title;
-  final String artist;
-  final String imageUrl;
-
-  Song(this.title, this.artist, this.imageUrl);
-}
-
-class SongCard extends StatelessWidget {
-  final Song song;
-
-  const SongCard({super.key, required this.song});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFF162447),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: ListTile(
-        leading: Image.asset(song.imageUrl,
-            width: 50, height: 50, fit: BoxFit.cover),
-        title: Text(song.title, style: const TextStyle(color: Colors.white)),
-        subtitle: Text(song.artist, style: const TextStyle(color: Colors.grey)),
-        trailing: const Icon(Icons.favorite, color: Colors.red),
-      ),
+  Widget _buildFavoriteSong(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Favorite Songs',
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              'See More',
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Column(
+          children: favoriteTracks.take(5).map((track) {
+            return MusicCard(
+              image: track.image,
+              title: track.title,
+              artist: track.artist,
+              favorite: 1,
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
-}
 
-class Playlist {
-  final String title;
-  final String imageUrl;
-
-  Playlist(this.title, this.imageUrl);
-}
-
-class PlaylistCard extends StatelessWidget {
-  final Playlist playlist;
-
-  const PlaylistCard({super.key, required this.playlist});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(right: 10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        image: DecorationImage(
-          image: AssetImage(playlist.imageUrl),
-          fit: BoxFit.cover,
+  Widget _buildFavoritePlaylist(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Favorite Playlists',
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              'See More',
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+                color: Colors.white,
+              ),
+            ),
+          ],
         ),
-      ),
-      width: 120,
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.black54,
-            ),
+        const SizedBox(height: 10),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: favoritePlaylists.take(5).map((playlist) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: PlaylistCard(
+                  image: playlist.image,
+                  title: playlist.title,
+                ),
+              );
+            }).toList(),
           ),
-          Positioned(
-            bottom: 10,
-            left: 10,
-            child: Text(
-              playlist.title,
-              style: const TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

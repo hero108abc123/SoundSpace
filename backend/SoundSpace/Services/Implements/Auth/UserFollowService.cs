@@ -88,16 +88,21 @@ namespace SoundSpace.Services.Implements.Auth
                 .Where(u => !followedArtistIds.Contains(u.UserId) && u.UserId != currentUserId)
                 .ToListAsync();
 
-            // Lấy số lượng followers và following bằng cách chạy song song các task
-            var artistDtos = await Task.WhenAll(artists.Select(async u => new ArtistDto
+            // Lấy số lượng followers và following bằng cách chạy so  u => new ArtistDto
+            var artistDtos = new List<ArtistDto>();
+            foreach (var artist in artists)
             {
-                Id = u.UserId,
-                DisplayName = u.DisplayName,
-                Image = UploadFile.GetFileUrl(u.Image, _httpContextAccessor),
-                FollowersCount = await GetFollowersCountAsync(u.UserId),
-                FollowingCount = await GetFollowingCountAsync(u.UserId)
-            }));
-
+                int followersCount = await GetFollowersCountAsync(artist.UserId);
+                int followingCount = await GetFollowingCountAsync(artist.UserId);
+                artistDtos.Add(new ArtistDto
+                {
+                    Id = artist.UserId,
+                    DisplayName = artist.DisplayName,
+                    Image = UploadFile.GetFileUrl(artist.Image, _httpContextAccessor),
+                    FollowersCount = followersCount,
+                    FollowingCount = followingCount
+                });
+            }
             return artistDtos.ToList();
         }
 
@@ -117,18 +122,55 @@ namespace SoundSpace.Services.Implements.Auth
                 .ToListAsync();
 
             // Lấy số lượng followers và following bằng cách chạy so  u => new ArtistDto
-            var artistDtos = await Task.WhenAll(artists.Select(async u => new ArtistDto
+            var artistDtos = new List<ArtistDto>();
+            foreach (var artist in artists)
             {
-                Id = u.UserId,
-                DisplayName = u.DisplayName,
-                Image = UploadFile.GetFileUrl(u.Image, _httpContextAccessor),
-                FollowersCount = await GetFollowersCountAsync(u.UserId),
-                FollowingCount = await GetFollowingCountAsync(u.UserId)
-            }));
-
+                int followersCount = await GetFollowersCountAsync(artist.UserId);
+                int followingCount = await GetFollowingCountAsync(artist.UserId);
+                artistDtos.Add(new ArtistDto
+                {
+                    Id = artist.UserId,
+                    DisplayName = artist.DisplayName,
+                    Image = UploadFile.GetFileUrl(artist.Image, _httpContextAccessor),
+                    FollowersCount = followersCount,
+                    FollowingCount = followingCount
+                });
+            }
             return artistDtos.ToList();
         }
 
+        public async Task<List<ArtistDto>> GetFollowersAsync()
+        {
+            int currentUserId = CommonUntils.GetCurrentUserId(_httpContextAccessor);
+
+            // Lấy danh sách ID của các nghệ sĩ đang theo dõi user hiện tại
+            var followerIds = await _dbContext.UserFollows
+                .Where(uf => uf.FollowingId == currentUserId)
+                .Select(uf => uf.FollowerId)
+                .ToListAsync();
+
+            // Lấy danh sách thông tin nghệ sĩ đang theo dõi
+            var followers = await _dbContext.Users
+                .Where(u => followerIds.Contains(u.UserId))
+                .ToListAsync();
+
+            // Lấy số lượng followers và following bằng cách chạy so  u => new ArtistDto
+            var followerDtos = new List<ArtistDto>();
+            foreach (var follower in followers)
+            {
+                int followersCount = await GetFollowersCountAsync(follower.UserId);
+                int followingCount = await GetFollowingCountAsync(follower.UserId);
+                followerDtos.Add(new ArtistDto
+                {
+                    Id = follower.UserId,
+                    DisplayName = follower.DisplayName,
+                    Image = UploadFile.GetFileUrl(follower.Image, _httpContextAccessor),
+                    FollowersCount = followersCount,
+                    FollowingCount = followingCount
+                });
+            }
+            return followerDtos.ToList();
+        }
 
     }
 

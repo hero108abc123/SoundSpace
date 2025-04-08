@@ -32,15 +32,30 @@ namespace SoundSpace.Services.Implements.Product
         public async Task CreatePlaylistAsync(AddPlaylistDto input)
         {
             int currentUserId = CommonUntils.GetCurrentUserId(_httpContextAccessor);
+            var track = await _dbContext.Tracks.FirstOrDefaultAsync(t => t.TrackId == input.TrackId);
 
             var playlist = new Playlist
             {
                 Title = input.Title,
                 CreateBy = currentUserId,
-                Image = string.Empty
+                Image = track.Image
             };
+            
 
             _dbContext.Playlists.Add(playlist);
+
+            
+            await _dbContext.SaveChangesAsync();
+
+            playlist = await _dbContext.Playlists.OrderByDescending(p => p.PlaylistId).FirstOrDefaultAsync();
+
+            var trackPlaylist = new TrackPlaylist
+            {
+                PlaylistId = playlist.PlaylistId,
+                TrackId = track.TrackId
+            };
+            _dbContext.TrackPlaylists.Add(trackPlaylist);
+
             await _dbContext.SaveChangesAsync();
         }
 
@@ -63,7 +78,7 @@ namespace SoundSpace.Services.Implements.Product
             {
                 throw new UserFriendlyException("Playlist not found");
             }
-            _trackPlaylistService.RemoveAllTracksFromPlaylistAsync(playlistId);
+            await _trackPlaylistService.RemoveAllTracksFromPlaylistAsync(playlistId);
             _dbContext.Playlists.Remove(playlist);
             await _dbContext.SaveChangesAsync();
         }
@@ -146,7 +161,8 @@ namespace SoundSpace.Services.Implements.Product
                     Image = UploadFile.GetFileUrl(track.Track.Image, _httpContextAccessor),
                     Source = UploadFile.GetFileUrl(track.Track.Source, _httpContextAccessor),
                     Album = track.Track.Album,
-                    Favorite = favoriteCount
+                    Favorite = favoriteCount,
+                    Lyric = track.Track.Lyric
                 });
             }
 
@@ -159,6 +175,7 @@ namespace SoundSpace.Services.Implements.Product
             var playlists = await _dbContext.PlaylistFollows
                 .Where(pf => pf.UserId == userId)
                 .Include(pf => pf.Playlist)
+                .ThenInclude(pf => pf.User)
                 .ToListAsync();
 
             if (playlists == null)
@@ -175,7 +192,7 @@ namespace SoundSpace.Services.Implements.Product
                 {
                     Id = playlist.PlaylistId,
                     Title = playlist.Playlist.Title,
-                    CreateBy = playlist.Playlist.User.DisplayName,
+                    CreateBy = playlist.Playlist.User?.DisplayName ?? "Unknown",
                     Image = UploadFile.GetFileUrl(playlist.Playlist.Image, _httpContextAccessor),
                     Follower = followerCount,
                     TrackCount = trackCount
@@ -298,7 +315,8 @@ namespace SoundSpace.Services.Implements.Product
 
             // Lấy danh sách bài hát của những người đó
             var playlists = await _dbContext.Playlists
-                .Where(p => followingIds.Contains(p.CreateBy)) // Chỉ lấy track của những người mình follow
+                .Where(p => followingIds.Contains(p.CreateBy))
+                .Include(p => p.User) // Include the User entity
                 .ToListAsync();
 
             if (playlists == null)
@@ -352,7 +370,7 @@ namespace SoundSpace.Services.Implements.Product
                 int trackCount = await _trackPlaylistService.GetTrackCountInPlaylistAsync(playlist.PlaylistId);
                 playlistDtos.Add(new PlaylistDto
                 {
-                    Id = playlist.PlaylistId,
+                    Id = playlist.PlaylistId, 
                     Title = playlist.Title,
                     CreateBy = playlist.User.DisplayName,
                     Image = UploadFile.GetFileUrl(playlist.Image, _httpContextAccessor),

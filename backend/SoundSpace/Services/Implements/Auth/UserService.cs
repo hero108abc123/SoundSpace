@@ -29,13 +29,17 @@ namespace SoundSpace.Services.Implements.Auth
             {
                 throw new UserFriendlyException($"User \"{input.DisplayName}\" already exists");
             }
-
+            string imagePath = null;
+            if (input.Image != null)
+            {
+                imagePath = await UploadFile.SaveFileAsync(input.Image, "Users", "Images");
+            }
             await _dbContext.Users.AddAsync(new User
             {
                 DisplayName = input.DisplayName,
                 Age = input.Age,
                 Gender = input.Gender,
-                Image = string.Empty
+                Image = imagePath
             });
 
             await _dbContext.SaveChangesAsync();
