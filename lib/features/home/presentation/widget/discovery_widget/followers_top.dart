@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:soundspace/features/home/domain/entitites/artist.dart';
+import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
 
 class Followerstop extends StatelessWidget {
-  final Artist track;
+  final Artist artist;
   final Function(Artist) onNavigate;
 
   const Followerstop({
     super.key,
-    required this.track,
+    required this.artist,
     required this.onNavigate,
   });
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GestureDetector(
-          onTap: () => onNavigate(track),
+          onTap: () => onNavigate(artist),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: Stack(children: [
-              track.image.isNotEmpty
+              artist.image.isNotEmpty
                   ? Image.network(
-                      track.image,
+                      artist.image,
                       fit: BoxFit.cover,
                       width: 240,
                       height: 260,
@@ -41,14 +44,14 @@ class Followerstop extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      track.displayName,
+                      artist.displayName,
                       style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Colors.white),
                     ),
                     Text(
-                      '${track.followersCount} followers',
+                      '${artist.followersCount} ${languageProvider.translate('followers')}',
                       style: GoogleFonts.poppins(
                         fontSize: 12,
                         color: Colors.white,

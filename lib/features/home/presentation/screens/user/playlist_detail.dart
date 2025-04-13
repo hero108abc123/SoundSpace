@@ -1,56 +1,129 @@
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
+import 'package:soundspace/core/common/widgets/loader.dart';
+import 'package:soundspace/core/common/widgets/show_snackber.dart';
+import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
-import '../../widget/user_widget/songs_item.dart';
+import 'package:soundspace/features/home/presentation/bloc/favorite/favorite_bloc.dart';
+import 'package:soundspace/features/home/presentation/screens/home/playing_screen.dart';
+import 'package:soundspace/features/home/presentation/widget/user_widget/songs_item.dart';
 
-class PlaylistDetail extends StatelessWidget {
-  final String playlistTitle;
-  final String userName;
-  final List<Track> tracks;
+class PlaylistDetail extends StatefulWidget {
+  final Playlist playlist;
 
-  const PlaylistDetail({
-    super.key,
-    required this.playlistTitle,
-    required this.userName,
-    required this.tracks,
-  });
+  const PlaylistDetail({super.key, required this.playlist});
+
+  @override
+  State<PlaylistDetail> createState() => _PlaylistDetailState();
+}
+
+class _PlaylistDetailState extends State<PlaylistDetail> {
+  final List<Track> tracks = [];
+  StreamController<List<Track>> trackStream = StreamController.broadcast();
+
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<FavoriteBloc>().add(
+          FavoritePlaylistLoadTracks(
+            playlistId: widget.playlist.id,
+          ),
+        );
+    observeData();
+
+    Future.delayed(Duration.zero, () {
+      if (!trackStream.isClosed) {
+        trackStream.add(tracks);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    trackStream.close();
+    super.dispose();
+  }
+
+  void observeData() {
+    trackStream.stream.listen((trackList) {
+      setState(() {
+        for (var track in trackList) {
+          if (!tracks.any((t) => t.trackId == track.trackId)) {
+            tracks.add(track);
+          }
+        }
+      });
+    });
+  }
+
+  void navigate(Track track) {
+    Navigator.push(context, CupertinoPageRoute(builder: (context) {
+      return NowPlaying(
+        tracks: tracks,
+        playingTrack: track,
+      );
+    }));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              AppPallete.gradient1,
-              AppPallete.gradient2,
-              AppPallete.gradient4,
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildHeader(context),
-                const SizedBox(height: 10),
-                _buildPlaylistInfo(),
-                const SizedBox(height: 10),
-                _buildOperation(),
-                const SizedBox(height: 10),
-                _buildSongList(),
-              ],
+    return BlocConsumer<FavoriteBloc, FavoriteState>(
+      listener: (context, state) {
+        if (state is FavoritePlaylistTracksFailure) {
+          showSnackBar(context, state.message);
+        }
+      },
+      builder: (context, state) {
+        if (state is FavoriteLoading) {
+          return const Loader();
+        }
+        if (state is FavoritePlaylistTracksSuccess) {
+          tracks.clear();
+          tracks.addAll(state.tracks!.where(
+              (track) => !tracks.any((t) => t.trackId == track.trackId)));
+          trackStream.add(tracks);
+        }
+        return Scaffold(
+          body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  AppPallete.gradient1,
+                  AppPallete.gradient2,
+                  AppPallete.gradient4,
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildHeader(context),
+                    const SizedBox(height: 10),
+                    _buildPlaylistInfo(),
+                    const SizedBox(height: 10),
+                    _buildOperation(),
+                    const SizedBox(height: 10),
+                    _buildSongList(),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -71,8 +144,8 @@ class PlaylistDetail extends StatelessWidget {
             ),
           ),
           Center(
-            child: Image.asset(
-              'assets/images/The Worst.jpg',
+            child: Image.network(
+              widget.playlist.image,
               width: 200,
               height: 200,
             ),
@@ -89,7 +162,7 @@ class PlaylistDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            playlistTitle,
+            widget.playlist.title,
             style: GoogleFonts.poppins(
               fontSize: 24,
               fontWeight: FontWeight.w800,
@@ -192,9 +265,11 @@ class PlaylistDetail extends StatelessWidget {
             child: ListView.builder(
               itemCount: tracks.length,
               itemBuilder: (context, index) {
-                final track = tracks[index];
                 return SongsItem(
-                  track: track,
+                  track: tracks[index],
+                  onNavigate: (track) {
+                    navigate(track);
+                  },
                 );
               },
             ),

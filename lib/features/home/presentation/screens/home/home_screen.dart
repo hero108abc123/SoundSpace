@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
 import 'package:soundspace/core/common/entities/user_profile.dart';
 import 'package:soundspace/core/common/widgets/loader.dart';
@@ -13,6 +14,8 @@ import 'package:soundspace/features/home/domain/entitites/artist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
 import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/presentation/bloc/home/home_bloc.dart';
+import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
+import 'package:soundspace/features/home/presentation/screens/discovery/user_artist.dart';
 import 'package:soundspace/features/home/presentation/screens/home/playing_screen.dart';
 import 'package:soundspace/features/home/presentation/widget/home_widget/favorite_artist.dart';
 import 'package:soundspace/features/home/presentation/widget/home_widget/featured_album_widget.dart';
@@ -22,6 +25,8 @@ import 'package:soundspace/features/home/presentation/widget/home_widget/song_li
 
 class HomeScreen extends StatefulWidget {
   final Profile user;
+  // final Track track;
+  // final AudioPlayerManager audioPlayerManager;
   const HomeScreen({super.key, required this.user});
 
   @override
@@ -34,6 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Navbar(
         user: widget.user,
+        // track: widget.track,
+        // audioPlayerManager: widget.audioPlayerManager,
       ),
     );
   }
@@ -176,20 +183,20 @@ class HomeContent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildHeader(),
+          _buildHeader(context),
           FeaturedAlbumWidget(),
-          _buildFavoriteArtistCards(),
-          _buildPlaylistSection(parent),
-          _buildSong(parent)
+          _buildFavoriteArtistCards(context),
+          _buildPlaylistSection(parent, context),
+          _buildSong(parent, context)
         ],
       ),
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(context) {
     return const Center(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+        padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
         child: Text(
           'SoundScape',
           style: TextStyle(
@@ -203,9 +210,10 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  Widget _buildFavoriteArtistCards() {
+  Widget _buildFavoriteArtistCards(context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -213,7 +221,7 @@ class HomeContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'My Favorite Artists',
+                languageProvider.translate('favorite_artist'),
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -221,7 +229,7 @@ class HomeContent extends StatelessWidget {
                 ),
               ),
               Text(
-                'See More',
+                languageProvider.translate('see_more'),
                 style: GoogleFonts.poppins(
                   fontSize: 14,
                   fontWeight: FontWeight.w300,
@@ -238,8 +246,18 @@ class HomeContent extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: FavoriteArtist(
-                    image: artist.image,
-                    artist: artist.displayName,
+                    artist: artist,
+                    onNavigate: (selectedArtist) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UserArtist(
+                            onNavigate: (artist) {},
+                            artist: selectedArtist,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 );
               }).toList(),
@@ -250,7 +268,8 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  Widget _buildPlaylistSection(_HomeTabPageState parent) {
+  Widget _buildPlaylistSection(_HomeTabPageState parent, context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -261,7 +280,7 @@ class HomeContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Playlist',
+                languageProvider.translate('playlists'),
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -269,7 +288,7 @@ class HomeContent extends StatelessWidget {
                 ),
               ),
               Text(
-                'See More',
+                languageProvider.translate('see_more'),
                 style: GoogleFonts.poppins(
                   fontSize: 14,
                   fontWeight: FontWeight.w300,
@@ -288,7 +307,7 @@ class HomeContent extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: TrackItem(
-                    track: playlist,
+                    playlist: playlist,
                     onNavigate: (Playlist playlist) {
                       parent.navigate(playlist as Track);
                     },
@@ -302,7 +321,8 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  Widget _buildSong(_HomeTabPageState parent) {
+  Widget _buildSong(_HomeTabPageState parent, context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Column(
       children: [
         Padding(
@@ -311,7 +331,7 @@ class HomeContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Song',
+                languageProvider.translate('song'),
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -319,7 +339,7 @@ class HomeContent extends StatelessWidget {
                 ),
               ),
               Text(
-                'See More',
+                languageProvider.translate('see_more'),
                 style: GoogleFonts.poppins(
                   fontSize: 14,
                   fontWeight: FontWeight.w300,
@@ -334,6 +354,7 @@ class HomeContent extends StatelessWidget {
           child: Column(
             children: tracks.take(5).map((track) {
               return Songlist(
+                playlists: playlists,
                 track: track,
                 onNavigate: (Track selectedTrack) {
                   parent.navigate(track);

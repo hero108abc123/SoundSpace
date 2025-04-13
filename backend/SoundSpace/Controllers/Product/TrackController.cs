@@ -24,7 +24,7 @@ namespace SoundSpace.Controllers.Product
             try
             {
                 await _trackService.CreateTrackAsync(input);
-                return Ok();
+                return Ok(new { message = "Track added successfully!" });
             }
             catch (Exception ex)
             {

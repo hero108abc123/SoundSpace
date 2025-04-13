@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
+import 'package:soundspace/features/home/presentation/screens/discovery/add_to_playlist.dart';
 import 'package:soundspace/features/home/presentation/screens/home/playing_screen.dart';
 
 class Songlist extends StatelessWidget {
   final Track track;
   final Function(Track) onNavigate;
   final List<Track> tracks;
+  final List<Playlist> playlists;
 
-  const Songlist({
-    super.key,
-    required this.track,
-    required this.onNavigate,
-    required this.tracks,
-  });
+  const Songlist(
+      {super.key,
+      required this.track,
+      required this.onNavigate,
+      required this.tracks,
+      required this.playlists});
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +85,14 @@ class Songlist extends StatelessWidget {
                 right: 4,
                 top: 4,
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddToPlaylist(),
+                      ),
+                    );
+                  },
                   icon: Image.asset(
                     'assets/images/icon/home/icon_add.png',
                     width: 30,

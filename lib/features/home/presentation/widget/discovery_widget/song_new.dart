@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
+import 'package:soundspace/features/home/presentation/screens/discovery/add_to_playlist.dart';
 
 class Songnew extends StatelessWidget {
   final Track track;
   final Function(Track) onNavigate;
+  final List<Playlist> playlists;
 
   const Songnew({
     super.key,
     required this.track,
     required this.onNavigate,
+    required this.playlists,
   });
 
   @override
@@ -42,7 +46,7 @@ class Songnew extends StatelessWidget {
                         height: 125,
                       ),
                 Positioned(
-                  right: 2,
+                  left: 2,
                   bottom: 2,
                   child: IconButton(
                     onPressed: () {},
@@ -53,13 +57,32 @@ class Songnew extends StatelessWidget {
                     ),
                   ),
                 ),
+                Positioned(
+                  right: 1,
+                  top: 1,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AddToPlaylist(),
+                        ),
+                      );
+                    },
+                    icon: Image.asset(
+                      'assets/images/icon/home/icon_add.png',
+                      width: 20,
+                      height: 20,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
         ),
         const SizedBox(height: 10),
         SizedBox(
-          width: 125, 
+          width: 125,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -71,7 +94,7 @@ class Songnew extends StatelessWidget {
                   color: Colors.white,
                 ),
                 maxLines: 1,
-                overflow: TextOverflow.ellipsis, 
+                overflow: TextOverflow.ellipsis,
               ),
               Text(
                 track.artist,

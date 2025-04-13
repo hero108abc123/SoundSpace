@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\controllers\\product\\trackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\product\\trackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -133,11 +137,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 24,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "TrackController.cs",
+              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackController.cs",
+              "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Product\\TrackController.cs",
+              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackController.cs",
+              "RelativeToolTip": "SoundSpace\\Controllers\\Product\\TrackController.cs",
+              "ViewState": "AgIAALAAAAAAAAAAAADwvxoAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-13T20:24:12.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "CreateAccountDto.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
@@ -149,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "EmailValidDto.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
@@ -161,7 +178,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "IUserFollowService.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
@@ -173,7 +190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "FollowController.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\FollowController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Auth\\FollowController.cs",
@@ -185,7 +202,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\UserController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Auth\\UserController.cs",
@@ -197,7 +214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
@@ -209,7 +226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "CreateUserDto.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
@@ -221,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\AuthController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Auth\\AuthController.cs",
@@ -233,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "20250328190148_InitialCreate.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
@@ -245,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "Account.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\Account.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Entities\\Auth\\Account.cs",
@@ -257,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "20250328182745_InitialCreate.cs",
               "DocumentMoniker": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328182745_InitialCreate.cs",
               "ToolTip": "E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328182745_InitialCreate.cs",
@@ -267,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "TokenRevocationMiddleware.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
@@ -279,7 +296,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
@@ -291,7 +308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "RevokedTokens.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
@@ -303,7 +320,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
@@ -315,7 +332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "AddPlaylistDto.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
@@ -327,7 +344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Program.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Program.cs",
@@ -339,7 +356,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "UpdateTrackDto.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
@@ -351,7 +368,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AddTrackDto.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
@@ -359,12 +376,11 @@
               "RelativeToolTip": "SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T16:51:43.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-23T16:51:43.536Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TrackDto.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
@@ -376,7 +392,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "Track.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Entities\\Product\\Track.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Entities\\Product\\Track.cs",
@@ -388,7 +404,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "TrackPlaylistService.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
@@ -400,7 +416,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "TrackPlaylistController.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
@@ -412,7 +428,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "FavoriteTrackController.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
@@ -424,7 +440,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\appsettings.json",
               "RelativeDocumentMoniker": "SoundSpace\\appsettings.json",
@@ -437,7 +453,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UserFollowService.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
@@ -449,7 +465,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "TrackService.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
@@ -461,7 +477,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "IPlaylistService.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Product\\IPlaylistService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Interfaces\\Product\\IPlaylistService.cs",
@@ -473,7 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "PlaylistService.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
@@ -485,7 +501,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "PlaylistController.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\PlaylistController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Product\\PlaylistController.cs",
@@ -497,7 +513,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "UserDto.cs",
               "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\UserDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\UserDtos\\UserDto.cs",

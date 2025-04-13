@@ -8,6 +8,9 @@ import 'package:soundspace/features/home/data/models/track_model.dart';
 abstract interface class FavoriteRemoteDataSource {
   Future<List<TrackModel>?> getFavoriteTracks();
   Future<List<PlaylistModel>?> getFollowedPlaylists();
+  Future<List<TrackModel>?> getTracksFromPlaylist({
+    required int playlistId,
+  });
 }
 
 class FavoriteRemoteDataSourceImpl implements FavoriteRemoteDataSource {
@@ -26,13 +29,8 @@ class FavoriteRemoteDataSourceImpl implements FavoriteRemoteDataSource {
           'Authorization': 'Bearer $token',
         }),
       );
-
-      if (response.statusCode == 200) {
-        List<dynamic> trackList = response.data as List<dynamic>;
-        return trackList.map((track) => TrackModel.fromJson(track)).toList();
-      } else {
-        return null;
-      }
+      List<dynamic> trackList = response.data as List<dynamic>;
+      return trackList.map((track) => TrackModel.fromJson(track)).toList();
     } catch (e) {
       throw Exception("Failed to load favorite tracks: ${e.toString()}");
     }
@@ -50,16 +48,33 @@ class FavoriteRemoteDataSourceImpl implements FavoriteRemoteDataSource {
         }),
       );
 
-      if (response.statusCode == 200) {
-        List<dynamic> playlistList = response.data as List<dynamic>;
-        return playlistList
-            .map((playlist) => PlaylistModel.fromJson(playlist))
-            .toList();
-      } else {
-        return null;
-      }
+      List<dynamic> playlistList = response.data as List<dynamic>;
+      return playlistList
+          .map((playlist) => PlaylistModel.fromJson(playlist))
+          .toList();
     } catch (e) {
       throw Exception("Failed to load followed playlists: ${e.toString()}");
+    }
+  }
+
+  @override
+  Future<List<TrackModel>?> getTracksFromPlaylist({
+    required int playlistId,
+  }) async {
+    try {
+      var token = await storage.read(key: 'token');
+      Response response = await _dio.get(
+        "${Endpoints.playlist}/get-tracks/$playlistId",
+        options: Options(headers: {
+          "accept": "application/json; charset=utf-8",
+          'Authorization': 'Bearer $token',
+        }),
+      );
+
+      List<dynamic> trackList = response.data as List<dynamic>;
+      return trackList.map((track) => TrackModel.fromJson(track)).toList();
+    } catch (e) {
+      throw Exception("Failed to load tracks from playlist: ${e.toString()}");
     }
   }
 }

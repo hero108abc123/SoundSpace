@@ -1,12 +1,18 @@
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
 import 'package:soundspace/core/common/widgets/loader.dart';
 import 'package:soundspace/core/common/widgets/show_snackber.dart';
 import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
 import 'package:soundspace/features/home/presentation/bloc/favorite/favorite_bloc.dart';
+import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
+import 'package:soundspace/features/home/presentation/screens/home/playing_screen.dart';
 import 'package:soundspace/features/home/presentation/widget/favorite_widget/music_card.dart';
 import 'package:soundspace/features/home/presentation/widget/favorite_widget/playlist_card.dart';
 
@@ -48,14 +54,40 @@ class Favorite extends StatefulWidget {
 }
 
 class _FavoriteState extends State<Favorite> {
-  final List<Track> favoriteTracks = [];
-  final List<Playlist> favoritePlaylists = [];
+  final List<Track> tracks = [];
+  final List<Playlist> playlists = [];
+  StreamController<List<Track>> trackStream = StreamController.broadcast();
 
   @override
   void initState() {
     super.initState();
     context.read<FavoriteBloc>().add(FavoriteTrackLoadData());
     context.read<FavoriteBloc>().add(FavoritePlaylistLoadData());
+    observeData();
+    Future.delayed(const Duration(milliseconds: 100), () {
+      trackStream.add(tracks);
+    });
+  }
+
+  void observeData() {
+    trackStream.stream.listen((trackList) {
+      setState(() {
+        for (var track in trackList) {
+          if (!tracks.any((t) => t.trackId == track.trackId)) {
+            tracks.add(track);
+          }
+        }
+      });
+    });
+  }
+
+  void navigate(Track track) {
+    Navigator.push(context, CupertinoPageRoute(builder: (context) {
+      return NowPlaying(
+        tracks: tracks,
+        playingTrack: track,
+      );
+    }));
   }
 
   @override
@@ -73,12 +105,14 @@ class _FavoriteState extends State<Favorite> {
           return const Loader();
         }
         if (state is FavoriteTrackSuccess) {
-          favoriteTracks.clear();
-          favoriteTracks.addAll(state.tracks as Iterable<Track>);
+          tracks.clear();
+          tracks.addAll(state.tracks!.where(
+              (track) => !tracks.any((t) => t.trackId == track.trackId)));
+          trackStream.add(tracks);
         }
         if (state is FavoritePlaylistSuccess) {
-          favoritePlaylists.clear();
-          favoritePlaylists.addAll(state.playlists as Iterable<Playlist>);
+          playlists.clear();
+          playlists.addAll(state.playlists ?? []);
         }
 
         return SingleChildScrollView(
@@ -87,7 +121,7 @@ class _FavoriteState extends State<Favorite> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              _buildFavoriteSong(context),
+              _buildFavoriteSong(context, this),
               const SizedBox(height: 10),
               _buildFavoritePlaylist(context),
               const SizedBox(height: 10),
@@ -98,7 +132,8 @@ class _FavoriteState extends State<Favorite> {
     );
   }
 
-  Widget _buildFavoriteSong(BuildContext context) {
+  Widget _buildFavoriteSong(BuildContext context, parent) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -106,7 +141,7 @@ class _FavoriteState extends State<Favorite> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Favorite Songs',
+              languageProvider.translate('favorite_song'),
               style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -114,7 +149,7 @@ class _FavoriteState extends State<Favorite> {
               ),
             ),
             Text(
-              'See More',
+              languageProvider.translate('see_more'),
               style: GoogleFonts.poppins(
                 fontSize: 14,
                 fontWeight: FontWeight.w300,
@@ -125,12 +160,14 @@ class _FavoriteState extends State<Favorite> {
         ),
         const SizedBox(height: 10),
         Column(
-          children: favoriteTracks.take(5).map((track) {
+          children: tracks.take(5).map((track) {
             return MusicCard(
-              image: track.image,
-              title: track.title,
-              artist: track.artist,
-              favorite: 1,
+              track: track,
+              onNavigate: (Track selectedTrack) {
+                parent.navigate(track);
+              },
+              tracks: tracks,
+              playlists: [],
             );
           }).toList(),
         ),
@@ -139,6 +176,7 @@ class _FavoriteState extends State<Favorite> {
   }
 
   Widget _buildFavoritePlaylist(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -146,7 +184,7 @@ class _FavoriteState extends State<Favorite> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Favorite Playlists',
+              languageProvider.translate('favorite_playlist'),
               style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -154,7 +192,7 @@ class _FavoriteState extends State<Favorite> {
               ),
             ),
             Text(
-              'See More',
+              languageProvider.translate('see_more'),
               style: GoogleFonts.poppins(
                 fontSize: 14,
                 fontWeight: FontWeight.w300,
@@ -167,7 +205,7 @@ class _FavoriteState extends State<Favorite> {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: favoritePlaylists.take(5).map((playlist) {
+            children: playlists.take(5).map((playlist) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: PlaylistCard(

@@ -13,7 +13,71 @@
     "version": "Version: Beta 0.1",
     "cancel": "Cancel",
     "ok": "OK",
-    "yes": "Yes"},
+    "yes": "Yes",
+
+    "new_album": "New Album",
+    "favorite_artist": "My favorite Artist",
+    "playlist": "Playlist",
+    "see_more": "See More",
+    "song": "Song",
+    "lyric": "Lyric",
+    "following": "Following",
+    "followers": "Followers",
+
+    "follower": "Follower",
+
+    "add_to_my_playlist": "Add to my playlist",
+    "search": "Search",
+    "recommend_song": "Reconmmend Song",
+
+    "give_playlist_name": "Give your playlist a name",
+    "create": "Create",
+    "more": "More+",
+    "my_songs": "My songs",
+
+    "listening_history": "Listening history",
+
+    "like": "Like",
+    "add_to_playlist": "Add to playlist",
+    "go_to_artist_profile": "Go to artist profile",
+
+    "playlists": "Playlists",
+    "building_playlist": "Let's start building your playlist",
+
+    "edit_profile": "Edit Profile",
+
+    "display_name": "Display name",
+    "age":"Age",
+    "your_age": "Your Age",
+    "male": "Male",
+    "female": "Female",
+    "others": "Others",
+    "not_say": "Prefer not to say",
+    "gender": "Gender",
+    "save": "Save",
+
+    "ENGLISH": "English",
+    "VIETNAMESE": "Vietnamese",
+
+    "add": "Add",
+    "sort": "Sort",
+    "edit": "Edit",
+
+    "favorite_song": "Favorite Songs",
+    "favorite_playlist": "Favorite Playlist",
+    
+    "top_follower":"Top followers",
+    "made_fu": "Made for you",
+    "profile": "Profile",
+    "follow": "Follow",
+    "play_cre": "Playlists created",
+    "already": "already exists!",
+    "upload_track": "Upload Track",
+    "title": "Title",
+    "select_MP3_file": "Select MP3 file",
+    "upload" : "Upload",
+    "enter_lyric": "Enter lyric"
+    },
 
     "vi": {
         "settings": "Cài đặt",
@@ -29,6 +93,70 @@
         "version": "Phiên bản: Beta 0.1",
         "cancel": "Hủy",
         "ok": "Đồng ý",
-        "yes": "Có"
-    }
+        "yes": "Có",
+        
+        "new_album": "Album mới",
+        "favorite_artist": "Nghệ sĩ yêu thích",
+        "playlist": "Danh sách phát",
+        "see_more": "Xem thêm",
+        "song": "Bài hát",
+        "lyric": "Lời bài hát",
+        
+        "following": "Đang theo dõi",
+        "followers": "Người theo dõi",
+
+        "follower": "Người theo dõi",
+
+        "add_to_my_playlist": "Thêm vào danh sách phát của tôi",
+        "search": "Tìm kiếm",
+        "recommend_song": "Bài hát gợi ý",
+
+        "give_playlist_name": "Đặt tên cho danh sách phát",
+        "create": "Tạo",
+        "more": "Thêm+",
+        "my_songs": "Bài hát của tôi",
+
+        "listening_history": "Lịch sử nghe",
+
+        "like": "Thích",
+        "add_to_playlist": "Thêm vào danh sách phát",
+        "go_to_artist_profile": "Tới trang cá nhân của nghệ sĩ",
+
+        "playlists": "Danh sách phát",
+        "building_playlist": "Hãy bắt đầu xây dựng danh sách phát của bạn",
+
+        "edit_profile": "Chỉnh sửa trang cá nhân",
+
+        "display_name": "Tên hiển thị",
+        "age":"Tuổi",
+        "your_age": "Tuổi của bạn",
+        "gender": "Giới tính",
+        "male": "Nam",
+        "female": "Nữ",
+        "others": "Khác",
+        "not_say": "Không tiết lộ",
+        "save": "Lưu",
+
+        "ENGLISH": "Tiếng Anh",
+        "VIETNAMESE": "Tiếng Việt",
+
+        "add": "Thêm",
+        "sort": "Sắp xếp",
+        "edit": "Chỉnh sửa",
+
+        "favorite_song": "Bài hát yêu thích",
+        "favorite_playlist": "Danh sách phát yêu thích",
+
+        "top_follower":"Người theo dõi hàng đầu",
+        "made_fu": "Dành cho bạn",
+        "profile": "Thông tin cá nhân",
+        "follow": "Theo dõi",
+        "play_cre": "Đã tạo danh sách phát",
+        "already": "đã tồn tại",
+        "upload_track": "Tải nhạc lên",
+        "title": "Tên bài hát",
+        "select_MP3_file": "Chọn file mp3",
+        "upload": "Tải lên",
+        "enter_lyric": "Thêm lời nhạc"
+        }
 }

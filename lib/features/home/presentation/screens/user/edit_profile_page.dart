@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:soundspace/core/common/entities/user_profile.dart';
 import 'package:soundspace/core/common/widgets/show_snackber.dart';
 import 'package:soundspace/features/home/presentation/bloc/user/user_bloc.dart';
+import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/edit_profile.dart';
 import '../../../../../config/theme/app_pallete.dart';
 import 'package:image_picker/image_picker.dart';
@@ -126,6 +128,7 @@ class Setting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -139,24 +142,24 @@ class Setting extends StatelessWidget {
                 _buildAvatarSection(context),
                 const SizedBox(height: 10),
                 EditProfile(
-                nameTitle: 'Display Name',
+                nameTitle: languageProvider.translate('display_name'),
                 controller: displayNameController,
                 onChanged: (value) {},
               ),
               EditProfile(
-                nameTitle: 'Gender',
+                nameTitle: languageProvider.translate('gender'),
                 initialValue: gender,
                 options: const ['Female', 'Male', 'Others', 'Prefer not to say'],
                 onChanged: onGenderChanged,
               ),
               EditProfile(
-                nameTitle: 'Age',
+                nameTitle: languageProvider.translate('age'),
                 controller: ageController, 
                 onChanged: (value) {},
               ),
 
                 const SizedBox(height: 20),
-                _buildSaveButton(),
+                _buildSaveButton(context),
               ],
             ),
           ),
@@ -165,6 +168,7 @@ class Setting extends StatelessWidget {
     );
   }
 Widget _buildHeader(BuildContext context) {
+  final languageProvider = Provider.of<LanguageProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Row(
@@ -183,9 +187,9 @@ Widget _buildHeader(BuildContext context) {
           Expanded(
             child: Center(
               child: Text(
-                'Edit Profile',
+                languageProvider.translate('edit_profile'),
                 style: GoogleFonts.poppins(
-                  fontSize: 16,
+                  fontSize: 20,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
                 ),
@@ -224,13 +228,14 @@ Widget _buildHeader(BuildContext context) {
     );
   }
 
-  Widget _buildSaveButton() {
+  Widget _buildSaveButton(context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Center(
       child: ElevatedButton(
         onPressed: onSave,
         style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
         child: Text(
-          'Save',
+          languageProvider.translate('save'),
           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
         ),
       ),

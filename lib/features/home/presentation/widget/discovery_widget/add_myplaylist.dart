@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:soundspace/features/home/domain/entitites/playlist.dart';
+import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
 
 class AddMyPlaylist extends StatefulWidget {
   final Playlist playlist;
@@ -22,19 +24,20 @@ class _AddMyPlaylistState extends State<AddMyPlaylist> {
     setState(() {
       isSelected = !isSelected;
     });
-    widget.onPressed(); 
+    widget.onPressed();
   }
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: Row(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.zero,
-            child: Image.asset(
-              widget.playlist.image, 
+            child: Image.network(
+              widget.playlist.image,
               width: 50,
               height: 50,
               fit: BoxFit.cover,
@@ -46,14 +49,14 @@ class _AddMyPlaylistState extends State<AddMyPlaylist> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.playlist.title, 
+                  widget.playlist.title,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
                   ),
                 ),
                 Text(
-                  '${widget.playlist.trackCount} songs', 
+                  '${widget.playlist.trackCount} ${languageProvider.translate('song')}',
                   style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 14,
@@ -64,7 +67,9 @@ class _AddMyPlaylistState extends State<AddMyPlaylist> {
           ),
           IconButton(
             icon: Icon(
-              isSelected ? Icons.radio_button_checked : Icons.radio_button_unchecked,
+              isSelected
+                  ? Icons.radio_button_checked
+                  : Icons.radio_button_unchecked,
               color: isSelected ? Colors.blue : Colors.grey,
             ),
             onPressed: _toggleSelection,

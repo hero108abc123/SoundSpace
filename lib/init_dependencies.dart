@@ -36,6 +36,7 @@ import 'package:soundspace/features/home/domain/usecase/get_playlists_by_userid.
 import 'package:soundspace/features/home/domain/usecase/get_playlists_from_followings.dart';
 import 'package:soundspace/features/home/domain/usecase/get_playlists_from_unfollowing.dart';
 import 'package:soundspace/features/home/domain/usecase/get_tracks_by_userid.dart';
+import 'package:soundspace/features/home/domain/usecase/get_tracks_from_playlist.dart';
 import 'package:soundspace/features/home/domain/usecase/get_tracks_from_unfollowings.dart';
 import 'package:soundspace/features/home/domain/usecase/get_unfollowed_artist.dart';
 import 'package:soundspace/features/home/domain/usecase/load_track.dart';
@@ -240,6 +241,11 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
+    ..registerFactory(
+      () => GetTracksFromPlaylist(
+        serviceLocator(),
+      ),
+    )
     //Bloc
     ..registerLazySingleton(
       () => AuthBloc(
@@ -271,6 +277,7 @@ void _initAuth() {
       () => FavoriteBloc(
         getFavoriteTracks: serviceLocator(),
         getFollowedPlaylist: serviceLocator(),
+        getTracksFromPlaylist: serviceLocator(),
       ),
     )
     ..registerFactory(

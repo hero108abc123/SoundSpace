@@ -31,4 +31,19 @@ class FavoriteRepositoryImpl implements FavoriteRepository {
       return left(Failure(e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, List<Track>?>> getTracksFromPlaylist({
+    required int playlistId,
+  }) async {
+    try {
+      final remoteTracks =
+          await _favoriteRemoteDataSource.getTracksFromPlaylist(
+        playlistId: playlistId,
+      );
+      return right(remoteTracks);
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
+  }
 }

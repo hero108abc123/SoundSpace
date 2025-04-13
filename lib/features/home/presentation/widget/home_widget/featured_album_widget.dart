@@ -1,10 +1,16 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
 
-class FeaturedAlbumWidget extends StatelessWidget {
-  FeaturedAlbumWidget({Key? key}) : super(key: key);
+class FeaturedAlbumWidget extends StatefulWidget {
+  @override
+  _FeaturedAlbumWidgetState createState() => _FeaturedAlbumWidgetState();
+}
 
+class _FeaturedAlbumWidgetState extends State<FeaturedAlbumWidget> {
   final List<Map<String, String>> albums = [
     {
       'title': 'Happier Than Ever',
@@ -24,10 +30,33 @@ class FeaturedAlbumWidget extends StatelessWidget {
     },
   ];
 
+  Map<String, String>? selectedAlbum;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadRandomAlbum();
+  }
+
+  Future<void> _loadRandomAlbum() async {
+    final prefs = await SharedPreferences.getInstance();
+    final randomIndex =
+        prefs.getInt('randomAlbumIndex') ?? Random().nextInt(albums.length);
+
+    await prefs.setInt('randomAlbumIndex', (randomIndex + 1) % albums.length);
+
+    setState(() {
+      selectedAlbum = albums[randomIndex];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final random = Random();
-    final selectedAlbum = albums[random.nextInt(albums.length)];
+    final languageProvider = Provider.of<LanguageProvider>(context);
+    if (selectedAlbum == null) {
+      // Có thể hiển thị widget loading hoặc SizedBox()
+      return Center(child: CircularProgressIndicator());
+    }
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -45,7 +74,7 @@ class FeaturedAlbumWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'New Album',
+                  languageProvider.translate('new_album'),
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -54,7 +83,7 @@ class FeaturedAlbumWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  selectedAlbum['title']!,
+                  selectedAlbum!['title']!,
                   style: GoogleFonts.poppins(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -63,7 +92,7 @@ class FeaturedAlbumWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  selectedAlbum['artist']!,
+                  selectedAlbum!['artist']!,
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -75,7 +104,7 @@ class FeaturedAlbumWidget extends StatelessWidget {
           ),
           Positioned(
             child: Image.asset(
-              selectedAlbum['image']!,
+              selectedAlbum!['image']!,
               width: 310,
               height: 160,
             ),
@@ -85,3 +114,5 @@ class FeaturedAlbumWidget extends StatelessWidget {
     );
   }
 }
+
+    

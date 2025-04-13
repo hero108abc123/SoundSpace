@@ -25,3 +25,13 @@ class FavoritePlaylistFailure extends FavoriteState {
   final String message;
   FavoritePlaylistFailure(this.message);
 }
+
+class FavoritePlaylistTracksSuccess extends FavoriteState {
+  final List<Track>? tracks;
+  FavoritePlaylistTracksSuccess(this.tracks);
+}
+
+class FavoritePlaylistTracksFailure extends FavoriteState {
+  final String message;
+  FavoritePlaylistTracksFailure(this.message);
+}

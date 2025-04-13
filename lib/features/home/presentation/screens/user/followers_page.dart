@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
 import 'package:soundspace/core/common/widgets/loader.dart';
 import 'package:soundspace/core/common/widgets/show_snackber.dart';
 import 'package:soundspace/features/home/domain/entitites/artist.dart';
+import 'package:soundspace/features/home/domain/entitites/playlist.dart';
+import 'package:soundspace/features/home/domain/entitites/track.dart';
 import 'package:soundspace/features/home/presentation/bloc/user/user_bloc.dart';
+import 'package:soundspace/features/home/presentation/screens/discovery/user_artist.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/follow_widget.dart';
 
 class FollowersPage extends StatefulWidget {
@@ -16,6 +20,8 @@ class FollowersPage extends StatefulWidget {
 
 class _FollowersPageState extends State<FollowersPage> {
   final List<Artist> dummyFollowers = [];
+  final List<Track> tracks = [];
+  final List<Playlist> playlists = [];
 
   @override
   void initState() {
@@ -41,9 +47,14 @@ class _FollowersPageState extends State<FollowersPage> {
         }
         return Scaffold(
           appBar: AppBar(
-            title: const Text(
+            title: Text(
               'Followers',
-              style: TextStyle(color: Colors.white),
+              style: GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+                decoration: TextDecoration.none,
+              ),
             ),
             backgroundColor: const Color.fromARGB(255, 0, 0, 0),
             iconTheme: const IconThemeData(color: Colors.white),
@@ -66,9 +77,20 @@ class _FollowersPageState extends State<FollowersPage> {
               itemCount: dummyFollowers.length,
               itemBuilder: (context, index) {
                 return FollowWidget(
-                  user: dummyFollowers[index],
+                  artist: dummyFollowers[index],
                   icon: const Icon(Icons.person_add, color: Colors.green),
                   onPressed: () {},
+                  onNavigate: (selectedArtist) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UserArtist(
+                          onNavigate: (artist) {},
+                          artist: selectedArtist,
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             ),

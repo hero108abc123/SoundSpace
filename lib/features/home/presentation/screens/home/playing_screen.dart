@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:provider/provider.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
+import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
 import 'package:soundspace/features/home/presentation/screens/home/lyric_screen.dart';
 import '../../../domain/entitites/track.dart';
 import '../../widget/home_widget/audio_player_manager.dart';
@@ -326,6 +328,7 @@ class _NowPlayingPageState extends State<NowPlayingPage>
   }
 
   Widget _lyricButton() {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Column(
       children: [
         IconButton(
@@ -348,7 +351,7 @@ class _NowPlayingPageState extends State<NowPlayingPage>
           ),
         ),
         Text(
-          'Lyrics',
+          languageProvider.translate('lyric'),
           style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.w400,
@@ -454,18 +457,6 @@ void _setShuffleTrack() {
     }
   });
 }
-
-
-//đay nhé
-  // void _toggleFavorite() {
-  //   setState(() {
-  //     if (_favoriteTrackIds.contains(_track.trackId)) {
-  //       _favoriteTrackIds.remove(_track.trackId);
-  //     } else {
-  //       _favoriteTrackIds.add(_track.trackId);
-  //     }
-  //   });
-  // }
 }
 
 class MediaButtonControl extends StatelessWidget {

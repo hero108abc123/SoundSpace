@@ -1,21 +1,27 @@
-import 'package:flutter/foundation.dart';
+import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soundspace/core/common/entities/user_profile.dart';
+import 'package:soundspace/core/common/widgets/loader.dart';
+import 'package:soundspace/core/common/widgets/show_snackber.dart';
+import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
+import 'package:soundspace/features/home/presentation/bloc/user/user_bloc.dart';
+import 'package:soundspace/features/home/presentation/screens/home/playing_screen.dart';
 import 'package:soundspace/features/home/presentation/screens/user/edit_profile_page.dart';
 import 'package:soundspace/features/home/presentation/screens/user/followers_page.dart';
 import 'package:soundspace/features/home/presentation/screens/user/following_page.dart';
 import 'package:soundspace/features/home/presentation/screens/user/setting_screen.dart';
 import 'package:soundspace/features/home/presentation/screens/user/upload_track_page.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/playlist_item.dart';
+import 'package:soundspace/features/home/presentation/widget/user_widget/songs_item.dart';
 import '../../../../../config/theme/app_pallete.dart';
 
 class UserScreen extends StatefulWidget {
-  final List<Track> tracks;
   final Profile user;
-
-  const UserScreen({super.key, required this.tracks, required this.user});
+  const UserScreen({super.key, required this.user});
 
   @override
   State<UserScreen> createState() => _UserScreenState();
@@ -23,11 +29,51 @@ class UserScreen extends StatefulWidget {
 
 class _UserScreenState extends State<UserScreen> {
   String? avatarUrl;
+  final List<Track> tracks = [];
+  final List<Playlist> playlists = [];
+  StreamController<List<Track>> trackStream = StreamController.broadcast();
 
   @override
   void initState() {
     super.initState();
+    context.read<UserBloc>().add(GetMyTracksRequested());
+    context.read<UserBloc>().add(GetMyPlaylistsRequested());
+
     avatarUrl = widget.user.image;
+    observeData();
+
+    Future.delayed(Duration.zero, () {
+      if (!trackStream.isClosed) {
+        trackStream.add(tracks);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    trackStream.close();
+    super.dispose();
+  }
+
+  void observeData() {
+    trackStream.stream.listen((trackList) {
+      setState(() {
+        for (var track in trackList) {
+          if (!tracks.any((t) => t.trackId == track.trackId)) {
+            tracks.add(track);
+          }
+        }
+      });
+    });
+  }
+
+  void navigate(Track track) {
+    Navigator.push(context, CupertinoPageRoute(builder: (context) {
+      return NowPlaying(
+        tracks: tracks,
+        playingTrack: track,
+      );
+    }));
   }
 
   void _updateAvatar(String newAvatarPath) {
@@ -52,11 +98,37 @@ class _UserScreenState extends State<UserScreen> {
           end: Alignment.bottomCenter,
         ),
       ),
-      child: UserAccount(
-        tracks: widget.tracks,
-        user: widget.user,
-        avatarUrl: avatarUrl,
-        onAvatarChanged: _updateAvatar,
+      child: BlocConsumer<UserBloc, UserState>(
+        listener: (context, state) {
+          if (state is UserTracksFailure) {
+            showSnackBar(context, state.message);
+          } else if (state is UserPlaylistsFailure) {
+            showSnackBar(context, state.message);
+          }
+        },
+        builder: (context, state) {
+          if (state is UserLoading) {
+            return const Loader();
+          }
+          if (state is UserTracksSuccess) {
+            tracks.clear();
+            tracks.addAll(state.tracks!.where(
+                (track) => !tracks.any((t) => t.trackId == track.trackId)));
+            trackStream.add(tracks);
+          }
+          if (state is UserPlaylistsSuccess) {
+            playlists.clear();
+            playlists.addAll(state.playlists as Iterable<Playlist>);
+          }
+          return UserAccount(
+            tracks: tracks,
+            user: widget.user,
+            playlists: playlists,
+            avatarUrl: avatarUrl,
+            onAvatarChanged: _updateAvatar,
+            onNavigate: navigate,
+          );
+        },
       ),
     );
   }
@@ -65,15 +137,19 @@ class _UserScreenState extends State<UserScreen> {
 class UserAccount extends StatelessWidget {
   final Profile user;
   final List<Track> tracks;
+  final List<Playlist> playlists;
   final String? avatarUrl;
   final ValueChanged<String> onAvatarChanged;
+  final Function(Track) onNavigate;
 
   const UserAccount({
     super.key,
     required this.tracks,
     required this.user,
+    required this.playlists,
     required this.avatarUrl,
     required this.onAvatarChanged,
+    required this.onNavigate,
   });
 
   @override
@@ -192,7 +268,7 @@ class UserAccount extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FollowersPage(),
+                        builder: (context) => const FollowersPage(),
                       ),
                     );
                   },
@@ -214,7 +290,7 @@ class UserAccount extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FollowingPage(),
+                        builder: (context) => const FollowingPage(),
                       ),
                     );
                   },
@@ -236,103 +312,76 @@ class UserAccount extends StatelessWidget {
   }
 
   Widget _buildPlaylists(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Playlists',
-                  style: GoogleFonts.poppins(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white),
-                ),
-                IconButton(
-                  onPressed: () {
-                    _showCreatePlaylistDialog(context);
-                  },
-                  icon: Image.asset(
-                    'assets/images/icon/home/icon_add.png',
-                    width: 24,
-                    height: 24,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 4),
-            // Example playlist with song list
-            PlaylistItem(
-              title: '★ . .',
-              followers: 8,
-              imageUrl: 'assets/images/Lychee.jpg',
-              tracks: [
-                Track(
-                    title: 'Track 1',
-                    artist: 'Artist 1',
-                    trackId: 1,
-                    image: 'assets/images/Lychee.jpg',
-                    album: '1',
-                    source: '11',
-                    favorite: 0,
-                    lyric: 'Lyric 1'),
-                Track(
-                    title: 'Track 2',
-                    artist: 'Artist 2',
-                    trackId: 2,
-                    image: 'assets/images/Lychee.jpg',
-                    album: '1',
-                    source: '11',
-                    favorite: 0,
-                    lyric: 'Lyric 2'),
-              ],
-            ),
-            // Add more PlaylistItem if needed
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Playlists',
+            style: GoogleFonts.poppins(
+                fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white),
+          ),
+          const SizedBox(height: 2),
+          Column(
+            children: playlists
+                .map((playlist) => Padding(
+                    padding: const EdgeInsets.only(bottom: 3.0),
+                    child: PlaylistItem(playlist: playlist)))
+                .toList(),
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildMySongs(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'My Songs',
-                  style: GoogleFonts.poppins(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'My Songs',
+                style: GoogleFonts.poppins(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
                 ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UploadTrackPage()),
-                    );
-                  },
-                  icon: Image.asset(
-                    'assets/images/icon/home/icon_add.png',
-                    width: 24,
-                    height: 24,
-                  ),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const UploadTrackPage()),
+                  );
+                },
+                icon: Image.asset(
+                  'assets/images/icon/home/icon_add.png',
+                  width: 24,
+                  height: 24,
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 2),
+          Column(
+            children: tracks
+                .map((track) => Padding(
+                      padding: const EdgeInsets.only(bottom: 3.0),
+                      child: SongsItem(
+                        track: track,
+                        onNavigate: (selectedTrack) =>
+                            onNavigate(selectedTrack),
+                      ),
+                    ))
+                .toList(),
+          ),
+        ],
       ),
     );
   }
@@ -347,64 +396,6 @@ class UserAccount extends StatelessWidget {
               fontSize: 14, color: const Color.fromARGB(255, 196, 196, 196)),
         ),
       ),
-    );
-  }
-
-  void _showCreatePlaylistDialog(BuildContext context) {
-    String playlistName = '';
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Give your playlist a name',
-            style: GoogleFonts.poppins(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          content: TextField(
-            onChanged: (value) {
-              playlistName = value;
-            },
-            decoration: const InputDecoration(
-              hintText: 'Playlist Name',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                'Cancel',
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: const Color.fromARGB(255, 0, 0, 0),
-                ),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                if (playlistName.isNotEmpty) {
-                  if (kDebugMode) {
-                    print('Playlist Created: $playlistName');
-                  }
-                  Navigator.of(context).pop();
-                }
-              },
-              child: Text(
-                'Create',
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ],
-        );
-      },
     );
   }
 }
