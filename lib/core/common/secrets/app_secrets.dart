@@ -1,3 +1,3 @@
 class AppSecrets {
-  static const baseUrl = 'https://localhost:7213/api';
+  static const baseUrl = 'https://192.168.181.251:7213/api';
 }

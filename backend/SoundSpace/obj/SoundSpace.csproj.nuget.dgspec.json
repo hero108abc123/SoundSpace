@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj": {}
+    "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj": {
+    "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
         "projectName": "SoundSpace",
-        "projectPath": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
-        "packagesPath": "C:\\Users\\Bop\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\obj\\",
+        "projectPath": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\SoundSpace.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Bop\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -106,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

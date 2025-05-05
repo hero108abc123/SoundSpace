@@ -1,132 +1,132 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\",
+  "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\controllers\\product\\trackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\product\\trackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\controllers\\product\\trackplaylistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\product\\trackplaylistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\dtos\\product\\song\\addtrackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\product\\song\\addtrackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\dtos\\product\\song\\trackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\product\\song\\trackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\services\\implements\\product\\trackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\product\\trackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\dtos\\auth\\authdtos\\emailvaliddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\authdtos\\emailvaliddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\dtos\\auth\\authdtos\\createaccountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\authdtos\\createaccountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\controllers\\product\\playlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\product\\playlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\services\\implements\\auth\\userfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\auth\\userfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\controllers\\auth\\followcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\auth\\followcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\services\\implements\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\services\\interfaces\\auth\\iuserfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\interfaces\\auth\\iuserfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\controllers\\auth\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\auth\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\dtos\\auth\\userdtos\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\userdtos\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\services\\implements\\auth\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\auth\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\dtos\\auth\\userdtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\userdtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\utils\\tokenrevocationmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\utils\\tokenrevocationmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\utils\\tokenrevocationmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\entities\\auth\\revokedtokens.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\controllers\\product\\trackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\product\\trackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\controllers\\product\\trackplaylistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\product\\trackplaylistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\dtos\\product\\song\\addtrackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\product\\song\\addtrackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\dtos\\product\\song\\trackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\product\\song\\trackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\services\\implements\\product\\trackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\product\\trackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\dtos\\auth\\authdtos\\emailvaliddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\authdtos\\emailvaliddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\dtos\\auth\\authdtos\\createaccountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\authdtos\\createaccountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\controllers\\product\\playlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\product\\playlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\services\\implements\\auth\\userfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\auth\\userfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\controllers\\auth\\followcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\auth\\followcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\services\\implements\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\services\\interfaces\\auth\\iuserfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\interfaces\\auth\\iuserfollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\controllers\\auth\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\auth\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\dtos\\auth\\userdtos\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\userdtos\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\services\\implements\\auth\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\auth\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\dtos\\auth\\userdtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\auth\\userdtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\entities\\auth\\revokedtokens.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\entities\\auth\\revokedtokens.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\dbcontexts\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\dbcontexts\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dbcontexts\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\dtos\\product\\playlist\\addplaylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\dtos\\product\\playlist\\addplaylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\product\\playlist\\addplaylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\entities\\auth\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\entities\\auth\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\entities\\auth\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\STUDY\\Do an\\DNCNDPT\\Nangcao\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328182745_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\services\\implements\\product\\playlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\services\\implements\\product\\playlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\product\\playlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\services\\implements\\product\\trackplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\services\\implements\\product\\trackplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\implements\\product\\trackplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\controllers\\product\\favoritetrackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\controllers\\product\\favoritetrackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\controllers\\product\\favoritetrackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\entities\\product\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\entities\\product\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\entities\\product\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\dtos\\product\\song\\updatetrackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\dtos\\product\\song\\updatetrackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\dtos\\product\\song\\updatetrackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\services\\interfaces\\product\\iplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\services\\interfaces\\product\\iplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\services\\interfaces\\product\\iplaylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\bop\\desktop\\github\\soundspace\\backend\\soundspace\\migrations\\20250328190148_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|c:\\users\\dell\\desktop\\do an\\soundspace\\backend\\soundspace\\migrations\\20250328190148_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A800C1D7-2784-458C-A4F7-191725C91B0A}|SoundSpace\\SoundSpace.csproj|solutionrelative:soundspace\\migrations\\20250328190148_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -137,15 +137,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 25,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "TrackController.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Product\\TrackController.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackController.cs",
               "RelativeToolTip": "SoundSpace\\Controllers\\Product\\TrackController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAALwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -154,11 +154,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "CreateAccountDto.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
               "RelativeToolTip": "SoundSpace\\Dtos\\Auth\\AuthDtos\\CreateAccountDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -166,11 +166,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "EmailValidDto.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
               "RelativeToolTip": "SoundSpace\\Dtos\\Auth\\AuthDtos\\EmailValidDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -178,11 +178,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "IUserFollowService.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
               "RelativeToolTip": "SoundSpace\\Services\\Interfaces\\Auth\\IUserFollowService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -190,11 +190,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "FollowController.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\FollowController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\FollowController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Auth\\FollowController.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\FollowController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\FollowController.cs",
               "RelativeToolTip": "SoundSpace\\Controllers\\Auth\\FollowController.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAIwE8AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -202,11 +202,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\UserController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\UserController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Auth\\UserController.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\UserController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\UserController.cs",
               "RelativeToolTip": "SoundSpace\\Controllers\\Auth\\UserController.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAgwDAAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -214,11 +214,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
               "RelativeToolTip": "SoundSpace\\Services\\Implements\\Auth\\UserService.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAQwCkAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -226,11 +226,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "CreateUserDto.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
               "RelativeToolTip": "SoundSpace\\Dtos\\Auth\\UserDtos\\CreateUserDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -238,11 +238,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\AuthController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Auth\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\AuthController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Auth\\AuthController.cs",
               "RelativeToolTip": "SoundSpace\\Controllers\\Auth\\AuthController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -252,9 +252,9 @@
               "$type": "Document",
               "DocumentIndex": 31,
               "Title": "20250328190148_InitialCreate.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
               "RelativeToolTip": "SoundSpace\\Migrations\\20250328190148_InitialCreate.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -264,9 +264,9 @@
               "$type": "Document",
               "DocumentIndex": 23,
               "Title": "Account.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\Account.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\Account.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Entities\\Auth\\Account.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\Account.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\Account.cs",
               "RelativeToolTip": "SoundSpace\\Entities\\Auth\\Account.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -284,23 +284,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 2,
               "Title": "TokenRevocationMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
               "RelativeToolTip": "SoundSpace\\Utils\\TokenRevocationMiddleware.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAQwCAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T17:44:19.489Z"
+              "WhenOpened": "2025-03-28T17:44:19.489Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 21,
               "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
               "RelativeToolTip": "SoundSpace\\Dbcontexts\\ApplicationDbContext.cs",
               "ViewState": "AgIAAE0AAAAAAAAAAAAswG0AAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -310,9 +311,9 @@
               "$type": "Document",
               "DocumentIndex": 20,
               "Title": "RevokedTokens.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
               "RelativeToolTip": "SoundSpace\\Entities\\Auth\\RevokedTokens.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -320,11 +321,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
               "RelativeToolTip": "SoundSpace\\Services\\Implements\\Auth\\AuthService.cs",
               "ViewState": "AgIAAG0AAAAAAAAAAAAcwGIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -334,9 +335,9 @@
               "$type": "Document",
               "DocumentIndex": 22,
               "Title": "AddPlaylistDto.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
               "RelativeToolTip": "SoundSpace\\Dtos\\Product\\Playlist\\AddPlaylistDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -344,23 +345,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Program.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Program.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Program.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Program.cs",
               "RelativeToolTip": "SoundSpace\\Program.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAkwIsAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAIsAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T17:56:32.788Z"
+              "WhenOpened": "2025-03-23T17:56:32.788Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 29,
               "Title": "UpdateTrackDto.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
               "RelativeToolTip": "SoundSpace\\Dtos\\Product\\Song\\UpdateTrackDto.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAgwCMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -368,11 +370,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "AddTrackDto.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
               "RelativeToolTip": "SoundSpace\\Dtos\\Product\\Song\\AddTrackDto.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -380,11 +382,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "TrackDto.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
               "RelativeToolTip": "SoundSpace\\Dtos\\Product\\Song\\TrackDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -394,9 +396,9 @@
               "$type": "Document",
               "DocumentIndex": 28,
               "Title": "Track.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Entities\\Product\\Track.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Entities\\Product\\Track.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Entities\\Product\\Track.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Entities\\Product\\Track.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Entities\\Product\\Track.cs",
               "RelativeToolTip": "SoundSpace\\Entities\\Product\\Track.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -406,9 +408,9 @@
               "$type": "Document",
               "DocumentIndex": 26,
               "Title": "TrackPlaylistService.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
               "RelativeToolTip": "SoundSpace\\Services\\Implements\\Product\\TrackPlaylistService.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAxwCQAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -416,24 +418,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "TrackPlaylistController.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
               "RelativeToolTip": "SoundSpace\\Controllers\\Product\\TrackPlaylistController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T07:15:00.082Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-23T07:15:00.082Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 27,
               "Title": "FavoriteTrackController.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
               "RelativeToolTip": "SoundSpace\\Controllers\\Product\\FavoriteTrackController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -441,24 +442,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\appsettings.json",
               "RelativeDocumentMoniker": "SoundSpace\\appsettings.json",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\appsettings.json",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\appsettings.json",
               "RelativeToolTip": "SoundSpace\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAADoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-03-17T05:48:40.131Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "UserFollowService.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
               "RelativeToolTip": "SoundSpace\\Services\\Implements\\Auth\\UserFollowService.cs",
               "ViewState": "AgIAAJQAAAAAAAAAAAAiwKwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -466,11 +467,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "TrackService.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
               "RelativeToolTip": "SoundSpace\\Services\\Implements\\Product\\TrackService.cs",
               "ViewState": "AgIAAHEAAAAAAAAAAAAIwEEAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -480,9 +481,9 @@
               "$type": "Document",
               "DocumentIndex": 30,
               "Title": "IPlaylistService.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Product\\IPlaylistService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Product\\IPlaylistService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Interfaces\\Product\\IPlaylistService.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Product\\IPlaylistService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Interfaces\\Product\\IPlaylistService.cs",
               "RelativeToolTip": "SoundSpace\\Services\\Interfaces\\Product\\IPlaylistService.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAxwBMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -492,9 +493,9 @@
               "$type": "Document",
               "DocumentIndex": 25,
               "Title": "PlaylistService.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
               "RelativeToolTip": "SoundSpace\\Services\\Implements\\Product\\PlaylistService.cs",
               "ViewState": "AgIAACwBAAAAAAAAAAAcwIMBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -502,11 +503,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "PlaylistController.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\PlaylistController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\PlaylistController.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Controllers\\Product\\PlaylistController.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\PlaylistController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Controllers\\Product\\PlaylistController.cs",
               "RelativeToolTip": "SoundSpace\\Controllers\\Product\\PlaylistController.cs",
               "ViewState": "AgIAAI4AAAAAAAAAAAAYwLkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -514,11 +515,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "UserDto.cs",
-              "DocumentMoniker": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\UserDto.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\UserDto.cs",
               "RelativeDocumentMoniker": "SoundSpace\\Dtos\\Auth\\UserDtos\\UserDto.cs",
-              "ToolTip": "C:\\Users\\Bop\\Desktop\\Github\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\UserDto.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Do an\\SoundSpace\\backend\\SoundSpace\\Dtos\\Auth\\UserDtos\\UserDto.cs",
               "RelativeToolTip": "SoundSpace\\Dtos\\Auth\\UserDtos\\UserDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
