@@ -11,4 +11,15 @@ abstract interface class HomeRepository {
       getPlaylistsFromFollowings(); // New method
   Future<Either<Failure, List<Artist>?>> getFollowedArtists();
 // New method
+
+  Future<Either<Failure, bool>> isFavorite({
+    required int trackId,
+  });
+
+  Future<Either<Failure, String>> likeTrack({
+    required int trackId,
+  });
+  Future<Either<Failure, String>> unlikeTrack({
+    required int trackId,
+  });
 }

@@ -1,11 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
-import 'package:soundspace/core/common/widgets/loader.dart';
 import 'package:soundspace/core/common/widgets/show_snackber.dart';
 import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
@@ -23,52 +20,27 @@ class PlaylistDetail extends StatefulWidget {
 }
 
 class _PlaylistDetailState extends State<PlaylistDetail> {
-  final List<Track> tracks = [];
-  StreamController<List<Track>> trackStream = StreamController.broadcast();
+  List<Track> tracks = [];
 
   @override
   void initState() {
     super.initState();
 
-    context.read<FavoriteBloc>().add(
-          FavoritePlaylistLoadTracks(
-            playlistId: widget.playlist.id,
-          ),
-        );
-    observeData();
-
-    Future.delayed(Duration.zero, () {
-      if (!trackStream.isClosed) {
-        trackStream.add(tracks);
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    trackStream.close();
-    super.dispose();
-  }
-
-  void observeData() {
-    trackStream.stream.listen((trackList) {
-      setState(() {
-        for (var track in trackList) {
-          if (!tracks.any((t) => t.trackId == track.trackId)) {
-            tracks.add(track);
-          }
-        }
-      });
-    });
+    context
+        .read<FavoriteBloc>()
+        .add(FavoritePlaylistLoadTracks(playlistId: widget.playlist.id));
   }
 
   void navigate(Track track) {
-    Navigator.push(context, CupertinoPageRoute(builder: (context) {
-      return NowPlaying(
-        tracks: tracks,
-        playingTrack: track,
-      );
-    }));
+    Navigator.push(
+      context,
+      CupertinoPageRoute(
+        builder: (context) => NowPlaying(
+          tracks: tracks,
+          playingTrack: track,
+        ),
+      ),
+    );
   }
 
   @override
@@ -80,15 +52,16 @@ class _PlaylistDetailState extends State<PlaylistDetail> {
         }
       },
       builder: (context, state) {
+        Widget content;
+
         if (state is FavoriteLoading) {
-          return const Loader();
+          content = const Center(child: CircularProgressIndicator());
+        } else if (state is FavoriteTrackSuccess && state.tracks != null) {
+          content = _buildContent(state.tracks!);
+        } else {
+          content = const Center(child: Text('No tracks found.'));
         }
-        if (state is FavoritePlaylistTracksSuccess) {
-          tracks.clear();
-          tracks.addAll(state.tracks!.where(
-              (track) => !tracks.any((t) => t.trackId == track.trackId)));
-          trackStream.add(tracks);
-        }
+
         return Scaffold(
           body: Container(
             width: double.infinity,
@@ -104,23 +77,7 @@ class _PlaylistDetailState extends State<PlaylistDetail> {
                 end: Alignment.bottomCenter,
               ),
             ),
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildHeader(context),
-                    const SizedBox(height: 10),
-                    _buildPlaylistInfo(),
-                    const SizedBox(height: 10),
-                    _buildOperation(),
-                    const SizedBox(height: 10),
-                    _buildSongList(),
-                  ],
-                ),
-              ),
-            ),
+            child: content,
           ),
         );
       },
@@ -172,7 +129,7 @@ class _PlaylistDetailState extends State<PlaylistDetail> {
           ),
           const SizedBox(height: 5),
           Text(
-            '${tracks.length} songs',
+            '${widget.playlist.trackCount} songs',
             style: GoogleFonts.poppins(
               fontSize: 14,
               fontWeight: FontWeight.w300,
@@ -256,35 +213,38 @@ class _PlaylistDetailState extends State<PlaylistDetail> {
     );
   }
 
-  Widget _buildSongList() {
-    return SizedBox(
-      height: 300,
-      child: Row(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: tracks.length,
-              itemBuilder: (context, index) {
-                return SongsItem(
-                  track: tracks[index],
-                  onNavigate: (track) {
-                    navigate(track);
-                  },
-                );
-              },
-            ),
-          ),
-          IconButton(
-            icon: Image.asset(
-              'assets/images/icon/playlist/icon _delete.png',
-              width: 30,
-              height: 30,
-              color: const Color.fromARGB(255, 255, 255, 255),
-            ),
-            onPressed: () {},
-          ),
-        ],
+  Widget _buildContent(List<Track> tracks) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildHeader(context),
+            const SizedBox(height: 10),
+            _buildPlaylistInfo(),
+            const SizedBox(height: 10),
+            _buildOperation(),
+            _buildSongList(tracks), // Hiển thị danh sách track
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildSongList(List<Track> tracks) {
+    return ListView.builder(
+      itemCount: tracks.length,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        return SongsItem(
+          track: tracks[index],
+          onNavigate: (track) {
+            navigate(track);
+          },
+        );
+      },
     );
   }
 }

@@ -2,6 +2,8 @@
 // import 'package:flutter/foundation.dart';
 import 'dart:io';
 
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -29,41 +31,6 @@ void main() async {
   HttpOverrides.global = MyHttpOverrides();
   runApp(
     //----------------------------App mobile-------------------------------------------------
-
-    MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => serviceLocator<AppUserCubit>(),
-        ),
-        BlocProvider(
-          create: (_) => serviceLocator<AuthBloc>(),
-        ),
-        BlocProvider(
-          create: (_) => serviceLocator<HomeBloc>(),
-        ),
-        BlocProvider(
-          create: (_) => serviceLocator<DiscoveryBloc>(),
-        ),
-        BlocProvider(
-          create: (_) => serviceLocator<FavoriteBloc>(),
-        ),
-        BlocProvider(
-          create: (_) => serviceLocator<UserBloc>(),
-        ),
-        Provider<AuthRemoteDataSource>(
-          create: (_) => AuthRemoteDataSourceImpl(serviceLocator<DioClient>()),
-        ),
-        Provider<AuthRepository>(
-          create: (context) =>
-              AuthRepositoryImpl(context.read<AuthRemoteDataSource>()),
-        ),
-        ChangeNotifierProvider(create: (_) => LanguageProvider()),
-        BlocProvider(create: (_) => LanguageBloc()),
-      ],
-      child: const MyApp(),
-    ),
-
-    //----------------------------Device Preview-------------------------------------------------
 
     // MultiBlocProvider(
     //   providers: [
@@ -95,11 +62,46 @@ void main() async {
     //     ChangeNotifierProvider(create: (_) => LanguageProvider()),
     //     BlocProvider(create: (_) => LanguageBloc()),
     //   ],
-    //   child: DevicePreview(
-    //     enabled: !kReleaseMode,
-    //     builder: (content) => const MyApp(),
-    //   ),
+    //   child: const MyApp(),
     // ),
+
+    //----------------------------Device Preview-------------------------------------------------
+
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => serviceLocator<AppUserCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => serviceLocator<AuthBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => serviceLocator<HomeBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => serviceLocator<DiscoveryBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => serviceLocator<FavoriteBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => serviceLocator<UserBloc>(),
+        ),
+        Provider<AuthRemoteDataSource>(
+          create: (_) => AuthRemoteDataSourceImpl(serviceLocator<DioClient>()),
+        ),
+        Provider<AuthRepository>(
+          create: (context) =>
+              AuthRepositoryImpl(context.read<AuthRemoteDataSource>()),
+        ),
+        ChangeNotifierProvider(create: (_) => LanguageProvider()),
+        BlocProvider(create: (_) => LanguageBloc()),
+      ],
+      child: DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (content) => const MyApp(),
+      ),
+    ),
 
     //-------------------------------------------------------------------------------------------
   );

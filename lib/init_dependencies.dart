@@ -23,6 +23,7 @@ import 'package:soundspace/features/home/domain/repositories/discovery_repositor
 import 'package:soundspace/features/home/domain/repositories/favorite_repository.dart';
 import 'package:soundspace/features/home/domain/repositories/home_repository.dart';
 import 'package:soundspace/features/home/domain/repositories/user_repository.dart';
+import 'package:soundspace/features/home/domain/usecase/add_to_playlist.dart';
 import 'package:soundspace/features/home/domain/usecase/add_track.dart';
 import 'package:soundspace/features/home/domain/usecase/create_playlist.dart';
 import 'package:soundspace/features/home/domain/usecase/follow_user.dart';
@@ -39,9 +40,13 @@ import 'package:soundspace/features/home/domain/usecase/get_tracks_by_userid.dar
 import 'package:soundspace/features/home/domain/usecase/get_tracks_from_playlist.dart';
 import 'package:soundspace/features/home/domain/usecase/get_tracks_from_unfollowings.dart';
 import 'package:soundspace/features/home/domain/usecase/get_unfollowed_artist.dart';
+import 'package:soundspace/features/home/domain/usecase/is_favorite.dart';
+import 'package:soundspace/features/home/domain/usecase/is_following_artist.dart';
+import 'package:soundspace/features/home/domain/usecase/like_track.dart';
 import 'package:soundspace/features/home/domain/usecase/load_track.dart';
 import 'package:soundspace/features/home/domain/usecase/logout.dart';
 import 'package:soundspace/features/home/domain/usecase/unfollow_user.dart';
+import 'package:soundspace/features/home/domain/usecase/unlike_track.dart';
 import 'package:soundspace/features/home/domain/usecase/update_user_profile.dart';
 import 'package:soundspace/features/home/presentation/bloc/discovery/discovery_bloc.dart';
 import 'package:soundspace/features/home/presentation/bloc/favorite/favorite_bloc.dart';
@@ -246,6 +251,31 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
+    ..registerFactory(
+      () => AddToPlaylist(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => IsFollowingArtist(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => IsFavorite(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => LikeTrack(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => UnlikeTrack(
+        serviceLocator(),
+      ),
+    )
     //Bloc
     ..registerLazySingleton(
       () => AuthBloc(
@@ -262,15 +292,20 @@ void _initAuth() {
         loadData: serviceLocator(),
         getPlaylistsFromFollowings: serviceLocator(),
         getFollowedArtists: serviceLocator(),
+        isFavorite: serviceLocator(),
+        likeTrack: serviceLocator(),
+        unlikeTrack: serviceLocator(),
       ),
     )
     ..registerFactory(
       () => DiscoveryBloc(
+        addToPlaylist: serviceLocator(),
         getPlaylistsFromUnfollowings: serviceLocator(),
         getUnfollowedArtists: serviceLocator(),
         getTracksFromUnfollowings: serviceLocator(),
         getPlaylistsByUserId: serviceLocator(),
         getTracksByUserId: serviceLocator(),
+        isFollowingArtist: serviceLocator(),
       ),
     )
     ..registerFactory(

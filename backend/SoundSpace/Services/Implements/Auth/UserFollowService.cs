@@ -172,6 +172,16 @@ namespace SoundSpace.Services.Implements.Auth
             return followerDtos.ToList();
         }
 
+        public async Task<bool> IsFollowingUserAsync(int targetUserId)
+        {
+            int currentUserId = CommonUntils.GetCurrentUserId(_httpContextAccessor);
+
+            // Trả về true nếu người dùng hiện tại đang theo dõi targetUserId
+            return await _dbContext.UserFollows
+                .AnyAsync(uf => uf.FollowerId == currentUserId && uf.FollowingId == targetUserId);
+        }
+
+
     }
 
 }

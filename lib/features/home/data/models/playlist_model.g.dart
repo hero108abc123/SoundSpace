@@ -14,6 +14,10 @@ PlaylistModel _$PlaylistModelFromJson(Map<String, dynamic> json) =>
       follower: json['follower'] as int,
       createBy: json['createBy'] as String,
       trackCount: json['trackCount'] as int,
+      tracks: (json['tracks'] as List<dynamic>?)
+              ?.map((e) => TrackModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$PlaylistModelToJson(PlaylistModel instance) =>

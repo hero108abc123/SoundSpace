@@ -78,8 +78,6 @@ class _FollowersPageState extends State<FollowersPage> {
               itemBuilder: (context, index) {
                 return FollowWidget(
                   artist: dummyFollowers[index],
-                  icon: const Icon(Icons.person_add, color: Colors.green),
-                  onPressed: () {},
                   onNavigate: (selectedArtist) {
                     Navigator.push(
                       context,

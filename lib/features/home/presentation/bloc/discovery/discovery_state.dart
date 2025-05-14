@@ -35,3 +35,23 @@ class DiscoveryArtistFailure extends DiscoveryState {
   final String message;
   DiscoveryArtistFailure(this.message);
 }
+
+class DiscoveryAddToPlaylistSuccess extends DiscoveryState {
+  final String message;
+  DiscoveryAddToPlaylistSuccess(this.message);
+}
+
+class DiscoveryAddToPlaylistFailure extends DiscoveryState {
+  final String message;
+  DiscoveryAddToPlaylistFailure(this.message);
+}
+
+class DiscoveryIsFollowingArtistSuccess extends DiscoveryState {
+  final bool isFollowing;
+  DiscoveryIsFollowingArtistSuccess(this.isFollowing);
+}
+
+class DiscoveryIsFollowingArtistFailure extends DiscoveryState {
+  final String message;
+  DiscoveryIsFollowingArtistFailure(this.message);
+}

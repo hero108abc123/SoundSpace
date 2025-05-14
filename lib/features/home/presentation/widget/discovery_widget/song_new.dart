@@ -9,12 +9,11 @@ class Songnew extends StatelessWidget {
   final Function(Track) onNavigate;
   final List<Playlist> playlists;
 
-  const Songnew({
-    super.key,
-    required this.track,
-    required this.onNavigate,
-    required this.playlists,
-  });
+  const Songnew(
+      {super.key,
+      required this.track,
+      required this.onNavigate,
+      required this.playlists});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +64,9 @@ class Songnew extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => AddToPlaylist(),
+                          builder: (context) => AddToPlaylist(
+                            track: track,
+                          ),
                         ),
                       );
                     },

@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundspace/core/usecase/usecase.dart';
+import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:soundspace/features/home/domain/entitites/artist.dart';
 import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
@@ -12,7 +13,6 @@ import 'package:soundspace/features/home/domain/usecase/unfollow_user.dart';
 import 'package:soundspace/features/home/domain/usecase/update_user_profile.dart';
 import 'package:soundspace/features/home/domain/usecase/get_my_playlists.dart';
 import 'package:soundspace/features/home/domain/usecase/get_my_tracks.dart';
-import 'package:soundspace/features/home/presentation/bloc/home/home_bloc.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
@@ -69,8 +69,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       (failure) => emit(UserLogoutFailure(failure.message)),
       (response) {
         emit(UserLogoutSuccess(response));
-        // Dispatch UserLoggedOut event to HomeBloc
-        event.homeBloc.add(UserLoggedOut());
+        event.authBloc.add(UserLoggedOut());
       },
     );
   }

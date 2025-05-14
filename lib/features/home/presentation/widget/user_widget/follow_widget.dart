@@ -5,16 +5,11 @@ import 'package:soundspace/features/home/presentation/provider/language_provider
 
 class FollowWidget extends StatelessWidget {
   final Artist artist;
-  final Icon icon;
-  final VoidCallback onPressed;
   final Function(Artist) onNavigate;
-  
 
   const FollowWidget({
     super.key,
     required this.artist,
-    required this.icon,
-    required this.onPressed,
     required this.onNavigate,
   });
 
@@ -27,42 +22,38 @@ class FollowWidget extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () => onNavigate(artist),
-            child: 
-              ClipRRect(
-                borderRadius: BorderRadius.zero,
-                child: Image.network(
-                  artist.image,
-                  width: 50,
-                  height: 50,
-                  fit: BoxFit.cover,
-                ),
-              ),),
-               SizedBox(width: 10),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      artist.displayName,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      '${artist.followersCount} ${languageProvider.translate('followers')} • ${artist.followingCount} ${languageProvider.translate('following')}',
-                      style: const TextStyle(
-                        color: Colors.white70,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.zero,
+              child: Image.network(
+                artist.image,
+                width: 50,
+                height: 50,
+                fit: BoxFit.cover,
               ),
-              IconButton(
-                icon: icon,
-                onPressed: onPressed,
-              ),
+            ),
+          ),
+          SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  artist.displayName,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  '${artist.followersCount} ${languageProvider.translate('followers')} • ${artist.followingCount} ${languageProvider.translate('following')}',
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

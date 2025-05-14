@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:soundspace/features/home/domain/entitites/playlist.dart';
+import 'package:soundspace/features/home/domain/entitites/track.dart';
 import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
 import 'package:soundspace/features/home/presentation/screens/user/playlist_detail.dart';
 
 class PlaylistItem extends StatelessWidget {
   final Playlist playlist;
+  final List<Track> tracks;
 
-  const PlaylistItem({
-    super.key,
-    required this.playlist,
-  });
+  const PlaylistItem({super.key, required this.playlist, required this.tracks});
 
   @override
   Widget build(BuildContext context) {

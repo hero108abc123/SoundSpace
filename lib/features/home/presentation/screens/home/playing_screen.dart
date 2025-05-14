@@ -1,10 +1,13 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'package:soundspace/config/theme/app_pallete.dart';
+import 'package:soundspace/core/common/widgets/show_snackber.dart';
+import 'package:soundspace/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
 import 'package:soundspace/features/home/presentation/screens/home/lyric_screen.dart';
 import '../../../domain/entitites/track.dart';
@@ -49,15 +52,20 @@ class _NowPlayingPageState extends State<NowPlayingPage>
   late AudioPlayerManager _audioPlayerManager;
   late int _selectedItemIndex;
   late Track _track;
-  late double _currentAnimationPosition;
-  late Set<int>
-      _favoriteTrackIds; // t víeeets cái favoriteTrackId đây nhé, sai thì sửa
+  late double
+      _currentAnimationPosition; // t víeeets cái favoriteTrackId đây nhé, sai thì sửa
+
+  final Set<int> _favoriteTrackIds = {};
   bool _isRepeating = false;
   bool _isShuffling = false;
 
   @override
   void initState() {
     super.initState();
+
+    context.read<HomeBloc>().add(IsFavoriteEvent(
+          trackId: widget.playingTrack.trackId,
+        ));
     _currentAnimationPosition = 0.0;
     _track = widget.playingTrack;
     _imageAnimationController = AnimationController(
@@ -67,7 +75,6 @@ class _NowPlayingPageState extends State<NowPlayingPage>
     _audioPlayerManager = AudioPlayerManager(trackUrl: _track.source);
     _audioPlayerManager.init();
     _selectedItemIndex = widget.tracks.indexOf(widget.playingTrack);
-    _favoriteTrackIds = {}; //đây nhé
     _isRepeating = _audioPlayerManager.player.loopMode == LoopMode.one;
     _isShuffling = _audioPlayerManager.player.shuffleModeEnabled;
     _audioPlayerManager.player.positionStream.listen((position) async {
@@ -85,82 +92,100 @@ class _NowPlayingPageState extends State<NowPlayingPage>
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              AppPallete.gradient1,
-              AppPallete.gradient2,
-              AppPallete.gradient4,
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: Image.asset(
-                      'assets/images/icon/playlist/icon Back.png',
-                      height: 26,
-                      width: 26,
-                    ),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                ],
-              ),
+      child: BlocListener<HomeBloc, HomeState>(
+        listener: (context, state) {
+          if (state is IsFavoriteSuccess) {
+            setState(() {
+              if (state.isFavorite) {
+                _favoriteTrackIds.add(_track.trackId);
+              } else {
+                _favoriteTrackIds.remove(_track.trackId);
+              }
+            });
+          }
+
+          if (state is IsFavoriteFailure) {
+            showSnackBar(context, state.error);
+          }
+        },
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                AppPallete.gradient1,
+                AppPallete.gradient2,
+                AppPallete.gradient4,
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 20),
-                      RotationTransition(
-                        turns: Tween(begin: 0.0, end: 1.0)
-                            .animate(_imageAnimationController),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(360),
-                          child: FadeInImage.assetNetwork(
-                            placeholder: 'assets/images/Goat.jpg',
-                            image: _track.image,
-                            width: 260,
-                            height: 260,
-                            fit: BoxFit.cover,
-                            imageErrorBuilder: (context, error, stackTrace) {
-                              return Image.asset(
-                                'assets/images/Goat.jpg',
-                                width: 260,
-                                height: 260,
-                                fit: BoxFit.cover,
-                              );
-                            },
+          ),
+          child: Column(
+            children: [
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      icon: Image.asset(
+                        'assets/images/icon/playlist/icon Back.png',
+                        height: 26,
+                        width: 26,
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(height: 20),
+                        RotationTransition(
+                          turns: Tween(begin: 0.0, end: 1.0)
+                              .animate(_imageAnimationController),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(360),
+                            child: FadeInImage.assetNetwork(
+                              placeholder: 'assets/images/Goat.jpg',
+                              image: _track.image,
+                              width: 260,
+                              height: 260,
+                              fit: BoxFit.cover,
+                              imageErrorBuilder: (context, error, stackTrace) {
+                                return Image.asset(
+                                  'assets/images/Goat.jpg',
+                                  width: 260,
+                                  height: 260,
+                                  fit: BoxFit.cover,
+                                );
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                      _buildTrackInfo(),
-                      const SizedBox(height: 30),
-                      _progressBar(),
-                      const SizedBox(height: 30),
-                      _mediaButton(),
-                      const SizedBox(height: 30),
-                      _lyricButton(),
-                    ],
+                        _buildTrackInfo(),
+                        const SizedBox(height: 30),
+                        _progressBar(),
+                        const SizedBox(height: 30),
+                        _mediaButton(),
+                        const SizedBox(height: 30),
+                        _lyricButton(),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -216,8 +241,14 @@ class _NowPlayingPageState extends State<NowPlayingPage>
               onPressed: () {
                 setState(() {
                   if (_favoriteTrackIds.contains(_track.trackId)) {
+                    context.read<HomeBloc>().add(
+                          UnlikeTrackEvent(trackId: _track.trackId),
+                        );
                     _favoriteTrackIds.remove(_track.trackId);
                   } else {
+                    context.read<HomeBloc>().add(
+                          LikeTrackEvent(trackId: _track.trackId),
+                        );
                     _favoriteTrackIds.add(_track.trackId);
                   }
                 });
@@ -414,7 +445,7 @@ class _NowPlayingPageState extends State<NowPlayingPage>
   }
 
   void _setRepeatTrack() {
-    if (_isShuffling) return; 
+    if (_isShuffling) return;
 
     setState(() {
       _isRepeating = !_isRepeating;
@@ -428,35 +459,39 @@ class _NowPlayingPageState extends State<NowPlayingPage>
     });
   }
 
-void _setShuffleTrack() {
-  if (_isRepeating) return;
+  void _setShuffleTrack() {
+    if (_isRepeating) return;
 
-  setState(() {
-    _isShuffling = !_isShuffling;
-    _audioPlayerManager.player.setShuffleModeEnabled(_isShuffling);
+    setState(() {
+      _isShuffling = !_isShuffling;
+      _audioPlayerManager.player.setShuffleModeEnabled(_isShuffling);
 
-    if (_isShuffling) {
-      _isRepeating = false;
-      _audioPlayerManager.player.setLoopMode(LoopMode.off);
-      List<Track> shuffledTracks = List.from(widget.tracks)..shuffle();
+      if (_isShuffling) {
+        _isRepeating = false;
+        _audioPlayerManager.player.setLoopMode(LoopMode.off);
+        List<Track> shuffledTracks = List.from(widget.tracks)..shuffle();
 
-      Future.microtask(() {
-        _audioPlayerManager.player.setAudioSource(
-          ConcatenatingAudioSource(
-            children: shuffledTracks.map((track) => AudioSource.uri(Uri.parse(track.source))).toList(),
-          ),
-        ).then((_) {
-          _selectedItemIndex = 0;
-          _track = shuffledTracks[_selectedItemIndex];
-          _audioPlayerManager.updateTrackUrl(_track.source);
-          _audioPlayerManager.player.play();
-        }).catchError((error) {
-          debugPrint("Lỗi khi setAudioSource: $error");
+        Future.microtask(() {
+          _audioPlayerManager.player
+              .setAudioSource(
+            ConcatenatingAudioSource(
+              children: shuffledTracks
+                  .map((track) => AudioSource.uri(Uri.parse(track.source)))
+                  .toList(),
+            ),
+          )
+              .then((_) {
+            _selectedItemIndex = 0;
+            _track = shuffledTracks[_selectedItemIndex];
+            _audioPlayerManager.updateTrackUrl(_track.source);
+            _audioPlayerManager.player.play();
+          }).catchError((error) {
+            debugPrint("Lỗi khi setAudioSource: $error");
+          });
         });
-      });
-    }
-  });
-}
+      }
+    });
+  }
 }
 
 class MediaButtonControl extends StatelessWidget {

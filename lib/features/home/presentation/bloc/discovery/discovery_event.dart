@@ -19,3 +19,21 @@ class GetPlaylistsByUserIdRequested extends DiscoveryEvent {
 
   GetPlaylistsByUserIdRequested({required this.userId});
 }
+
+class AddToPlaylistRequested extends DiscoveryEvent {
+  final int trackId;
+  final int playlistId;
+
+  AddToPlaylistRequested({
+    required this.trackId,
+    required this.playlistId,
+  });
+}
+
+class IsFollowingArtistRequested extends DiscoveryEvent {
+  final int targetUserId;
+
+  IsFollowingArtistRequested({
+    required this.targetUserId,
+  });
+}

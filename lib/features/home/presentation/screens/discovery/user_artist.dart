@@ -13,6 +13,7 @@ import 'package:soundspace/features/home/domain/entitites/artist.dart';
 import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
 import 'package:soundspace/features/home/presentation/bloc/discovery/discovery_bloc.dart';
+import 'package:soundspace/features/home/presentation/bloc/user/user_bloc.dart';
 import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
 import 'package:soundspace/features/home/presentation/screens/home/playing_screen.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/playlist_item.dart';
@@ -42,6 +43,15 @@ class _UserArtistState extends State<UserArtist>
   late TabController _tabController;
 
   void _toggleFollow() {
+    if (isFollowing) {
+      context
+          .read<UserBloc>()
+          .add(FollowUserRequested(userId: widget.artist.id));
+    } else {
+      context
+          .read<UserBloc>()
+          .add(UnfollowUserRequested(userId: widget.artist.id));
+    }
     setState(() {
       isFollowing = !isFollowing;
     });
@@ -56,6 +66,9 @@ class _UserArtistState extends State<UserArtist>
     context
         .read<DiscoveryBloc>()
         .add(GetTracksByUserIdRequested(userId: widget.artist.id));
+    context
+        .read<DiscoveryBloc>()
+        .add(IsFollowingArtistRequested(targetUserId: widget.artist.id));
 
     observeData();
     Future.delayed(Duration.zero, () {
@@ -112,6 +125,9 @@ class _UserArtistState extends State<UserArtist>
           } else if (state is DiscoveryTrackFailure) {
             showSnackBar(context, state.message);
           }
+          if (state is DiscoveryIsFollowingArtistFailure) {
+            showSnackBar(context, state.message);
+          }
         },
         builder: (context, state) {
           if (state is DiscoveryLoading) {
@@ -126,6 +142,9 @@ class _UserArtistState extends State<UserArtist>
             tracks.addAll(state.tracks!.where(
                 (track) => !tracks.any((t) => t.trackId == track.trackId)));
             trackStream.add(tracks);
+          }
+          if (state is DiscoveryIsFollowingArtistSuccess) {
+            isFollowing = state.isFollowing;
           }
 
           return Container(
@@ -278,7 +297,7 @@ class _UserArtistState extends State<UserArtist>
             children: playlists
                 .map((playlist) => Padding(
                       padding: const EdgeInsets.only(bottom: 3.0),
-                      child: PlaylistItem(playlist: playlist),
+                      child: PlaylistItem(playlist: playlist, tracks: tracks),
                     ))
                 .toList(),
           ),
@@ -343,7 +362,9 @@ class _UserArtistState extends State<UserArtist>
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AddToPlaylist(),
+                  builder: (context) => AddToPlaylist(
+                    track: track,
+                  ),
                 ),
               );
             },

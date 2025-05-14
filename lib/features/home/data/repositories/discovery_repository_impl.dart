@@ -71,4 +71,34 @@ class DiscoveryRepositoryImpl implements DiscoveryRepository {
       return left(Failure(e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> addToPlaylist({
+    required int trackId,
+    required int playlistId,
+  }) async {
+    try {
+      final remoteUserId = await _discoveryRemoteDataSource.addToPlaylist(
+        trackId: trackId,
+        playlistId: playlistId,
+      );
+      return right(remoteUserId);
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> isFollowingArtist({
+    required int targetUserId,
+  }) async {
+    try {
+      final remoteUserId = await _discoveryRemoteDataSource.isFollowingArtist(
+        targetUserId: targetUserId,
+      );
+      return right(remoteUserId);
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
+  }
 }

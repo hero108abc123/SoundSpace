@@ -86,5 +86,19 @@ namespace SoundSpace.Controllers.Auth
             }
         }
 
+        [HttpGet("is-following/{targetUserId}")]
+        public async Task<IActionResult> IsFollowingUser(int targetUserId)
+        {
+            try
+            {
+                bool isFollowing = await _userFollowService.IsFollowingUserAsync(targetUserId);
+                return Ok(new { isFollowing });
+            }
+            catch (Exception ex)
+            {
+                return ReturnException(ex);
+            }
+        }
+
     }
 }

@@ -11,6 +11,8 @@ namespace SoundSpace.Services.Interfaces.Auth
         Task<List<ArtistDto>> GetFollowedArtistsAsync();
         Task<List<ArtistDto>> GetUnfollowedArtistsAsync();
         Task<List<ArtistDto>> GetFollowersAsync();
+        Task<bool> IsFollowingUserAsync(int targetUserId);
+
 
     }
 }

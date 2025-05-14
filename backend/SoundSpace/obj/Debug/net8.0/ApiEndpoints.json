@@ -75,6 +75,22 @@
   },
   {
     "ContainingType": "SoundSpace.Controllers.Product.FavoriteTrackController",
+    "Method": "IsFavoriteTrack",
+    "RelativePath": "api/FavoriteTrack/is-favorite/{trackId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "trackId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.FavoriteTrackController",
     "Method": "RemoveFavoriteTrack",
     "RelativePath": "api/FavoriteTrack/remove/{trackId}",
     "HttpMethod": "DELETE",
@@ -133,6 +149,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Auth.FollowController",
+    "Method": "IsFollowingUser",
+    "RelativePath": "api/Follow/is-following/{targetUserId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "targetUserId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -322,6 +354,22 @@
     "Method": "FollowPlaylist",
     "RelativePath": "api/PlaylistFollow/follow/{playlistId}",
     "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "playlistId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SoundSpace.Controllers.Product.PlaylistFollowController",
+    "Method": "IsFollowingPlaylist",
+    "RelativePath": "api/PlaylistFollow/is-following/{playlistId}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [

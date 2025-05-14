@@ -41,3 +41,36 @@ final class ArtistsFailure extends HomeState {
 
   const ArtistsFailure(this.error);
 }
+
+final class IsFavoriteSuccess extends HomeState {
+  final bool isFavorite;
+  const IsFavoriteSuccess(this.isFavorite);
+}
+
+final class IsFavoriteFailure extends HomeState {
+  final String error;
+
+  const IsFavoriteFailure(this.error);
+}
+
+final class LikeTrackSuccess extends HomeState {
+  final String message;
+  const LikeTrackSuccess(this.message);
+}
+
+final class LikeTrackFailure extends HomeState {
+  final String error;
+
+  const LikeTrackFailure(this.error);
+}
+
+final class UnlikeTrackSuccess extends HomeState {
+  final String message;
+  const UnlikeTrackSuccess(this.message);
+}
+
+final class UnlikeTrackFailure extends HomeState {
+  final String error;
+
+  const UnlikeTrackFailure(this.error);
+}

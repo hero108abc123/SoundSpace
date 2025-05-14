@@ -31,7 +31,6 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
   final List<Track> tracks = [];
   final List<Artist> users = [];
   final List<Playlist> playlists = [];
-
   @override
   void initState() {
     super.initState();

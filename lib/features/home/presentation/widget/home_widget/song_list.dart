@@ -89,7 +89,9 @@ class Songlist extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AddToPlaylist(),
+                        builder: (context) => AddToPlaylist(
+                          track: track,
+                        ),
                       ),
                     );
                   },

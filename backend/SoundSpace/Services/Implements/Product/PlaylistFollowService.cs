@@ -64,5 +64,14 @@ namespace SoundSpace.Services.Implements.Product
         {
             return await _dbContext.PlaylistFollows.CountAsync(pf => pf.PlaylistId == playlistId);
         }
+
+        public async Task<bool> IsFollowingPlaylistAsync(int playlistId)
+        {
+            int currentUserId = CommonUntils.GetCurrentUserId(_httpContextAccessor);
+
+            return await _dbContext.PlaylistFollows
+                .AnyAsync(pf => pf.UserId == currentUserId && pf.PlaylistId == playlistId);
+        }
+
     }
 }

@@ -43,5 +43,20 @@ namespace SoundSpace.Controllers.Product
                 return ReturnException(ex);
             }
         }
+
+        [HttpGet("is-favorite/{trackId}")]
+        public async Task<IActionResult> IsFavoriteTrack(int trackId)
+        {
+            try
+            {
+                bool isFavorite = await _favoriteTrackService.IsFavoriteTrackAsync(trackId);
+                return Ok(new { isFavorite });
+            }
+            catch (Exception ex)
+            {
+                return ReturnException(ex);
+            }
+        }
+
     }
 }

@@ -10,11 +10,11 @@ import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/domain/entitites/track.dart';
 import 'package:soundspace/features/home/presentation/bloc/user/user_bloc.dart';
 import 'package:soundspace/features/home/presentation/screens/home/playing_screen.dart';
+import 'package:soundspace/features/home/presentation/screens/home/seemore_song_screen.dart';
 import 'package:soundspace/features/home/presentation/screens/user/edit_profile_page.dart';
 import 'package:soundspace/features/home/presentation/screens/user/followers_page.dart';
 import 'package:soundspace/features/home/presentation/screens/user/following_page.dart';
 import 'package:soundspace/features/home/presentation/screens/user/setting_screen.dart';
-import 'package:soundspace/features/home/presentation/screens/user/upload_track_page.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/playlist_item.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/songs_item.dart';
 import '../../../../../config/theme/app_pallete.dart';
@@ -163,10 +163,10 @@ class UserAccount extends StatelessWidget {
           _buildProfileInfo(context),
           const SizedBox(height: 10),
           _buildPlaylists(context),
-          _more(),
+          _more(context),
           const SizedBox(height: 10),
           _buildMySongs(context),
-          _more(),
+          _more(context),
         ],
       ),
     );
@@ -327,7 +327,7 @@ class UserAccount extends StatelessWidget {
             children: playlists
                 .map((playlist) => Padding(
                     padding: const EdgeInsets.only(bottom: 3.0),
-                    child: PlaylistItem(playlist: playlist)))
+                    child: PlaylistItem(playlist: playlist, tracks: tracks)))
                 .toList(),
           ),
         ],
@@ -357,7 +357,11 @@ class UserAccount extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const UploadTrackPage()),
+                      builder: (context) => SeemoreSongScreen(
+                        tracks: tracks,
+                        onNavigate: (track) {},
+                      ),
+                    ),
                   );
                 },
                 icon: Image.asset(
@@ -386,7 +390,7 @@ class UserAccount extends StatelessWidget {
     );
   }
 
-  Widget _more() {
+  Widget _more(context) {
     return Center(
       child: TextButton(
         onPressed: () {},

@@ -5,7 +5,10 @@ import 'package:soundspace/features/home/domain/entitites/artist.dart';
 import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 import 'package:soundspace/features/home/domain/usecase/get_followed_artists.dart';
 import 'package:soundspace/features/home/domain/usecase/get_playlists_from_followings.dart';
+import 'package:soundspace/features/home/domain/usecase/is_favorite.dart';
+import 'package:soundspace/features/home/domain/usecase/like_track.dart';
 import 'package:soundspace/features/home/domain/usecase/load_track.dart';
+import 'package:soundspace/features/home/domain/usecase/unlike_track.dart';
 
 import '../../../domain/entitites/track.dart';
 
@@ -16,19 +19,31 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final LoadData _loadData;
   final GetPlaylistsFromFollowings _getPlaylistsFromFollowings;
   final GetFollowedArtists _getFollowedArtists;
+  final IsFavorite _isFavorite;
+  final LikeTrack _likeTrack;
+  final UnlikeTrack _unlikeTrack;
 
   HomeBloc({
     required LoadData loadData,
     required GetPlaylistsFromFollowings getPlaylistsFromFollowings,
     required GetFollowedArtists getFollowedArtists,
+    required IsFavorite isFavorite,
+    required LikeTrack likeTrack,
+    required UnlikeTrack unlikeTrack,
   })  : _loadData = loadData,
         _getPlaylistsFromFollowings = getPlaylistsFromFollowings,
         _getFollowedArtists = getFollowedArtists,
+        _isFavorite = isFavorite,
+        _likeTrack = likeTrack,
+        _unlikeTrack = unlikeTrack,
         super(HomeInitial()) {
     on<HomeTrackLoadData>(_onHomeTrackLoadData);
     on<HomePlaylistsLoadData>(_onHomePlaylistsLoadData);
     on<HomeArtistsLoadData>(_onHomeArtistsLoadData);
     on<UserLoggedOut>(_onUserLoggedOut); // Handle logout
+    on<IsFavoriteEvent>(_onIsFavoriteEvent);
+    on<LikeTrackEvent>(_onLikeTrackEvent);
+    on<UnlikeTrackEvent>(_onUnlikeTrackEvent);
   }
 
   Future<void> _onHomeTrackLoadData(
@@ -70,5 +85,41 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   // Reset the state when the user logs out
   void _onUserLoggedOut(UserLoggedOut event, Emitter<HomeState> emit) {
     emit(HomeInitial());
+  }
+
+  void _onIsFavoriteEvent(
+    IsFavoriteEvent event,
+    Emitter<HomeState> emit,
+  ) async {
+    emit(HomeLoading());
+    final res = await _isFavorite(IsFavoriteParams(trackId: event.trackId));
+    res.fold(
+      (failure) => emit(IsFavoriteFailure(failure.message)),
+      (isFavorite) => emit(IsFavoriteSuccess(isFavorite)),
+    );
+  }
+
+  void _onLikeTrackEvent(
+    LikeTrackEvent event,
+    Emitter<HomeState> emit,
+  ) async {
+    emit(HomeLoading());
+    final res = await _likeTrack(LikeTrackParams(trackId: event.trackId));
+    res.fold(
+      (failure) => emit(LikeTrackFailure(failure.message)),
+      (message) => emit(LikeTrackSuccess(message)),
+    );
+  }
+
+  void _onUnlikeTrackEvent(
+    UnlikeTrackEvent event,
+    Emitter<HomeState> emit,
+  ) async {
+    emit(HomeLoading());
+    final res = await _unlikeTrack(UnlikeTrackParams(trackId: event.trackId));
+    res.fold(
+      (failure) => emit(UnlikeTrackFailure(failure.message)),
+      (message) => emit(UnlikeTrackSuccess(message)),
+    );
   }
 }

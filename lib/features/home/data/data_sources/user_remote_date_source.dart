@@ -182,7 +182,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }) async {
     try {
       var token = await storage.read(key: 'token');
-      Response response = await _dio.post(
+      Response response = await _dio.delete(
         "${Endpoints.follow}/unfollow/$userId",
         options: Options(headers: {
           "accept": "*/*",

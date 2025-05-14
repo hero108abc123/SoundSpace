@@ -14,7 +14,6 @@ import 'package:soundspace/features/home/presentation/bloc/favorite/favorite_blo
 import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
 import 'package:soundspace/features/home/presentation/screens/home/playing_screen.dart';
 import 'package:soundspace/features/home/presentation/widget/favorite_widget/music_card.dart';
-import 'package:soundspace/features/home/presentation/widget/favorite_widget/playlist_card.dart';
 
 class FavoriteScreen extends StatelessWidget {
   static route() => MaterialPageRoute(
@@ -122,9 +121,6 @@ class _FavoriteState extends State<Favorite> {
             children: [
               const SizedBox(height: 20),
               _buildFavoriteSong(context, this),
-              const SizedBox(height: 10),
-              _buildFavoritePlaylist(context),
-              const SizedBox(height: 10),
             ],
           ),
         );
@@ -137,30 +133,17 @@ class _FavoriteState extends State<Favorite> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              languageProvider.translate('favorite_song'),
-              style: GoogleFonts.poppins(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
-              ),
-            ),
-            Text(
-              languageProvider.translate('see_more'),
-              style: GoogleFonts.poppins(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: Colors.white,
-              ),
-            ),
-          ],
+        Text(
+          languageProvider.translate('favorite_song'),
+          style: GoogleFonts.poppins(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
         ),
         const SizedBox(height: 10),
         Column(
-          children: tracks.take(5).map((track) {
+          children: tracks.map((track) {
             return MusicCard(
               track: track,
               onNavigate: (Track selectedTrack) {
@@ -170,51 +153,6 @@ class _FavoriteState extends State<Favorite> {
               playlists: [],
             );
           }).toList(),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildFavoritePlaylist(BuildContext context) {
-    final languageProvider = Provider.of<LanguageProvider>(context);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              languageProvider.translate('favorite_playlist'),
-              style: GoogleFonts.poppins(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
-              ),
-            ),
-            Text(
-              languageProvider.translate('see_more'),
-              style: GoogleFonts.poppins(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: playlists.take(5).map((playlist) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: PlaylistCard(
-                  image: playlist.image,
-                  title: playlist.title,
-                ),
-              );
-            }).toList(),
-          ),
         ),
       ],
     );

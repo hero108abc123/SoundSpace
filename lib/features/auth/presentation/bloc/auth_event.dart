@@ -44,3 +44,5 @@ final class AuthCreateProfile extends AuthEvent {
 }
 
 final class AuthIsUserLoggedIn extends AuthEvent {}
+
+final class UserLoggedOut extends AuthEvent {}

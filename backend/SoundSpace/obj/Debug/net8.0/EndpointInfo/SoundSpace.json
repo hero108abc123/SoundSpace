@@ -156,6 +156,29 @@
         }
       }
     },
+    "/api/FavoriteTrack/is-favorite/{trackId}": {
+      "get": {
+        "tags": [
+          "FavoriteTrack"
+        ],
+        "parameters": [
+          {
+            "name": "trackId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Follow/follow/{targetUserId}": {
       "post": {
         "tags": [
@@ -230,6 +253,29 @@
       "get": {
         "tags": [
           "Follow"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Follow/is-following/{targetUserId}": {
+      "get": {
+        "tags": [
+          "Follow"
+        ],
+        "parameters": [
+          {
+            "name": "targetUserId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -514,6 +560,29 @@
     },
     "/api/PlaylistFollow/unfollow/{playlistId}": {
       "delete": {
+        "tags": [
+          "PlaylistFollow"
+        ],
+        "parameters": [
+          {
+            "name": "playlistId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/PlaylistFollow/is-following/{playlistId}": {
+      "get": {
         "tags": [
           "PlaylistFollow"
         ],

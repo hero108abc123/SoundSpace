@@ -14,4 +14,12 @@ abstract class DiscoveryRepository {
   Future<Either<Failure, List<Track>?>> getTracksByUserId({
     required int userId,
   });
+  Future<Either<Failure, String>> addToPlaylist({
+    required int trackId,
+    required int playlistId,
+  });
+
+  Future<Either<Failure, bool>> isFollowingArtist({
+    required int targetUserId,
+  });
 }

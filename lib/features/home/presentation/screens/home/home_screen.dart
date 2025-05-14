@@ -17,6 +17,9 @@ import 'package:soundspace/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:soundspace/features/home/presentation/provider/language_provider.dart';
 import 'package:soundspace/features/home/presentation/screens/discovery/user_artist.dart';
 import 'package:soundspace/features/home/presentation/screens/home/playing_screen.dart';
+import 'package:soundspace/features/home/presentation/screens/home/seemore_artist_screen.dart';
+import 'package:soundspace/features/home/presentation/screens/home/seemore_playlist_screen.dart';
+import 'package:soundspace/features/home/presentation/screens/home/seemore_song_screen.dart';
 import 'package:soundspace/features/home/presentation/widget/home_widget/favorite_artist.dart';
 import 'package:soundspace/features/home/presentation/widget/home_widget/featured_album_widget.dart';
 import 'package:soundspace/features/home/presentation/widget/home_widget/navbar.dart';
@@ -228,21 +231,30 @@ class HomeContent extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              Text(
-                languageProvider.translate('see_more'),
-                style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.white,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SeemoreArtistScreen()),
+                  );
+                },
+                child: Text(
+                  languageProvider.translate('see_more'),
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
+              )
             ],
           ),
           const SizedBox(height: 10),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: artists.map((artist) {
+              children: artists.take(5).map((artist) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: FavoriteArtist(
@@ -287,14 +299,27 @@ class HomeContent extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              Text(
-                languageProvider.translate('see_more'),
-                style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.white,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SeemorePlaylistScreen(
+                              playlist: playlists,
+                              onNavigate: (playlist) {},
+                              tracks: tracks,
+                            )),
+                  );
+                },
+                child: Text(
+                  languageProvider.translate('see_more'),
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -338,14 +363,27 @@ class HomeContent extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              Text(
-                languageProvider.translate('see_more'),
-                style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.white,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SeemoreSongScreen(
+                        tracks: tracks,
+                        onNavigate: (track) {},
+                      ),
+                    ),
+                  );
+                },
+                child: Text(
+                  languageProvider.translate('see_more'),
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ),

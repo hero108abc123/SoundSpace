@@ -42,6 +42,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthLogin>(_onAuthLogin);
     on<AuthEmailValidation>(_onAuthEmailValidation);
     on<AuthIsUserLoggedIn>(_isUserLoggedIn);
+    on<UserLoggedOut>(_onUserLoggedOut);
   }
 
   void _isUserLoggedIn(
@@ -130,5 +131,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) {
     _appUserCubit.updateUser(profile);
     emit(ProfileSuccess(profile));
+  }
+
+  void _onUserLoggedOut(UserLoggedOut event, Emitter<AuthState> emit) {
+    emit(AuthInitial());
   }
 }

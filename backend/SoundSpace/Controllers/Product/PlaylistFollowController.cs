@@ -43,5 +43,20 @@ namespace SoundSpace.Controllers.Product
                 return ReturnException(ex);
             }
         }
+
+        [HttpGet("is-following/{playlistId}")]
+        public async Task<IActionResult> IsFollowingPlaylist(int playlistId)
+        {
+            try
+            {
+                bool isFollowing = await _playlistFollowService.IsFollowingPlaylistAsync(playlistId);
+                return Ok(new { isFollowing });
+            }
+            catch (Exception ex)
+            {
+                return ReturnException(ex);
+            }
+        }
+
     }
 }

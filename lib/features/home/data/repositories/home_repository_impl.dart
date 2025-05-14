@@ -42,4 +42,40 @@ class HomeRepositoryImpl implements HomeRepository {
       return left(Failure(e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> isFavorite({required int trackId}) async {
+    try {
+      final isFavorite =
+          await _homeRemoteDataSource.isFavorite(trackId: trackId);
+      return right(isFavorite);
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> likeTrack({
+    required int trackId,
+  }) async {
+    try {
+      final response = await _homeRemoteDataSource.likeTrack(trackId: trackId);
+      return right(response);
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> unlikeTrack({
+    required int trackId,
+  }) async {
+    try {
+      final response =
+          await _homeRemoteDataSource.unlikeTrack(trackId: trackId);
+      return right(response);
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
+  }
 }

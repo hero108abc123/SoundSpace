@@ -17,11 +17,12 @@ class AudioPlayerManager {
   Stream<DurationState> get durationState => _durationStateSubject.stream;
 
   void init() async {
-    // Lắng nghe trạng thái player
+    // Listen to player state
     player.playerStateStream.listen((state) {
       _playerStateSubject.add(state);
     });
 
+    // Combine position and playback event to create DurationState
     Rx.combineLatest2<Duration, PlaybackEvent, DurationState>(
       player.positionStream,
       player.playbackEventStream,
@@ -34,15 +35,32 @@ class AudioPlayerManager {
       _durationStateSubject.add(state);
     });
 
-    await player.setUrl(trackUrl);
+    try {
+      await player.setUrl(trackUrl);
+    } catch (e) {
+      print("Error initializing player: $e");
+      // You could throw an error or propagate this to the UI
+    }
   }
 
+  // Update track URL if different from the current one
   void updateTrackUrl(String url) async {
-    trackUrl = url;
-    await player.setUrl(trackUrl);
-    await player.play();
+    if (trackUrl != url) {
+      trackUrl = url;
+      try {
+        if (player.playerState.processingState != ProcessingState.idle) {
+          await player.stop();
+        }
+        await player.setUrl(trackUrl);
+        await player.play();
+      } catch (e) {
+        print("Error updating track URL: $e");
+        // You could throw an error or propagate this to the UI
+      }
+    }
   }
 
+  // Dispose of resources
   void dispose() {
     player.dispose();
     _playerStateSubject.close();

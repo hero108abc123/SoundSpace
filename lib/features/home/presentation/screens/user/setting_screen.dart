@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soundspace/core/common/widgets/show_snackber.dart';
+import 'package:soundspace/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:soundspace/features/auth/presentation/screens/auth_screens.dart';
-import 'package:soundspace/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:soundspace/features/home/presentation/bloc/user/user_bloc.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/setting_widget/language_option.dart';
 import 'package:soundspace/features/home/presentation/widget/user_widget/setting_widget/setting_item.dart';
@@ -21,7 +21,7 @@ class SettingTab extends StatelessWidget {
         if (state is UserLogoutSuccess) {
           Navigator.of(context).pushAndRemoveUntil(
             LoginScreen.route(),
-            (route) => false, // Clear the navigation stack
+            (route) => false,
           );
         } else if (state is UserLogoutFailure) {
           showSnackBar(context, state.message);
@@ -76,17 +76,17 @@ class Setting extends StatelessWidget {
                     iconPath: 'assets/images/icon/user_setting/language.png',
                   ),
                 ),
-                SettingItem(
-                  title: languageProvider.translate('night_mode'),
-                  iconPath: 'assets/images/icon/user_setting/nightmode.png',
-                  trailing: Transform.scale(
-                    scale: 0.8,
-                    child: Switch(
-                      value: true,
-                      onChanged: (value) {},
-                    ),
-                  ),
-                ),
+                // SettingItem(
+                //   title: languageProvider.translate('night_mode'),
+                //   iconPath: 'assets/images/icon/user_setting/nightmode.png',
+                //   trailing: Transform.scale(
+                //     scale: 0.8,
+                //     child: Switch(
+                //       value: true,
+                //       onChanged: (value) {},
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -320,7 +320,7 @@ class Setting extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pop(); // Dismiss the dialog
+                    Navigator.of(context).pop();
                   },
                 ),
                 TextButton(
@@ -335,9 +335,8 @@ class Setting extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                     context.read<UserBloc>().add(UserLogoutRequested(
-                          homeBloc: context.read<HomeBloc>(),
+                          authBloc: context.read<AuthBloc>(),
                         ));
-                    // Dismiss the dialog
                   },
                 ),
               ],

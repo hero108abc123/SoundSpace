@@ -5,5 +5,7 @@
         Task FollowPlaylistAsync(int playlistId);
         Task UnfollowPlaylistAsync(int playlistId);
         Task<int> GetFollowersCountAsync(int playlistId);
+        Task<bool> IsFollowingPlaylistAsync(int playlistId);
+
     }
 }

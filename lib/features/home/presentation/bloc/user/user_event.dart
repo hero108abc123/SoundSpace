@@ -3,9 +3,9 @@ part of 'user_bloc.dart';
 abstract class UserEvent {}
 
 final class UserLogoutRequested extends UserEvent {
-  final HomeBloc homeBloc;
+  final AuthBloc authBloc;
 
-  UserLogoutRequested({required this.homeBloc});
+  UserLogoutRequested({required this.authBloc});
 }
 
 final class UserProfileUpdateRequested extends UserEvent {

@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:soundspace/features/home/data/models/track_model.dart';
 import 'package:soundspace/features/home/domain/entitites/playlist.dart';
 
 part 'playlist_model.g.dart';
@@ -12,6 +13,7 @@ class PlaylistModel extends Playlist {
     required super.follower,
     required super.createBy,
     required super.trackCount,
+    required super.tracks,
   });
 
   factory PlaylistModel.fromJson(Map<String, dynamic> json) =>

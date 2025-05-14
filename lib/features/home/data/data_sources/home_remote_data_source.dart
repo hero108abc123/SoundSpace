@@ -10,6 +10,16 @@ abstract interface class HomeRemoteDataSource {
   Future<List<TrackModel>?> loadData();
   Future<List<PlaylistModel>?> getPlaylistsFromFollowings(); // New method
   Future<List<ArtistModel>?> getFollowedArtists(); // New method
+
+  Future<bool> isFavorite({
+    required int trackId,
+  });
+  Future<String> likeTrack({
+    required int trackId,
+  });
+  Future<String> unlikeTrack({
+    required int trackId,
+  });
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
@@ -87,6 +97,63 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
       }
     } catch (e) {
       throw Exception("Failed to load followed artists: ${e.toString()}");
+    }
+  }
+
+  @override
+  Future<bool> isFavorite({
+    required int trackId,
+  }) async {
+    try {
+      var token = await storage.read(key: "token");
+      Response response = await _dio.get(
+        "${Endpoints.favoriteTrack}/is-favorite/$trackId",
+        options: Options(headers: {
+          "accept": "application/json; charset=utf-8",
+          'Authorization': 'Bearer $token',
+        }),
+      );
+      return response.data['isFavorite'];
+    } catch (e) {
+      throw Exception("Failed to check if track is favorite: ${e.toString()}");
+    }
+  }
+
+  @override
+  Future<String> likeTrack({
+    required int trackId,
+  }) async {
+    try {
+      var token = await storage.read(key: "token");
+      Response response = await _dio.post(
+        "${Endpoints.favoriteTrack}/add/$trackId",
+        options: Options(headers: {
+          "accept": "application/json; charset=utf-8",
+          'Authorization': 'Bearer $token',
+        }),
+      );
+      return response.data['message'];
+    } catch (e) {
+      throw Exception("Failed to like track: ${e.toString()}");
+    }
+  }
+
+  @override
+  Future<String> unlikeTrack({
+    required int trackId,
+  }) async {
+    try {
+      var token = await storage.read(key: "token");
+      Response response = await _dio.delete(
+        "${Endpoints.favoriteTrack}/remove/$trackId",
+        options: Options(headers: {
+          "accept": "application/json; charset=utf-8",
+          'Authorization': 'Bearer $token',
+        }),
+      );
+      return response.data['message'];
+    } catch (e) {
+      throw Exception("Failed to unlike track: ${e.toString()}");
     }
   }
 }

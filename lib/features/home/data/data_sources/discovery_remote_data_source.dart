@@ -16,6 +16,14 @@ abstract interface class DiscoveryRemoteDataSource {
   Future<List<TrackModel>?> getTracksByUserId({
     required int userId,
   });
+
+  Future<String> addToPlaylist({
+    required int playlistId,
+    required int trackId,
+  });
+  Future<bool> isFollowingArtist({
+    required int targetUserId,
+  });
 }
 
 class DiscoveryRemoteDataSourceImpl implements DiscoveryRemoteDataSource {
@@ -96,6 +104,7 @@ class DiscoveryRemoteDataSourceImpl implements DiscoveryRemoteDataSource {
     }
   }
 
+  @override
   Future<List<PlaylistModel>?> getPlaylistsByUserId({
     required int userId,
   }) async {
@@ -122,6 +131,7 @@ class DiscoveryRemoteDataSourceImpl implements DiscoveryRemoteDataSource {
     }
   }
 
+  @override
   Future<List<TrackModel>?> getTracksByUserId({
     required int userId,
   }) async {
@@ -143,6 +153,46 @@ class DiscoveryRemoteDataSourceImpl implements DiscoveryRemoteDataSource {
       }
     } catch (e) {
       throw Exception("Failed to load tracks by user ID: ${e.toString()}");
+    }
+  }
+
+  @override
+  Future<String> addToPlaylist({
+    required int playlistId,
+    required int trackId,
+  }) async {
+    try {
+      var token = await storage.read(key: 'token');
+      Response response = await _dio.post(
+        "${Endpoints.trackPlaylist}/add/$trackId/$playlistId",
+        options: Options(headers: {
+          "accept": "application/json; charset=utf-8",
+          'Authorization': 'Bearer $token',
+        }),
+      );
+
+      return response.data['message'];
+    } catch (e) {
+      throw Exception("Failed to add track to playlist: ${e.toString()}");
+    }
+  }
+
+  @override
+  Future<bool> isFollowingArtist({
+    required int targetUserId,
+  }) async {
+    try {
+      var token = await storage.read(key: 'token');
+      Response response = await _dio.get(
+        "${Endpoints.follow}/is-following/$targetUserId",
+        options: Options(headers: {
+          "accept": "application/json; charset=utf-8",
+          'Authorization': 'Bearer $token',
+        }),
+      );
+      return response.data['isFollowing'];
+    } catch (e) {
+      throw Exception("Failed to check if following artist: ${e.toString()}");
     }
   }
 }

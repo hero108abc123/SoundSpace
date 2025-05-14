@@ -56,5 +56,14 @@ namespace SoundSpace.Services.Implements.Product
         {
             return await _dbContext.FavoriteTracks.CountAsync(f => f.TrackId == trackId);
         }
+
+        public async Task<bool> IsFavoriteTrackAsync(int trackId)
+        {
+            int currentUserId = CommonUntils.GetCurrentUserId(_httpContextAccessor);
+
+            return await _dbContext.FavoriteTracks
+                .AnyAsync(ft => ft.UserId == currentUserId && ft.TrackId == trackId);
+        }
+
     }
 }
